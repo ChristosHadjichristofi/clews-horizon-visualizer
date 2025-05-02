@@ -229,15 +229,6 @@ const Energy = () => {
           </div>
         </TabsContent>
       </Tabs>
-      
-      <div className="mt-8 border-t pt-4">
-        <h3 className="text-sm font-medium mb-2">Contact Information:</h3>
-        <div className="text-xs text-muted-foreground">
-          <p>Thomas Nikolakakis - tnikolakakis@epu.ntua.gr</p>
-          <p>Anastasios Karamaneas - akaramaneas@epu.ntua.gr</p>
-          <p>Kimon Georgiou - kgeorgiou@epu.ntua.gr</p>
-        </div>
-      </div>
     </div>
   );
 };
