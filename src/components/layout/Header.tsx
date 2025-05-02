@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { 
   BarChart3, 
   Car, 
@@ -34,7 +34,8 @@ const modules = [
 ];
 
 const Header = () => {
-  const currentPath = window.location.pathname;
+  const location = useLocation();
+  const currentPath = location.pathname;
   
   return (
     <header className="border-b">
@@ -76,7 +77,7 @@ const Header = () => {
               <li key={module.path}>
                 <Link 
                   to={module.path} 
-                  className={`module-link ${currentPath.startsWith(module.path) ? 'active' : ''}`}
+                  className={`module-link flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-accent ${currentPath === module.path ? 'bg-primary text-primary-foreground' : ''}`}
                 >
                   {module.icon} 
                   <span className="ml-2">{module.name}</span>
