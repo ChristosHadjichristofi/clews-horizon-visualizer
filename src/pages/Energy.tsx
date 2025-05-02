@@ -1,11 +1,12 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FilterPanel from '@/components/common/FilterPanel';
 import ChartCard from '@/components/common/ChartCard';
 import ChartPlaceholder from '@/components/common/ChartPlaceholder';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
+import { useLocation } from 'react-router-dom';
 
 const energyTechnologies = [
   { id: 'solar-pv', label: 'Solar PV' },
@@ -50,12 +51,18 @@ const generationTypes = [
 
 const Energy = () => {
   const [activeTab, setActiveTab] = useState('overview');
+  const location = useLocation();
+  
+  // Reset the tab state when navigating to this page
+  useEffect(() => {
+    setActiveTab('overview');
+  }, [location.pathname]);
 
   return (
     <div className="container mx-auto py-6">
       <h1 className="text-2xl font-bold mb-6">Energy Module</h1>
       
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full mb-6">
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full mb-6" defaultValue="overview">
         <TabsList className="grid w-full max-w-md grid-cols-3">
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="generation">Generation</TabsTrigger>
