@@ -1,9 +1,16 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import FilterPanel from '@/components/common/FilterPanel';
 import ChartCard from '@/components/common/ChartCard';
 import ChartPlaceholder from '@/components/common/ChartPlaceholder';
+import { 
+  ChartContainer, 
+  ChartTooltipContent, 
+  ChartTooltip 
+} from '@/components/ui/chart';
 
+// Building fuels and renovation data based on section 1.3 requirements
 const buildingFuels = [
   { id: 'electricity', label: 'Electricity' },
   { id: 'natural-gas', label: 'Natural Gas' },
@@ -22,55 +29,137 @@ const renovationTypes = [
 ];
 
 const Buildings = () => {
+  // State for tracking selected filters
+  const [selectedFuels, setSelectedFuels] = useState<string[]>([]);
+  const [selectedRenovations, setSelectedRenovations] = useState<string[]>([]);
+  const [chartType, setChartType] = useState('stacked');
+  
+  // Handler for filter changes
+  const handleFuelFilterChange = (fuels: string[]) => {
+    setSelectedFuels(fuels);
+    console.log('Selected fuels:', fuels);
+  };
+  
+  const handleRenovationFilterChange = (renovations: string[]) => {
+    setSelectedRenovations(renovations);
+    console.log('Selected renovations:', renovations);
+  };
+  
   return (
     <div className="container mx-auto py-6">
       <h1 className="text-2xl font-bold mb-6">Buildings Module</h1>
       
+      <Card className="mb-6">
+        <CardHeader className="pb-2">
+          <CardTitle className="text-lg">Buildings Sector Dashboard</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-muted-foreground text-sm">
+            This module visualizes building energy demand, renovation impacts, and emissions data
+            as specified in section 1.3 of the CLEWs-EU model visualization requirements.
+          </p>
+        </CardContent>
+      </Card>
+      
       <FilterPanel
-        title="Buildings Filters"
+        title="Buildings Data Filters"
         items={[...buildingFuels, ...renovationTypes]}
-        chartTypes={['stacked', 'line']}
+        chartTypes={['stacked', 'line', 'area']}
         hasSecondaryAxis={true}
+        onFilterChange={handleFuelFilterChange}
+        onChartTypeChange={(type) => setChartType(type)}
       />
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+        {/* Chart 1: Final Energy Demand by Fuel - Required by section 1.3.1 */}
         <ChartCard title="Final Energy Demand by Fuel">
-          <ChartPlaceholder title="Stacked Bar: Energy Consumption" />
+          <ChartPlaceholder 
+            title="Final Energy Demand by Fuel Type" 
+            subtitle="Stacked representation of energy consumption by fuel source"
+            chartType="stacked" 
+          />
         </ChartCard>
         
+        {/* Chart 2: Useful Energy Savings by Renovation Activity - Required by section 1.3.1 */}
         <ChartCard 
           title="Useful Energy Savings by Renovation Activity"
           hasDrillDown={true}
           drillDownContent={
             <div>
               <FilterPanel
+                title="Renovation Filters"
                 items={renovationTypes}
                 chartTypes={['stacked', 'column']}
+                onFilterChange={handleRenovationFilterChange}
               />
-              <div className="mt-4">
-                <ChartPlaceholder title="Renovation Impact Details" />
+              <div className="mt-4 grid grid-cols-1 gap-4">
+                <ChartPlaceholder 
+                  title="Renovation Impact by Type" 
+                  subtitle="Detailed energy savings breakdown"
+                />
+                <ChartPlaceholder 
+                  title="Annual Renovation Rate" 
+                  chartType="line"
+                />
               </div>
             </div>
           }
         >
-          <ChartPlaceholder title="Column Chart: Energy Savings" />
+          <ChartPlaceholder 
+            title="Energy Savings from Building Renovations" 
+            subtitle="Impact of renovation activities on energy consumption"
+            chartType="bar" 
+          />
         </ChartCard>
         
+        {/* Chart 3: GHG Emissions - Required by section 1.3.1 */}
         <ChartCard 
-          title="GHG Emissions"
+          title="GHG Emissions in Buildings Sector"
           className="md:col-span-2"
           hasDrillDown={true}
           drillDownContent={
             <div className="grid grid-cols-2 gap-4">
-              <ChartPlaceholder title="With Renovation" />
-              <ChartPlaceholder title="Without Renovation" />
+              <ChartPlaceholder 
+                title="With Renovation Measures" 
+                chartType="line"
+              />
+              <ChartPlaceholder 
+                title="Without Renovation Measures" 
+                chartType="line" 
+              />
               <div className="col-span-2">
-                <ChartPlaceholder title="Emissions Reduction Potential" />
+                <ChartPlaceholder 
+                  title="Emissions Reduction Potential" 
+                  subtitle="Difference between renovation scenarios"
+                  chartType="area"
+                />
               </div>
             </div>
           }
         >
-          <ChartPlaceholder title="Line Chart: Emissions Trends" />
+          <ChartPlaceholder 
+            title="Buildings GHG Emissions Trends" 
+            subtitle="Annual greenhouse gas emissions from the buildings sector"
+            chartType="line" 
+          />
+        </ChartCard>
+        
+        {/* Additional chart for deeper analysis */}
+        <ChartCard title="Energy Intensity by Building Type">
+          <ChartPlaceholder 
+            title="Energy Consumption per Square Meter" 
+            subtitle="Comparative analysis across building categories"
+            chartType="bar" 
+          />
+        </ChartCard>
+        
+        {/* Additional chart for deeper analysis */}
+        <ChartCard title="Renovation Cost-Benefit Analysis">
+          <ChartPlaceholder 
+            title="Investment vs. Energy Savings" 
+            subtitle="Financial implications of renovation activities"
+            chartType="line" 
+          />
         </ChartCard>
       </div>
     </div>
