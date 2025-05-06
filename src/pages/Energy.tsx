@@ -1,39 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
-// Only need exporting for the default Highcharts menu
-import "highcharts/modules/exporting";
-
-import chartInfo from "@/data/chartConfigs/Energy/chartInfo.json";
-import { configs } from "@/data/chartConfigs/Energy";
-
 import ChartPlaceholder from "@/components/common/ChartPlaceholder";
 import ChartCard from "@/components/common/ChartCard";
+import Chart from "@/components/common/Chart";
+import chartInfo from "@/data/chartConfigs/Energy/chartInfo.json";
+import { configs } from "@/data/chartConfigs/Energy";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 const Energy: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>("overview");
+  const [activeTab, setActiveTab] = useState("overview");
   const location = useLocation();
 
   useEffect(() => {
     setActiveTab("overview");
   }, [location.pathname]);
-
-  // Helper to inject scrollablePlotArea into any chart config
-  const withScrolling = (cfg: Highcharts.Options): Highcharts.Options => ({
-    ...cfg,
-    chart: {
-      ...cfg.chart,
-      // spacingBottom: 40,
-
-      // When the plotted width exceeds minWidth, arrows appear
-      scrollablePlotArea: {
-        minWidth: 1200, // adjust based on how many points you want visible
-        scrollPositionX: 0,
-      },
-    },
-  });
 
   return (
     <div className="container mx-auto py-6">
@@ -43,7 +23,6 @@ const Energy: React.FC = () => {
         value={activeTab}
         onValueChange={setActiveTab}
         className="w-full mb-6"
-        defaultValue="overview"
       >
         <TabsList className="grid grid-cols-3 max-w-md">
           {chartInfo.tabs.map((tab) => (
@@ -57,15 +36,14 @@ const Energy: React.FC = () => {
           <TabsContent key={tab.id} value={tab.id} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {tab.cards.map((card: any) => {
+                const spanClass = card.colSpan === 2 ? "md:col-span-2" : "";
                 if (!card.configFile) {
                   return (
                     <ChartCard
                       key={card.key}
                       title={card.title}
                       subtitle={card.subtitle}
-                      className={
-                        card.colSpan === 2 ? "md:col-span-2" : undefined
-                      }
+                      className={spanClass}
                     >
                       <ChartPlaceholder
                         title={card.title}
@@ -82,9 +60,7 @@ const Energy: React.FC = () => {
                       key={cfgKey}
                       title={card.title}
                       subtitle={card.subtitle}
-                      className={
-                        card.colSpan === 2 ? "md:col-span-2" : undefined
-                      }
+                      className={spanClass}
                     >
                       <ChartPlaceholder
                         title={card.title}
@@ -93,21 +69,14 @@ const Energy: React.FC = () => {
                     </ChartCard>
                   );
                 }
-                const cardOptions = withScrolling(cfg);
                 return (
                   <ChartCard
                     key={cfgKey}
                     title={card.title}
                     subtitle={card.subtitle}
-                    className={card.colSpan === 2 ? "md:col-span-2" : undefined}
+                    className={spanClass}
                   >
-                    <HighchartsReact
-                      highcharts={Highcharts}
-                      options={cardOptions}
-                      containerProps={{
-                        style: { width: "100%", height: "100%" },
-                      }}
-                    />
+                    <Chart options={cfg} />
                   </ChartCard>
                 );
               })}

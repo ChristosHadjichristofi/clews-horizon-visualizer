@@ -166,7 +166,7 @@ export async function buildHeatGenerationChart() {
       (r) =>
         r.tech.region === "EU" &&
         r.tech.module === "E" &&
-        r.tech.sector === "EG" &&
+        (r.tech.sector === "EG" || r.tech.sector === "HG") &&
         r.fuel.full === "EUEHEA" &&
         r.tech.tech !== "000"
     )
