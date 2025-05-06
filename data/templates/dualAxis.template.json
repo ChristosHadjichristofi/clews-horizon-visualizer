@@ -1,0 +1,10 @@
+{
+  "chart": { "type": "column" },
+  "title": { "text": "" },
+  "xAxis": { "categories": [], "title": { "text": "" } },
+  "yAxis": [
+    { "title": { "text": "" } },
+    { "title": { "text": "" }, "opposite": true }
+  ],
+  "series": []
+}

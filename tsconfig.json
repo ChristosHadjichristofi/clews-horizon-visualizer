@@ -9,6 +9,9 @@
     "paths": {
       "@/*": ["./src/*"]
     },
+    "resolveJsonModule": true, // ← allow import foo from './foo.json'
+    "esModuleInterop": true, // ← safer default for most JS → TS interop
+    "allowSyntheticDefaultImports": true, // ← let you do `import foo from '...json'`
     "noImplicitAny": false,
     "noUnusedParameters": false,
     "skipLibCheck": true,

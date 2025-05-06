@@ -1,0 +1,71 @@
+{
+  "chart": {
+    "type": "column"
+  },
+  "plotOptions": {
+    "series": {
+      "stacking": "normal",
+      "borderWidth": 0
+    }
+  },
+  "title": {
+    "text": "Total System Cost Over Horizon"
+  },
+  "xAxis": {
+    "categories": [
+      "Total Horizon"
+    ],
+    "title": {
+      "text": ""
+    }
+  },
+  "yAxis": {
+    "title": {
+      "text": "Cost (million USD)"
+    }
+  },
+  "series": [
+    {
+      "name": "Capital Investment",
+      "type": "column",
+      "data": [
+        1168345.6689643434
+      ]
+    },
+    {
+      "name": "Salvage Value",
+      "type": "column",
+      "data": [
+        -528183.0465989481
+      ]
+    },
+    {
+      "name": "Fixed Opex (FOM)",
+      "type": "column",
+      "data": [
+        1188226.632538035
+      ]
+    },
+    {
+      "name": "Fuel Cost",
+      "type": "column",
+      "data": [
+        528742.5070168575
+      ]
+    },
+    {
+      "name": "Variable Opex (VOM)",
+      "type": "column",
+      "data": [
+        226310.7574760211
+      ]
+    },
+    {
+      "name": "Emission Penalty",
+      "type": "column",
+      "data": [
+        458045.8335848173
+      ]
+    }
+  ]
+}

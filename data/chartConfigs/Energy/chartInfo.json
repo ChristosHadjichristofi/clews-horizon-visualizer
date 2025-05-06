@@ -1,0 +1,69 @@
+{
+  "tabs": [
+    {
+      "id": "overview",
+      "label": "Overview",
+      "cards": [
+        {
+          "key": "emissions-by-year-by-tech",
+          "title": "Annual CO₂ Emissions by Year & Technology",
+          "configFile": "emissions-by-year-by-tech.config.json",
+          "chartType": "stacked"
+        }
+      ]
+    },
+    {
+      "id": "generation",
+      "label": "Generation",
+      "cards": [
+        {
+          "key": "total-capacity",
+          "title": "Total Annual Capacity per Technology",
+          "subtitle": "Including CHP, BESS and Pumped Hydro",
+          "configFile": "total-annual-capacity.config.json"
+        },
+        {
+          "key": "generation-electricity",
+          "title": "Total Annual Generation – Electricity",
+          "subtitle": "With CO₂ emissions on secondary axis",
+          "configFile": "total-generation-electricity.config.json",
+          "chartType": "dualAxis"
+        },
+        {
+          "key": "generation-heat",
+          "title": "Total Annual Generation – Heat",
+          "subtitle": "With CO₂ emissions on secondary axis",
+          "configFile": "total-generation-heat.config.json",
+          "chartType": "dualAxis"
+        }
+      ]
+    },
+    {
+      "id": "costs",
+      "label": "Costs",
+      "cards": [
+        {
+          "key": "system-cost-annual",
+          "title": "Annual System Cost Breakdown",
+          "subtitle": "All technologies combined",
+          "configFile": "system-cost-annual.config.json",
+          "chartType": "stacked"
+        },
+        {
+          "key": "system-cost-by-tech",
+          "title": "Per-Technology Cost Breakdown",
+          "configFile": "system-cost-by-tech.config.json",
+          "chartType": "stacked"
+        },
+        {
+          "key": "system-cost-horizon",
+          "title": "Total System Cost Over Horizon",
+          "subtitle": "Aggregated for entire study period",
+          "configFile": "system-cost-horizon.config.json",
+          "chartType": "column",
+          "colSpan": 2
+        }
+      ]
+    }
+  ]
+}

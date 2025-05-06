@@ -1,0 +1,7 @@
+{
+  "chart": { "type": "line" },
+  "title": { "text": "" },
+  "xAxis": { "categories": [], "title": { "text": "" } },
+  "yAxis": { "title": { "text": "" } },
+  "series": []
+}

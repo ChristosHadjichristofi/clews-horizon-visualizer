@@ -1,0 +1,10 @@
+{
+  "chart": { "type": "area" },
+  "plotOptions": {
+    "area": { "stacking": "normal", "marker": { "enabled": false } }
+  },
+  "title": { "text": "" },
+  "xAxis": { "categories": [], "title": { "text": "" } },
+  "yAxis": { "title": { "text": "" } },
+  "series": []
+}
