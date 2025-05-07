@@ -20,9 +20,9 @@ const Energy: React.FC = () => {
   return (
     <div className="container mx-auto py-6">
       <h1 className="text-2xl font-bold mb-6">Energy Module</h1>
-      <p className="text-sm italic">
+      {/* <p className="text-sm italic">
         Showing years {yearRange[0]}–{yearRange[1]}
-      </p>
+      </p> */}
 
       <Tabs
         value={activeTab}

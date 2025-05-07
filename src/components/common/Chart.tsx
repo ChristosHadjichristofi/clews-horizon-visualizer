@@ -32,9 +32,9 @@ export default function Chart({
   yearRange,
   containerStyle,
 }: ChartProps) {
-  console.group(`[Chart] ${options.chart?.type || "?"} render`);
-  console.log("incoming yearRange:", yearRange);
-  console.log("incoming options.xAxis:", options.xAxis);
+  // console.group(`[Chart] ${options.chart?.type || "?"} render`);
+  // console.log("incoming yearRange:", yearRange);
+  // console.log("incoming options.xAxis:", options.xAxis);
 
   // 1) deep‐clone
   const cfg = JSON.parse(JSON.stringify(options)) as Highcharts.Options;
@@ -52,7 +52,7 @@ export default function Chart({
   const rawCats: Array<string | number> = Array.isArray(axis0.categories)
     ? axis0.categories
     : [];
-  console.log("rawCats:", rawCats);
+  // console.log("rawCats:", rawCats);
 
   // 4) normalize to numbers
   const numericCats = rawCats.map((c) =>
@@ -62,7 +62,7 @@ export default function Chart({
       ? c
       : NaN
   );
-  console.log("numericCats:", numericCats);
+  // console.log("numericCats:", numericCats);
 
   // 5) slice logic
   if (
@@ -78,11 +78,11 @@ export default function Chart({
     if (startIdx < 0) startIdx = 0;
     if (endIdx < 0) endIdx = numericCats.length;
     const sliceEnd = Math.min(endIdx, numericCats.length);
-    console.log("slice window indices:", startIdx, sliceEnd);
+    // console.log("slice window indices:", startIdx, sliceEnd);
 
     if (sliceEnd > startIdx) {
       const newCats = rawCats.slice(startIdx, sliceEnd);
-      console.log("newCats:", newCats);
+      // console.log("newCats:", newCats);
 
       // write back into cfg.xAxis
       if (Array.isArray(cfg.xAxis)) {
@@ -100,17 +100,17 @@ export default function Chart({
       if (Array.isArray(cfg.series)) {
         cfg.series = (cfg.series as any[]).map((s) => {
           const dataArr = Array.isArray(s.data) ? s.data : [];
-          console.log(` original data length: ${dataArr.length}`);
+          // console.log(` original data length: ${dataArr.length}`);
           const sliced = dataArr.slice(startIdx, sliceEnd);
-          console.log(` new data length: ${sliced.length}`);
+          // console.log(` new data length: ${sliced.length}`);
           return { ...s, data: sliced };
         });
       }
     } else {
-      console.log("empty slice window, skipping");
+      // console.log("empty slice window, skipping");
     }
   } else {
-    console.log("no valid categories or yearRange, skipping slice");
+    // console.log("no valid categories or yearRange, skipping slice");
   }
 
   console.groupEnd();
