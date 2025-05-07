@@ -1,7 +1,6 @@
-
-import React from 'react';
-import Header from './Header';
-import GlobalControlsBar from './GlobalControlsBar';
+import React from "react";
+import Header from "./Header";
+import GlobalControlsBar from "./GlobalControlsBar";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -12,9 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
     <div className="min-h-screen flex flex-col">
       <Header />
       <GlobalControlsBar />
-      <main className="flex-1">
-        {children}
-      </main>
+      <main className="flex-1">{children}</main>
       <footer className="bg-secondary/50 border-t py-4">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
@@ -25,7 +22,15 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
             <div className="mt-2 md:mt-0">
               <p className="text-xs text-muted-foreground">
-                Contact: <a href="mailto:contact@clews-eu.org" className="underline">contact@clews-eu.org</a>
+                Coded by:{" "}
+                <a
+                  href="https://christoshadjichristofi.com"
+                  className="underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Christos Hadjichristofi
+                </a>
               </p>
             </div>
           </div>

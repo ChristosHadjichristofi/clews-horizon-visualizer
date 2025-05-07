@@ -7,13 +7,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useGlobalControls } from "@/contexts/GlobalControlsContext";
 
 const GlobalControlsBar = () => {
-  const [yearRange, setYearRange] = useState<number[]>([2018, 2050]);
-  const [region, setRegion] = useState<string>("eu");
+  const { yearRange, setYearRange, region, setRegion } = useGlobalControls();
 
   const handleYearRangeChange = (value: number[]) => {
-    setYearRange(value);
+    setYearRange(value as [number, number]);
   };
 
   return (

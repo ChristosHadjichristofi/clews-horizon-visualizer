@@ -6,10 +6,12 @@ import Chart from "@/components/common/Chart";
 import chartInfo from "@/data/chartConfigs/Energy/chartInfo.json";
 import { configs } from "@/data/chartConfigs/Energy";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { useGlobalControls } from "@/contexts/GlobalControlsContext";
 
 const Energy: React.FC = () => {
   const [activeTab, setActiveTab] = useState("overview");
   const location = useLocation();
+  const { yearRange } = useGlobalControls();
 
   useEffect(() => {
     setActiveTab("overview");
@@ -18,6 +20,9 @@ const Energy: React.FC = () => {
   return (
     <div className="container mx-auto py-6">
       <h1 className="text-2xl font-bold mb-6">Energy Module</h1>
+      <p className="text-sm italic">
+        Showing years {yearRange[0]}–{yearRange[1]}
+      </p>
 
       <Tabs
         value={activeTab}
@@ -37,6 +42,8 @@ const Energy: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {tab.cards.map((card: any) => {
                 const spanClass = card.colSpan === 2 ? "md:col-span-2" : "";
+
+                // if there's no configFile, show placeholder
                 if (!card.configFile) {
                   return (
                     <ChartCard
@@ -52,6 +59,8 @@ const Energy: React.FC = () => {
                     </ChartCard>
                   );
                 }
+
+                // otherwise load the config
                 const cfgKey = card.configFile.replace(".config.json", "");
                 const cfg = configs[cfgKey];
                 if (!cfg) {
@@ -69,6 +78,7 @@ const Energy: React.FC = () => {
                     </ChartCard>
                   );
                 }
+
                 return (
                   <ChartCard
                     key={cfgKey}
@@ -76,7 +86,8 @@ const Energy: React.FC = () => {
                     subtitle={card.subtitle}
                     className={spanClass}
                   >
-                    <Chart options={cfg} />
+                    {/* pass yearRange into Chart */}
+                    <Chart options={cfg} yearRange={yearRange} />
                   </ChartCard>
                 );
               })}
