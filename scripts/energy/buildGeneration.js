@@ -1,12 +1,7 @@
 import fs from "fs/promises";
 import path from "path";
 import merge from "lodash.merge";
-import {
-  splitTechnology,
-  splitFuel,
-  parseCsv,
-  loadTemplate,
-} from "../utils/general.js";
+import { splitTechnology, parseCsv, loadTemplate } from "../utils/general.js";
 import {
   pivotWideBySuffix,
   getEmActAMap,
@@ -17,18 +12,31 @@ const CSV_DIR = path.resolve(process.cwd(), "data/csv");
 const OUT_DIR = path.resolve(process.cwd(), "data/chartConfigs", "Energy");
 const PJ_TO_TWH = 0.277778;
 
-/**
- * Electricity: production (EUESEL) + demand (EUEFEL) + dummy CO₂
- */
-export async function buildElectricityGenerationChart() {
-  await fs.mkdir(OUT_DIR, { recursive: true });
+function pivotByTechnology(rows) {
+  const map = {};
+  rows.forEach((r) => {
+    map[r.TECHNOLOGY] ??= {};
+    Object.entries(r).forEach(([col, val]) => {
+      if (/^\d{4}$/.test(col)) map[r.TECHNOLOGY][col] = Number(val);
+    });
+  });
+  return map;
+}
 
-  const [prodRows, demRows, emActRows, inputActRows] = await Promise.all([
+// load all four CSVs
+async function loadCsvs() {
+  const [prodRows, techListRows, emActRows, inputActRows] = await Promise.all([
     parseCsv(path.join(CSV_DIR, "ProductionByTechnologyAnnual.csv")),
-    parseCsv(path.join(CSV_DIR, "Demand.csv")),
+    parseCsv(path.join(CSV_DIR, "exported/EnergyModule_Tech_List.csv")),
     parseCsv(path.join(CSV_DIR, "exported/EmissionActivityRatio.csv")),
     parseCsv(path.join(CSV_DIR, "exported/InputActivityRatio.csv")),
   ]);
+  return { prodRows, techListRows, emActRows, inputActRows };
+}
+
+export async function buildElectricityGenerationChart() {
+  await fs.mkdir(OUT_DIR, { recursive: true });
+  const { prodRows, techListRows, emActRows, inputActRows } = await loadCsvs();
 
   // 1) Production by tech (electricity)
   const prodAgg = {};
@@ -36,36 +44,49 @@ export async function buildElectricityGenerationChart() {
     .map((r) => ({
       ...r,
       tech: splitTechnology(r.TECHNOLOGY),
-      fuel: splitTechnology(r.FUEL), // assuming splitFuel same as splitTechnology on FUEL
+      fuel: splitTechnology(r.FUEL),
     }))
     .filter(
       (r) =>
-        r.tech.region === "EU" &&
-        r.tech.module === "E" &&
-        r.tech.sector === "EG" &&
-        r.fuel.full === "EUESEL" &&
-        r.tech.tech !== "000"
+        (r.tech.region === "EU" &&
+          r.tech.module === "E" &&
+          (r.tech.sector === "EG" || r.tech.sector === "HG") &&
+          r.fuel.full === "EUESEL" &&
+          r.tech.tech !== "000") ||
+        r.TECHNOLOGY === "EUEGNELCXXIC"
     )
     .forEach((r) => {
       const tWh = Number(r.VALUE) * PJ_TO_TWH;
-      const code = r.TECHNOLOGY;
-      prodAgg[code] ??= {};
-      prodAgg[code][r.YEAR] = (prodAgg[code][r.YEAR] || 0) + tWh;
+      prodAgg[r.TECHNOLOGY] ??= {};
+      prodAgg[r.TECHNOLOGY][r.YEAR] =
+        (prodAgg[r.TECHNOLOGY][r.YEAR] || 0) + tWh;
     });
 
-  // 2) Demand
+  // 2) demand by tech: use EnergyModule_Tech_List to pick all techs with Input="EUEFEL" or Output="EUEXEL" or "EUEHY2"
+  const demandTechs = techListRows
+    .filter(
+      (r) =>
+        r["Input code"] === "EUEFEL" ||
+        r["Output code"] === "EUEXEL" ||
+        r["Output code"] === "EUEHY2"
+    )
+    .map((r) => r["Technology code"]);
+
+  const inputMap = pivotByTechnology(inputActRows);
+
   const demAgg = {};
-  demRows
-    .map((r) => ({ ...r, fuel: splitTechnology(r.FUEL) }))
-    .filter((r) => r.fuel.full === "EUESEL")
+  prodRows
+    .filter((r) => demandTechs.includes(r.TECHNOLOGY))
     .forEach((r) => {
-      const tWh = Number(r.VALUE) * PJ_TO_TWH;
-      demAgg[r.YEAR] = (demAgg[r.YEAR] || 0) + tWh;
+      const year = r.YEAR;
+      const prodPJ = +r.VALUE;
+      const ratio = inputMap[r.TECHNOLOGY]?.[year] || 0;
+      const finalPJ = prodPJ * ratio;
+      demAgg[year] = (demAgg[year] || 0) + finalPJ * PJ_TO_TWH; // convert PJ→TWh
     });
 
-  // 3) CO₂ Emissions for electricity subset
-  //   sum prodPJ × inputRatio × emitA + prodPJ × emitB
-  const inputMap = pivotWideBySuffix(inputActRows, "EUEEG", splitTechnology);
+  // 3) CO₂ Emissions on top of generation
+  const inputMapCO2 = pivotWideBySuffix(inputActRows, "EUEEG", splitTechnology);
   const emisAgg = {};
   prodRows
     .filter((r) => {
@@ -74,28 +95,25 @@ export async function buildElectricityGenerationChart() {
       return (
         t.region === "EU" &&
         t.module === "E" &&
-        t.sector === "EG" &&
+        (t.sector === "EG" || t.sector === "HG") &&
         f.full === "EUESEL" &&
         t.tech !== "000"
       );
     })
     .forEach((r) => {
-      const tech = r.TECHNOLOGY;
-      const suffix = splitTechnology(tech).tech;
+      const suffix = splitTechnology(r.TECHNOLOGY).tech;
       const year = r.YEAR;
       const prodPJ = +r.VALUE;
-
-      const inputRatio = inputMap[suffix]?.[year] || 0;
+      const inputRatio = inputMapCO2[suffix]?.[year] || 0;
       const emAMap = getEmActAMap(emActRows, suffix);
       const emBMap = getEmActBMap(emActRows, suffix);
       const emitA = emAMap[suffix]?.[year] || 0;
       const emitB = emBMap[suffix]?.[year] || 0;
       const mt = prodPJ * inputRatio * emitA + prodPJ * emitB;
-
       emisAgg[year] = (emisAgg[year] || 0) + mt;
     });
 
-  // 4) Years axis
+  // 4) Shared years axis
   const years = Array.from(
     new Set(
       [
@@ -106,10 +124,10 @@ export async function buildElectricityGenerationChart() {
     )
   ).sort((a, b) => a - b);
 
-  // 5) Series
+  // 5) Build Highcharts series
   const series = [
-    ...Object.entries(prodAgg).map(([code, data]) => ({
-      name: code,
+    ...Object.entries(prodAgg).map(([tech, data]) => ({
+      name: tech,
       type: "column",
       data: years.map((y) => data[y] || 0),
     })),
@@ -149,23 +167,17 @@ export async function buildElectricityGenerationChart() {
   console.log("Wrote electricity config to", outFile);
 }
 
-/**
- * Heat: production (EUEHEA) + demand (EUEFEL)
- */
 export async function buildHeatGenerationChart() {
   await fs.mkdir(OUT_DIR, { recursive: true });
-  const [prodRows, demRows] = await Promise.all([
-    parseCsv(path.join(CSV_DIR, "ProductionByTechnologyAnnual.csv")),
-    parseCsv(path.join(CSV_DIR, "Demand.csv")),
-  ]);
+  const { prodRows, techListRows, inputActRows } = await loadCsvs();
 
-  // 1) Production: only EU-EG heat techs, FUEL="EUEHEA", drop tech="000"
+  // 1) Production (heat) remains by filtering fuel="EUEHEA"
   const prodAgg = {};
   prodRows
     .map((r) => ({
       ...r,
       tech: splitTechnology(r.TECHNOLOGY),
-      fuel: splitFuel(r.FUEL),
+      fuel: splitTechnology(r.FUEL),
     }))
     .filter(
       (r) =>
@@ -177,19 +189,26 @@ export async function buildHeatGenerationChart() {
     )
     .forEach((r) => {
       const tWh = Number(r.VALUE) * PJ_TO_TWH;
-      const code = r.tech.full;
-      prodAgg[code] ??= {};
-      prodAgg[code][r.YEAR] = (prodAgg[code][r.YEAR] || 0) + tWh;
+      prodAgg[r.fuel.full] ??= {};
+      prodAgg[r.fuel.full][r.YEAR] = (prodAgg[r.fuel.full][r.YEAR] || 0) + tWh;
     });
 
-  // 2) Demand: only EU-27 final-energy demand, FUEL="EUEHEA"
+  // 2) demand for heat: pick all techs with Input="EUEHEA"
+  const demandHeatTechs = techListRows
+    .filter((r) => r["Input code"] === "EUEHEA")
+    .map((r) => r["Technology code"]);
+
+  const inputMapHeat = pivotByTechnology(inputActRows);
+
   const demAgg = {};
-  demRows
-    .map((r) => ({ ...r, fuel: splitFuel(r.FUEL) }))
-    .filter((r) => r.fuel.full === "EUEHEA")
+  prodRows
+    .filter((r) => demandHeatTechs.includes(r.TECHNOLOGY))
     .forEach((r) => {
-      const tWh = Number(r.VALUE) * PJ_TO_TWH;
-      demAgg[r.YEAR] = (demAgg[r.YEAR] || 0) + tWh;
+      const year = r.YEAR;
+      const prodPJ = +r.VALUE;
+      const ratio = inputMapHeat[r.TECHNOLOGY]?.[year] || 0;
+      const finalPJ = prodPJ * ratio;
+      demAgg[year] = (demAgg[year] || 0) + finalPJ * PJ_TO_TWH;
     });
 
   // 3) Years axis
@@ -227,9 +246,7 @@ export async function buildHeatGenerationChart() {
     series,
   });
 
-  await fs.writeFile(
-    path.join(OUT_DIR, "total-generation-heat.config.json"),
-    JSON.stringify(config, null, 2)
-  );
-  console.log("Wrote heat config");
+  const outFile = path.join(OUT_DIR, "total-generation-heat.config.json");
+  await fs.writeFile(outFile, JSON.stringify(config, null, 2));
+  console.log("Wrote heat config to", outFile);
 }

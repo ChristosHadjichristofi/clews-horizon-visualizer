@@ -20,7 +20,6 @@ const isEUeg = (r) => {
 };
 
 // Pivot a long table into { suffix: { year: value } }
-// (for input‐ratios and similar)
 export function pivotWideBySuffix(rows, codePrefix, splitFn) {
   const map = {};
   rows
@@ -48,7 +47,7 @@ export function pivotBySuffix(rows, splitFn) {
   return map;
 }
 
-// 1) Emit‑A: dynamic prefix = EUEPS{tech}, EMISSION = EUCO2_ETS
+// 1) Emit-A: dynamic prefix = EUEPS{tech}, EMISSION = EUCO2_ETS
 export function getEmActAMap(emActRows, suffix) {
   const prefix = `EUEPS${suffix}`;
   const filtered = emActRows.filter(
@@ -57,13 +56,27 @@ export function getEmActAMap(emActRows, suffix) {
   return pivotBySuffix(filtered, splitTechnology);
 }
 
-// 2) Emit‑B: exact key = EUEGG{tech}PPCS, EMISSION = EUCO2
+// 2) Emit-B: exact key = EUEEG{tech}PPCS or EUEHG{tech}PPCS, EMISSION = EUCO2
 export function getEmActBMap(emActRows, suffix) {
-  const key = `EUEGG${suffix}PPCS`;
+  const keys = [
+    `EUEEG${suffix}PPCS`, // electricity-sector CO₂
+    `EUEHG${suffix}PPCS`, // heat-sector CO₂
+  ];
   const filtered = emActRows.filter(
-    (r) => r.EMISSION === "EUCO2" && r.TECHNOLOGY === key
+    (r) => r.EMISSION === "EUCO2" && keys.includes(r.TECHNOLOGY)
   );
   return pivotBySuffix(filtered, splitTechnology);
+}
+
+// Build a merged input‐ratio map that pulls both EUEEG… and EUEHG… rows
+function buildInputMap(inputActRows) {
+  const eg = pivotWideBySuffix(inputActRows, "EUEEG", splitTechnology);
+  const hg = pivotWideBySuffix(inputActRows, "EUEHG", splitTechnology);
+  const merged = { ...eg };
+  for (const [suf, years] of Object.entries(hg)) {
+    merged[suf] = { ...(merged[suf] || {}), ...years };
+  }
+  return merged;
 }
 
 // 3.a) Annual CO₂ Emissions by technology (sum over all years)
@@ -71,7 +84,7 @@ export async function buildEmissionsByTechChart() {
   await fs.mkdir(OUT_DIR, { recursive: true });
   const { prodRows, emActRows, inputActRows } = await loadCsvs();
 
-  const inputMap = pivotWideBySuffix(inputActRows, "EUEEG", splitTechnology);
+  const inputMap = buildInputMap(inputActRows);
   const emissionsMap = {};
 
   prodRows.filter(isEUeg).forEach((r) => {
@@ -83,10 +96,10 @@ export async function buildEmissionsByTechChart() {
     const inputRatio = inputMap[suffix]?.[year] || 0;
     const emAMap = getEmActAMap(emActRows, suffix);
     const emBMap = getEmActBMap(emActRows, suffix);
-    const emitRatioA = emAMap[suffix]?.[year] || 0;
-    const emitRatioB = emBMap[suffix]?.[year] || 0;
+    const emitA = emAMap[suffix]?.[year] || 0;
+    const emitB = emBMap[suffix]?.[year] || 0;
 
-    const mt = prodPJ * inputRatio * emitRatioA + prodPJ * emitRatioB;
+    const mt = prodPJ * inputRatio * emitA + prodPJ * emitB;
     emissionsMap[tech] = (emissionsMap[tech] || 0) + mt;
   });
 
@@ -113,7 +126,7 @@ export async function buildEmissionsByYearByTechChart() {
   await fs.mkdir(OUT_DIR, { recursive: true });
   const { prodRows, emActRows, inputActRows } = await loadCsvs();
 
-  const inputMap = pivotWideBySuffix(inputActRows, "EUEEG", splitTechnology);
+  const inputMap = buildInputMap(inputActRows);
   const nested = {};
 
   prodRows.filter(isEUeg).forEach((r) => {
@@ -125,10 +138,10 @@ export async function buildEmissionsByYearByTechChart() {
     const inputRatio = inputMap[suffix]?.[year] || 0;
     const emAMap = getEmActAMap(emActRows, suffix);
     const emBMap = getEmActBMap(emActRows, suffix);
-    const emitRatioA = emAMap[suffix]?.[year] || 0;
-    const emitRatioB = emBMap[suffix]?.[year] || 0;
+    const emitA = emAMap[suffix]?.[year] || 0;
+    const emitB = emBMap[suffix]?.[year] || 0;
+    const mt = prodPJ * inputRatio * emitA + prodPJ * emitB;
 
-    const mt = prodPJ * inputRatio * emitRatioA + prodPJ * emitRatioB;
     nested[tech] ??= {};
     nested[tech][year] = (nested[tech][year] || 0) + mt;
   });

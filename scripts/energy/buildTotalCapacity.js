@@ -33,13 +33,14 @@ export async function buildTotalCapacity() {
   );
 
   // 2) filter down to:
-  //    – EU-E-EG generation codes OR the two storage codes
+  //    – EU-E-EG generation codes OR EU-E-HG OR the two storage codes
   //    – and drop any tech whose 3-letter suffix is "000"
   const keep = (r) => {
     const { full, region, module, sector, tech } = splitTechnology(
       r.TECHNOLOGY
     );
-    const isGen = region === "EU" && module === "E" && sector === "EG";
+    const isGen =
+      region === "EU" && module === "E" && (sector === "EG" || sector === "HG");
     const isStorage = full === "EUESTELCPDHY" || full === "EUESTELCBT00";
     return (isGen || isStorage) && tech !== "000";
   };

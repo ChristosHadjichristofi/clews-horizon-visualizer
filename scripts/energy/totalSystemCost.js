@@ -6,6 +6,7 @@ import { splitTechnology, parseCsv, loadTemplate } from "../utils/general.js";
 const CSV_DIR = path.resolve(process.cwd(), "data/csv");
 const EXP_DIR = path.resolve(CSV_DIR, "exported");
 const OUT_DIR = path.resolve(process.cwd(), "data/chartConfigs", "Energy");
+const PJ_TO_TWH = 0.277778;
 
 async function loadCsvs() {
   const [
@@ -139,7 +140,6 @@ function computeFuelCostByTech(prodRows, inputMap, varCostMap) {
 
 export async function buildSystemCostChart() {
   await fs.mkdir(OUT_DIR, { recursive: true });
-
   const {
     capInvRows,
     salvageRows,
@@ -152,28 +152,35 @@ export async function buildSystemCostChart() {
     emisPenRows,
   } = await loadCsvs();
 
+  // CAPEX, salvage, FOM, VOM
   const capInv = aggregateSimple(capInvRows, "YEAR", "VALUE", isEUeg);
   const salvage = aggregateSimple(salvageRows, "YEAR", "VALUE", isEUeg, true);
   const fom = aggregateSimple(fomRows, "YEAR", "VALUE", isEUeg);
   const vomex = aggregateSimple(varOpexRows, "YEAR", "VALUE", isEUeg);
 
-  const inputMap = pivotWideBySuffix(inputActRows, "EUEEG", splitTechnology);
-  const varCostMap = pivotWideBySuffix(varCostRows, "EUEPS", splitTechnology);
+  // merge EUEEG + EUEHG input‐ratios
+  const egMap = pivotWideBySuffix(inputActRows, "EUEEG", splitTechnology);
+  const hgMap = pivotWideBySuffix(inputActRows, "EUEHG", splitTechnology);
+  const inputMap = { ...egMap };
+  Object.entries(hgMap).forEach(([s, yrs]) => {
+    inputMap[s] ??= {};
+    Object.assign(inputMap[s], yrs);
+  });
 
+  const varCostMap = pivotWideBySuffix(varCostRows, "EUEPS", splitTechnology);
   const emActMap = pivotWideBySuffix(
     emActRows.filter((r) => r.EMISSION === "EUCO2_ETS"),
     "EUEPS",
     splitTechnology
   );
-
   const penRate = {};
   emisPenRows
     .filter((r) => r.REGION === "EU27" && r.EMISSION === "EUCO2_ETS")
-    .forEach((r) => {
-      Object.entries(r).forEach(([col, val]) => {
-        if (/^[0-9]{4}$/.test(col)) penRate[col] = +val;
-      });
-    });
+    .forEach((r) =>
+      Object.entries(r).forEach(([c, v]) => {
+        if (/^\d{4}$/.test(c)) penRate[c] = +v;
+      })
+    );
 
   const fuelCost = computeFuelCost(prodRows, inputMap, varCostMap);
   const emisCost = computeEmissionCost(prodRows, inputMap, emActMap, penRate);
@@ -239,7 +246,6 @@ export async function buildSystemCostChart() {
 
 export async function buildSystemCostByTechChart() {
   await fs.mkdir(OUT_DIR, { recursive: true });
-
   const {
     capInvRows,
     salvageRows,
@@ -250,27 +256,28 @@ export async function buildSystemCostByTechChart() {
     varCostRows,
   } = await loadCsvs();
 
-  // pivot each cost type by full technology name
   const capInvMap = pivotLongByTechnology(capInvRows.filter(isEUeg));
   const salvageMap = pivotLongByTechnology(salvageRows.filter(isEUeg));
   const fomMap = pivotLongByTechnology(fomRows.filter(isEUeg));
   const vomexMap = pivotLongByTechnology(varOpexRows.filter(isEUeg));
 
-  // pivot inputs and variable costs by suffix for fuel calculation
-  const inputMap = pivotWideBySuffix(inputActRows, "EUEEG", splitTechnology);
-  const varCostMap = pivotWideBySuffix(varCostRows, "EUEPS", splitTechnology);
-
-  // compute fuel cost per full technology name
-  const fuelCostMap = computeFuelCostByTech(prodRows, inputMap, varCostMap);
-
-  // invert salvage values
-  Object.values(salvageMap).forEach((yearMap) => {
-    Object.keys(yearMap).forEach((year) => {
-      yearMap[year] = -yearMap[year];
-    });
+  // merge EUEEG + EUEHG input ratios
+  const egMap = pivotWideBySuffix(inputActRows, "EUEEG", splitTechnology);
+  const hgMap = pivotWideBySuffix(inputActRows, "EUEHG", splitTechnology);
+  const inputMap = { ...egMap };
+  Object.entries(hgMap).forEach(([s, yrs]) => {
+    inputMap[s] ??= {};
+    Object.assign(inputMap[s], yrs);
   });
 
-  // gather all technology names and years
+  const varCostMap = pivotWideBySuffix(varCostRows, "EUEPS", splitTechnology);
+  const fuelCostMap = computeFuelCostByTech(prodRows, inputMap, varCostMap);
+
+  // invert salvage
+  Object.values(salvageMap).forEach((m) => {
+    Object.keys(m).forEach((y) => (m[y] = -m[y]));
+  });
+
   const techs = Array.from(
     new Set([
       ...Object.keys(capInvMap),
@@ -295,9 +302,8 @@ export async function buildSystemCostByTechChart() {
     )
   ).sort((a, b) => a - b);
 
-  // assemble series: one per technology and cost type
   const series = [];
-  techs.forEach((tech) => {
+  for (const tech of techs) {
     series.push({
       name: `${tech} - Capital Investment`,
       type: "column",
@@ -323,9 +329,8 @@ export async function buildSystemCostByTechChart() {
       type: "column",
       data: years.map((y) => vomexMap[tech]?.[y] || 0),
     });
-  });
+  }
 
-  // build chart config
   const tpl = await loadTemplate("stackedBar");
   const config = merge({}, tpl, {
     title: { text: "System Cost Breakdown by Technology and Year" },
@@ -334,7 +339,6 @@ export async function buildSystemCostByTechChart() {
     series,
   });
 
-  // write out
   const outFile = path.join(OUT_DIR, "system-cost-by-tech.config.json");
   await fs.writeFile(outFile, JSON.stringify(config, null, 2));
   console.log("Wrote", outFile);
@@ -342,8 +346,6 @@ export async function buildSystemCostByTechChart() {
 
 export async function buildSystemCostHorizonChart() {
   await fs.mkdir(OUT_DIR, { recursive: true });
-
-  // 1) Load & aggregate exactly as before
   const {
     capInvRows,
     salvageRows,
@@ -361,7 +363,15 @@ export async function buildSystemCostHorizonChart() {
   const fom = aggregateSimple(fomRows, "YEAR", "VALUE", isEUeg);
   const vomex = aggregateSimple(varOpexRows, "YEAR", "VALUE", isEUeg);
 
-  const inputMap = pivotWideBySuffix(inputActRows, "EUEEG", splitTechnology);
+  // merge inputs
+  const egMap = pivotWideBySuffix(inputActRows, "EUEEG", splitTechnology);
+  const hgMap = pivotWideBySuffix(inputActRows, "EUEHG", splitTechnology);
+  const inputMap = { ...egMap };
+  Object.entries(hgMap).forEach(([s, yrs]) => {
+    inputMap[s] ??= {};
+    Object.assign(inputMap[s], yrs);
+  });
+
   const varCostMap = pivotWideBySuffix(varCostRows, "EUEPS", splitTechnology);
   const emActMap = pivotWideBySuffix(
     emActRows.filter((r) => r.EMISSION === "EUCO2_ETS"),
@@ -373,14 +383,13 @@ export async function buildSystemCostHorizonChart() {
     .filter((r) => r.REGION === "EU27" && r.EMISSION === "EUCO2_ETS")
     .forEach((r) =>
       Object.entries(r).forEach(([c, v]) => {
-        if (/^[0-9]{4}$/.test(c)) penRate[c] = +v;
+        if (/^\d{4}$/.test(c)) penRate[c] = +v;
       })
     );
 
   const fuelCost = computeFuelCost(prodRows, inputMap, varCostMap);
   const emisCost = computeEmissionCost(prodRows, inputMap, emActMap, penRate);
 
-  // 2) Sum over all years to get horizon totals
   const totals = {
     "Capital Investment": sumValues(capInv),
     "Salvage Value": sumValues(salvage),
@@ -390,15 +399,13 @@ export async function buildSystemCostHorizonChart() {
     "Emission Penalty": sumValues(emisCost),
   };
 
-  // 3) Build a single‐category stacked‐column series
   const category = "Total Horizon";
-  const series = Object.entries(totals).map(([name, value]) => ({
+  const series = Object.entries(totals).map(([name, val]) => ({
     name,
     type: "column",
-    data: [value],
+    data: [val],
   }));
 
-  // 4) Use the stackedBar template
   const tpl = await loadTemplate("stackedBar");
   const config = merge({}, tpl, {
     title: { text: "Total System Cost Over Horizon" },
@@ -407,9 +414,7 @@ export async function buildSystemCostHorizonChart() {
     series,
   });
 
-  await fs.writeFile(
-    path.join(OUT_DIR, "system-cost-horizon.config.json"),
-    JSON.stringify(config, null, 2)
-  );
-  console.log("Wrote system-cost-horizon.config.json");
+  const outFile = path.join(OUT_DIR, "system-cost-horizon.config.json");
+  await fs.writeFile(outFile, JSON.stringify(config, null, 2));
+  console.log("Wrote", outFile);
 }
