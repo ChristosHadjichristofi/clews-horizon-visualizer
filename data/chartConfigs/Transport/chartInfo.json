@@ -47,6 +47,14 @@
       "configFile": "transport-fuel-consumption-freight-tech.config.json",
       "chartType": "stacked",
       "colSpan": 2
+    },
+    {
+      "key": "transport-emissions-by-mode",
+      "title": "Annual GHG Emissions by Mode – Transport",
+      "subtitle": "Emissions from electricity consumption not included in this figure",
+      "configFile": "transport-emissions-by-mode.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
     }
   ]
 }

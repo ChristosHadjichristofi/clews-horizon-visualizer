@@ -4,6 +4,7 @@ import transportDistancePassenger from "./transport-distance-passenger.config.js
 import transportDistanceFreight from "./transport-distance-freight.config.json";
 import transportFuelConsumptionPassengerTech from "./transport-fuel-consumption-passenger-tech.config.json";
 import transportFuelConsumptionFreightTech from "./transport-fuel-consumption-freight-tech.config.json";
+import transportEmissionsByMode from "./transport-emissions-by-mode.config.json";
 
 export const configs = {
   "transport-capacity-annual": transportCapacityAnnual,
@@ -12,6 +13,7 @@ export const configs = {
   "transport-distance-freight": transportDistanceFreight,
   "transport-fuel-consumption-passenger": transportFuelConsumptionPassengerTech,
   "transport-fuel-consumption-freight": transportFuelConsumptionFreightTech,
+  "transport-emissions-by-mode": transportEmissionsByMode,
 };
 
 export type ChartKey = keyof typeof configs;
