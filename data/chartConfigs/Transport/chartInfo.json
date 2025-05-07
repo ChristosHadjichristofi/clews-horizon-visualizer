@@ -1,0 +1,52 @@
+{
+  "cards": [
+    {
+      "key": "transport-capacity-annual",
+      "title": "Vehicle Fleet Stock by Technology – Road Transport",
+      "subtitle": "Including all vehicle types",
+      "configFile": "transport-capacity-annual.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "transport-new-registrations",
+      "title": "New Vehicle Registrations by Technology – Road Transport",
+      "subtitle": "Annual new registrations per vehicle type",
+      "configFile": "transport-new-registrations.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "transport-distance-passenger",
+      "title": "Annual Distance Traveled – Passenger Transport",
+      "subtitle": "Passenger vehicles and buses",
+      "configFile": "transport-distance-passenger.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "transport-distance-freight",
+      "title": "Annual Distance Traveled – Freight Transport",
+      "subtitle": "Light and heavy trucks",
+      "configFile": "transport-distance-freight.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "transport-fuel-consumption-passenger",
+      "title": "Fuel Consumption by Technology – Passenger Transport",
+      "subtitle": "Annual fuel use per passenger technology",
+      "configFile": "transport-fuel-consumption-passenger-tech.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "transport-fuel-consumption-freight",
+      "title": "Fuel Consumption by Technology – Freight Transport",
+      "subtitle": "Annual fuel use per freight technology",
+      "configFile": "transport-fuel-consumption-freight-tech.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    }
+  ]
+}

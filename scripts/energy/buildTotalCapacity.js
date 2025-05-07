@@ -1,7 +1,12 @@
 import fs from "fs/promises";
 import path from "path";
 import merge from "lodash.merge";
-import { pivotLong, splitTechnology, parseCsv, loadTemplate } from "./utils.js";
+import {
+  pivotLong,
+  splitTechnology,
+  parseCsv,
+  loadTemplate,
+} from "../utils/general.js";
 
 const CSV_DIR = path.resolve(process.cwd(), "data/csv");
 const OUT_DIR = path.resolve(process.cwd(), "data/chartConfigs", "Energy");

@@ -10,9 +10,6 @@ import {
 } from "./totalSystemCost.js";
 import { buildEmissionsByYearByTechChart } from "./buildEmissions.js";
 
-// import { buildProductionByTechnology } from './buildProductionByTechnology.js';
-// import other energy graph builders
-
 export async function buildEnergyModules() {
   console.log("--- Energy Module ---");
 

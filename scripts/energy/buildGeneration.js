@@ -1,7 +1,12 @@
 import fs from "fs/promises";
 import path from "path";
 import merge from "lodash.merge";
-import { splitTechnology, splitFuel, parseCsv, loadTemplate } from "./utils.js";
+import {
+  splitTechnology,
+  splitFuel,
+  parseCsv,
+  loadTemplate,
+} from "../utils/general.js";
 import {
   pivotWideBySuffix,
   getEmActAMap,

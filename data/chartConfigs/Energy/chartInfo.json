@@ -8,7 +8,8 @@
           "key": "emissions-by-year-by-tech",
           "title": "Annual CO₂ Emissions by Year & Technology",
           "configFile": "emissions-by-year-by-tech.config.json",
-          "chartType": "stacked"
+          "chartType": "stacked",
+          "colSpan": 2
         }
       ]
     },
@@ -20,21 +21,24 @@
           "key": "total-capacity",
           "title": "Total Annual Capacity per Technology",
           "subtitle": "Including CHP, BESS and Pumped Hydro",
-          "configFile": "total-annual-capacity.config.json"
+          "configFile": "total-annual-capacity.config.json",
+          "colSpan": 2
         },
         {
           "key": "generation-electricity",
           "title": "Total Annual Generation – Electricity",
           "subtitle": "With CO₂ emissions on secondary axis",
           "configFile": "total-generation-electricity.config.json",
-          "chartType": "dualAxis"
+          "chartType": "dualAxis",
+          "colSpan": 2
         },
         {
           "key": "generation-heat",
           "title": "Total Annual Generation – Heat",
           "subtitle": "With CO₂ emissions on secondary axis",
           "configFile": "total-generation-heat.config.json",
-          "chartType": "dualAxis"
+          "chartType": "dualAxis",
+          "colSpan": 2
         }
       ]
     },
@@ -47,13 +51,15 @@
           "title": "Annual System Cost Breakdown",
           "subtitle": "All technologies combined",
           "configFile": "system-cost-annual.config.json",
-          "chartType": "stacked"
+          "chartType": "stacked",
+          "colSpan": 2
         },
         {
           "key": "system-cost-by-tech",
           "title": "Per-Technology Cost Breakdown",
           "configFile": "system-cost-by-tech.config.json",
-          "chartType": "stacked"
+          "chartType": "stacked",
+          "colSpan": 2
         },
         {
           "key": "system-cost-horizon",

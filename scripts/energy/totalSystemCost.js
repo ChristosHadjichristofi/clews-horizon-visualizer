@@ -1,7 +1,7 @@
 import fs from "fs/promises";
 import path from "path";
 import merge from "lodash.merge";
-import { splitTechnology, parseCsv, loadTemplate } from "./utils.js";
+import { splitTechnology, parseCsv, loadTemplate } from "../utils/general.js";
 
 const CSV_DIR = path.resolve(process.cwd(), "data/csv");
 const EXP_DIR = path.resolve(CSV_DIR, "exported");

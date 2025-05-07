@@ -1,0 +1,22 @@
+import { buildTransportCapacityChart } from "./buildTransportCapacity.js";
+import { buildTransportNewRegistrationsChart } from "./buildTransportNewRegistrations.js";
+import { buildTransportDistanceChart } from "./buildTransportDistance.js";
+import { buildTransportFuelConsumptionByTechChart } from "./buildTransportFuelConsumptionByTech.js";
+
+export async function buildTransportModules() {
+  console.log("--- Transport Module ---");
+
+  // Graph 1
+  await buildTransportCapacityChart();
+
+  // Graph 2
+  await buildTransportNewRegistrationsChart();
+
+  // Graph 3
+  await buildTransportDistanceChart();
+
+  // Graph 4
+  await buildTransportFuelConsumptionByTechChart();
+
+  console.log("Transport Module complete");
+}

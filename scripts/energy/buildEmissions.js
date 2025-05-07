@@ -1,4 +1,4 @@
-import { splitTechnology, parseCsv, loadTemplate } from "./utils.js";
+import { splitTechnology, parseCsv, loadTemplate } from "../utils/general.js";
 import path from "path";
 import fs from "fs/promises";
 import merge from "lodash.merge";

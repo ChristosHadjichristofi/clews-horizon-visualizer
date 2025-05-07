@@ -1,46 +1,47 @@
 import React from "react";
+import { useGlobalControls } from "@/contexts/GlobalControlsContext";
 import ChartCard from "@/components/common/ChartCard";
 import ChartPlaceholder from "@/components/common/ChartPlaceholder";
+import Chart from "@/components/common/Chart";
+import chartInfo from "@/data/chartConfigs/Transport/chartInfo.json";
+import { configs } from "@/data/chartConfigs/Transport";
+import type { Options } from "highcharts";
 
-const transportModes = [
-  { id: "road-passenger", label: "Road (Passenger)" },
-  { id: "road-freight", label: "Road (Freight)" },
-  { id: "rail-passenger", label: "Rail (Passenger)" },
-  { id: "rail-freight", label: "Rail (Freight)" },
-  { id: "aviation", label: "Aviation" },
-  { id: "shipping", label: "Shipping" },
-];
+const Transport: React.FC = () => {
+  const { yearRange } = useGlobalControls();
 
-const vehicleTechnologies = [
-  { id: "ice-gasoline", label: "ICE (Gasoline)" },
-  { id: "ice-diesel", label: "ICE (Diesel)" },
-  { id: "hev", label: "Hybrid Electric (HEV)" },
-  { id: "phev", label: "Plug-in Hybrid (PHEV)" },
-  { id: "bev", label: "Battery Electric (BEV)" },
-  { id: "fcev", label: "Fuel Cell (FCEV)" },
-];
-
-const Transport = () => {
   return (
     <div className="container mx-auto py-6">
       <h1 className="text-2xl font-bold mb-6">Transport Module</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-        <ChartCard title="Vehicle Fleet Stock by Technology">
-          <ChartPlaceholder title="Stacked Area: Fleet Composition" />
-        </ChartCard>
+        {chartInfo.cards.map((card: any) => {
+          const cfgKey = card.key as keyof typeof configs;
+          const cfg = configs[cfgKey];
+          const spanClass = card.colSpan === 2 ? "md:col-span-2" : "";
 
-        <ChartCard title="New Vehicle Registrations">
-          <ChartPlaceholder title="Multi-series Line: New Registrations" />
-        </ChartCard>
-
-        <ChartCard title="Fuel Demand by Mode & Total">
-          <ChartPlaceholder title="Stacked Bar + Line: Fuel Demand" />
-        </ChartCard>
-
-        <ChartCard title="GHG Emissions by Mode & Total">
-          <ChartPlaceholder title="Stacked Bar: GHG Emissions" />
-        </ChartCard>
+          return (
+            <ChartCard
+              key={cfgKey}
+              title={card.title}
+              subtitle={card.subtitle}
+              className={spanClass}
+            >
+              {cfg ? (
+                // cast to Highcharts.Options to satisfy the ChartProps type
+                <Chart
+                  options={cfg as unknown as Options}
+                  yearRange={yearRange}
+                />
+              ) : (
+                <ChartPlaceholder
+                  title={card.title}
+                  chartType={card.chartType}
+                />
+              )}
+            </ChartCard>
+          );
+        })}
       </div>
     </div>
   );
