@@ -1,0 +1,36 @@
+{
+  "cards": [
+    {
+      "key": "buildings-final-energy-demand-by-fuel",
+      "title": "Final‐Energy Demand by Fuel – Buildings",
+      "subtitle": "Enter subtitle here",
+      "configFile": "buildings-final-energy-demand-by-fuel.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "buildings-renovation-savings",
+      "title": "Useful Energy Savings by Renovation Activity – Buildings",
+      "subtitle": "Energy savings from key renovation technologies",
+      "configFile": "buildings-renovation-savings.config.json",
+      "chartType": "bar",
+      "colSpan": 2
+    },
+    {
+      "key": "buildings-demand-and-renovation",
+      "title": "Final‐Energy Demand & Renovation Savings – Buildings",
+      "subtitle": "Positive = demand; negative = savings",
+      "configFile": "buildings-demand-and-renovation.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "buildings-ghg-emissions",
+      "title": "Annual GHG Emissions – Buildings",
+      "subtitle": "CO₂ + non-CO₂ (Mt CO₂-eq)",
+      "configFile": "buildings-ghg-emissions.config.json",
+      "chartType": "line",
+      "colSpan": 2
+    }
+  ]
+}

@@ -28,7 +28,6 @@ const Transport: React.FC = () => {
               className={spanClass}
             >
               {cfg ? (
-                // cast to Highcharts.Options to satisfy the ChartProps type
                 <Chart
                   options={cfg as unknown as Options}
                   yearRange={yearRange}

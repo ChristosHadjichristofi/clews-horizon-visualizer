@@ -82,7 +82,7 @@ export async function buildTransportEmissionsByModeChart() {
 
   const inputMap = pivotInput(inputActRows);
 
-  // filter only the EUEPS… and EUEGG…PPCS rows, then pivot
+  // filter only the EUEPS…
   const emRows = emActRows.filter((r) =>
     r.TECHNOLOGY.startsWith(`EUEPS${splitTechnology(r.TECHNOLOGY).tech}`)
   );

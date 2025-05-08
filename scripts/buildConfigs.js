@@ -3,6 +3,7 @@ import path from "path";
 import { exportSheetToCsv } from "./utils/excel.js";
 import { buildEnergyModules } from "./energy/index.js";
 import { buildTransportModules } from "./transport/index.js";
+import { buildBuildingsModules } from "./buildings/index.js";
 
 async function copyDirectory(srcDir, destDir) {
   await fs.rm(destDir, { recursive: true, force: true });
@@ -64,8 +65,9 @@ async function main() {
   console.log("Excel sheets exported to CSV");
 
   // Build the modules
-  await buildEnergyModules();
-  await buildTransportModules();
+  // await buildEnergyModules();
+  // await buildTransportModules();
+  await buildBuildingsModules();
 
   console.log("All modules built");
   // End of modules building
