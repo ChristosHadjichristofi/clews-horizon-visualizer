@@ -1,7 +1,12 @@
 import fs from "fs/promises";
 import path from "path";
 import merge from "lodash.merge";
-import { splitTechnology, parseCsv, loadTemplate } from "../utils/general.js";
+import {
+  splitTechnology,
+  parseCsv,
+  loadTemplate,
+  annotateSeriesFromCsv,
+} from "../utils/general.js";
 import {
   pivotWideBySuffix,
   getEmActAMap,
@@ -146,6 +151,8 @@ export async function buildElectricityGenerationChart() {
     },
   ];
 
+  const seriesAnnotated = await annotateSeriesFromCsv(series);
+
   // 6) Merge & write
   const tpl = await loadTemplate("dualAxis");
   const config = merge({}, tpl, {
@@ -156,7 +163,7 @@ export async function buildElectricityGenerationChart() {
       { title: { text: "Electricity (TWh)" } },
       { title: { text: "CO₂ Emissions (MtCO₂)" }, opposite: true },
     ],
-    series,
+    series: seriesAnnotated,
   });
 
   const outFile = path.join(
@@ -171,7 +178,7 @@ export async function buildHeatGenerationChart() {
   await fs.mkdir(OUT_DIR, { recursive: true });
   const { prodRows, techListRows, inputActRows } = await loadCsvs();
 
-  // 1) Production (heat) remains by filtering fuel="EUEHEA"
+  // 1) Production: by TECHNOLOGY (not by fuel!)
   const prodAgg = {};
   prodRows
     .map((r) => ({
@@ -188,30 +195,29 @@ export async function buildHeatGenerationChart() {
         r.tech.tech !== "000"
     )
     .forEach((r) => {
+      const code = r.TECHNOLOGY;
       const tWh = Number(r.VALUE) * PJ_TO_TWH;
-      prodAgg[r.fuel.full] ??= {};
-      prodAgg[r.fuel.full][r.YEAR] = (prodAgg[r.fuel.full][r.YEAR] || 0) + tWh;
+      prodAgg[code] ??= {};
+      prodAgg[code][r.YEAR] = (prodAgg[code][r.YEAR] || 0) + tWh;
     });
 
-  // 2) demand for heat: pick all techs with Input="EUEHEA"
+  // 2) Final‐energy demand: pick techs whose Input code = EUEHEA
   const demandHeatTechs = techListRows
     .filter((r) => r["Input code"] === "EUEHEA")
     .map((r) => r["Technology code"]);
 
-  const inputMapHeat = pivotByTechnology(inputActRows);
-
+  const inputMap = pivotByTechnology(inputActRows);
   const demAgg = {};
   prodRows
     .filter((r) => demandHeatTechs.includes(r.TECHNOLOGY))
     .forEach((r) => {
       const year = r.YEAR;
       const prodPJ = +r.VALUE;
-      const ratio = inputMapHeat[r.TECHNOLOGY]?.[year] || 0;
-      const finalPJ = prodPJ * ratio;
-      demAgg[year] = (demAgg[year] || 0) + finalPJ * PJ_TO_TWH;
+      const ratio = inputMap[r.TECHNOLOGY]?.[year] || 0;
+      demAgg[year] = (demAgg[year] || 0) + prodPJ * ratio * PJ_TO_TWH;
     });
 
-  // 3) Years axis
+  // 3) shared years axis
   const years = Array.from(
     new Set(
       [
@@ -221,22 +227,27 @@ export async function buildHeatGenerationChart() {
     )
   ).sort((a, b) => a - b);
 
-  // 4) Series
-  const series = [
-    ...Object.entries(prodAgg).map(([code, data]) => ({
-      name: code,
+  // 4) build raw series (now keyed by TECHNOLOGY code)
+  const rawSeries = [
+    // one column series per TECHNOLOGY
+    ...Object.entries(prodAgg).map(([tech, data]) => ({
+      name: tech,
       type: "column",
       data: years.map((y) => data[y] || 0),
     })),
+    // plus the demand line
     {
-      name: "Demand",
+      name: "Final-energy Demand",
       type: "line",
       data: years.map((y) => demAgg[y] || 0),
       marker: { enabled: false },
     },
   ];
 
-  // 5) Merge & write
+  // 5) annotate & reorder from OrderAndColor.csv
+  const series = await annotateSeriesFromCsv(rawSeries);
+
+  // 6) merge into dualAxis template & write out
   const tpl = await loadTemplate("dualAxis");
   const config = merge({}, tpl, {
     plotOptions: { column: { stacking: "normal" } },
@@ -246,7 +257,9 @@ export async function buildHeatGenerationChart() {
     series,
   });
 
-  const outFile = path.join(OUT_DIR, "total-generation-heat.config.json");
-  await fs.writeFile(outFile, JSON.stringify(config, null, 2));
-  console.log("Wrote heat config to", outFile);
+  await fs.writeFile(
+    path.join(OUT_DIR, "total-generation-heat.config.json"),
+    JSON.stringify(config, null, 2)
+  );
+  console.log("Wrote heat config");
 }

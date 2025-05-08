@@ -26,31 +26,10 @@
   },
   "series": [
     {
-      "name": "Capital Investment",
+      "name": "Emission Penalty",
       "type": "column",
       "data": [
-        1168345.6689643434
-      ]
-    },
-    {
-      "name": "Salvage Value",
-      "type": "column",
-      "data": [
-        -528183.0465989481
-      ]
-    },
-    {
-      "name": "Fixed Opex (FOM)",
-      "type": "column",
-      "data": [
-        1188226.632538035
-      ]
-    },
-    {
-      "name": "Fuel Cost",
-      "type": "column",
-      "data": [
-        556402.804796051
+        486495.67669519485
       ]
     },
     {
@@ -61,10 +40,31 @@
       ]
     },
     {
-      "name": "Emission Penalty",
+      "name": "Fuel Cost",
       "type": "column",
       "data": [
-        486495.67669519485
+        556402.804796051
+      ]
+    },
+    {
+      "name": "Fixed Opex (FOM)",
+      "type": "column",
+      "data": [
+        1188226.632538035
+      ]
+    },
+    {
+      "name": "Salvage Value",
+      "type": "column",
+      "data": [
+        -528183.0465989481
+      ]
+    },
+    {
+      "name": "Capital Investment",
+      "type": "column",
+      "data": [
+        1168345.6689643434
       ]
     }
   ]

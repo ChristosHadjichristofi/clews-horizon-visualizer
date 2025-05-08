@@ -1,4 +1,9 @@
-import { splitTechnology, parseCsv, loadTemplate } from "../utils/general.js";
+import {
+  splitTechnology,
+  parseCsv,
+  loadTemplate,
+  annotateSeriesFromCsv,
+} from "../utils/general.js";
 import path from "path";
 import fs from "fs/promises";
 import merge from "lodash.merge";
@@ -160,12 +165,14 @@ export async function buildEmissionsByYearByTechChart() {
     data: years.map((y) => nested[t][y] || 0),
   }));
 
+  const seriesAnnotated = await annotateSeriesFromCsv(series);
+
   const tpl = await loadTemplate("stackedBar");
   const config = merge({}, tpl, {
     title: { text: "Annual CO₂ Emissions by Year & Technology" },
     xAxis: { categories: years, title: { text: "Year" } },
     yAxis: { title: { text: "Mt CO₂" } },
-    series,
+    series: seriesAnnotated,
   });
 
   await fs.writeFile(

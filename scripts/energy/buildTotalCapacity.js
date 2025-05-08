@@ -5,21 +5,12 @@ import {
   pivotLong,
   splitTechnology,
   parseCsv,
+  annotateSeriesFromCsv,
   loadTemplate,
 } from "../utils/general.js";
 
 const CSV_DIR = path.resolve(process.cwd(), "data/csv");
 const OUT_DIR = path.resolve(process.cwd(), "data/chartConfigs", "Energy");
-
-const colorMap = {
-  WND: "#1f77b4",
-  SOL: "#ff7f0e",
-  SPV: "#2ca02c",
-  GAS: "#9467bd",
-  COA: "#8c564b",
-  CHP: "#d62728",
-  ELC: "#17becf", // both pumped-hydro and battery go under “ELC”
-};
 
 export async function buildTotalCapacity() {
   await fs.mkdir(OUT_DIR, { recursive: true });
@@ -32,9 +23,7 @@ export async function buildTotalCapacity() {
     path.join(CSV_DIR, "AccumulatedNewCapacity.csv")
   );
 
-  // 2) filter down to:
-  //    – EU-E-EG generation codes OR EU-E-HG OR the two storage codes
-  //    – and drop any tech whose 3-letter suffix is "000"
+  // 2) filter
   const keep = (r) => {
     const { full, region, module, sector, tech } = splitTechnology(
       r.TECHNOLOGY
@@ -45,18 +34,17 @@ export async function buildTotalCapacity() {
     return (isGen || isStorage) && tech !== "000";
   };
 
-  // 3) normalize rows to { YEAR, TECHNOLOGY (full code), VALUE }
+  // 3) normalize
   const prep = (rows) =>
     rows.filter(keep).map((r) => ({
       YEAR: r.YEAR,
       TECHNOLOGY: r.TECHNOLOGY,
       VALUE: +r.VALUE,
     }));
-
   const totalNorm = prep(totalRows);
   const newNorm = prep(accumRows);
 
-  // 4) pivot into { years, series: [ { name, data: [...] }, … ] }
+  // 4) pivot
   const { years, series: totalSeries } = pivotLong(totalNorm, "YEAR");
   const { series: newSeries } = pivotLong(newNorm, "YEAR");
 
@@ -70,34 +58,29 @@ export async function buildTotalCapacity() {
     };
   });
 
-  // 6) build Highcharts series, tagging (Existing)/(New)
+  // 6) build raw combined WITHOUT any colors
   const combined = [
-    ...existingSeries.map((s) => {
-      const suffix = splitTechnology(s.name).tech;
-      return {
-        name: `${s.name} (Existing)`,
-        type: "column",
-        data: s.data,
-        color: colorMap[suffix],
-      };
-    }),
-    ...newSeries.map((s) => {
-      const suffix = splitTechnology(s.name).tech;
-      return {
-        name: `${s.name} (New)`,
-        type: "column",
-        data: s.data,
-        color: colorMap[suffix],
-      };
-    }),
+    ...existingSeries.map((s) => ({
+      name: `${s.name} (Existing)`,
+      type: "column",
+      data: s.data,
+    })),
+    ...newSeries.map((s) => ({
+      name: `${s.name} (New)`,
+      type: "column",
+      data: s.data,
+    })),
   ];
 
-  // 7) merge into template & write out
+  // 6b) annotate & reorder from TechnologyInfo.csv (adds friendly names & colors)
+  const series = await annotateSeriesFromCsv(combined);
+
+  // 7) merge & write
   const tpl = await loadTemplate("stackedBar");
   const config = merge({}, tpl, {
     title: { text: "Total Annual Capacity per Technology" },
     xAxis: { categories: years },
-    series: combined,
+    series,
   });
 
   const outFile = path.join(OUT_DIR, "total-annual-capacity.config.json");

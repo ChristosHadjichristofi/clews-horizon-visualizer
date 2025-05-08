@@ -1,7 +1,12 @@
 import fs from "fs/promises";
 import path from "path";
 import merge from "lodash.merge";
-import { splitTechnology, parseCsv, loadTemplate } from "../utils/general.js";
+import {
+  splitTechnology,
+  parseCsv,
+  loadTemplate,
+  annotateSeriesFromCsv,
+} from "../utils/general.js";
 
 const CSV_DIR = path.resolve(process.cwd(), "data/csv");
 const EXP_DIR = path.resolve(CSV_DIR, "exported");
@@ -231,12 +236,14 @@ export async function buildSystemCostChart() {
     },
   ];
 
+  const seriesAnnotated = await annotateSeriesFromCsv(series);
+
   const tpl = await loadTemplate("stackedBar");
   const config = merge({}, tpl, {
     title: { text: "Total System Cost Breakdown by Year" },
     xAxis: { categories: years, title: { text: "Year" } },
     yAxis: { title: { text: "Cost (million USD)" } },
-    series,
+    series: seriesAnnotated,
   });
 
   const outFile = path.join(OUT_DIR, "system-cost-annual.config.json");
@@ -331,12 +338,14 @@ export async function buildSystemCostByTechChart() {
     });
   }
 
+  const seriesAnnotated = await annotateSeriesFromCsv(series);
+
   const tpl = await loadTemplate("stackedBar");
   const config = merge({}, tpl, {
     title: { text: "System Cost Breakdown by Technology and Year" },
     xAxis: { categories: years, title: { text: "Year" } },
     yAxis: { title: { text: "Cost (million USD)" } },
-    series,
+    series: seriesAnnotated,
   });
 
   const outFile = path.join(OUT_DIR, "system-cost-by-tech.config.json");
@@ -406,12 +415,14 @@ export async function buildSystemCostHorizonChart() {
     data: [val],
   }));
 
+  const seriesAnnotated = await annotateSeriesFromCsv(series);
+
   const tpl = await loadTemplate("stackedBar");
   const config = merge({}, tpl, {
     title: { text: "Total System Cost Over Horizon" },
     xAxis: { categories: [category], title: { text: "" } },
     yAxis: { title: { text: "Cost (million USD)" } },
-    series,
+    series: seriesAnnotated,
   });
 
   const outFile = path.join(OUT_DIR, "system-cost-horizon.config.json");
