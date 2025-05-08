@@ -1,0 +1,44 @@
+{
+  "cards": [
+    {
+      "key": "industry-fuel-by-fuel",
+      "title": "Final-Energy Demand by Fuel – Industry",
+      "subtitle": "PJ per year, one series per fuel",
+      "configFile": "industry-fuel-by-fuel.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "industry-fuel-by-tech",
+      "title": "Final-Energy Demand by Technology – Industry",
+      "subtitle": "PJ per year, one series per tech suffix",
+      "configFile": "industry-fuel-by-tech.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "industry-fuel-by-code",
+      "title": "Final-Energy Demand by Technology Code – Industry",
+      "subtitle": "PJ per year, one series per technology code",
+      "configFile": "industry-fuel-by-code.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "industry-emissions-by-sector",
+      "title": "Annual GHG Emissions by Sector – Industry",
+      "subtitle": "One line per industrial sector",
+      "configFile": "industry-emissions-by-sector.config.json",
+      "chartType": "line",
+      "colSpan": 2
+    },
+    {
+      "key": "industry-emissions-total",
+      "title": "Annual GHG Emissions – All Industry",
+      "subtitle": "Total across all sectors",
+      "configFile": "industry-emissions-total.config.json",
+      "chartType": "line",
+      "colSpan": 2
+    }
+  ]
+}
