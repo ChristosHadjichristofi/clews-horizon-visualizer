@@ -78,7 +78,7 @@
   },
   "series": [
     {
-      "name": "EUEEG00000BS",
+      "name": "Backstop (Existing)",
       "type": "column",
       "data": [
         0,
@@ -134,7 +134,8 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": "#e3e3e3"
     },
     {
       "name": "Solar PV rooftop (Existing)",

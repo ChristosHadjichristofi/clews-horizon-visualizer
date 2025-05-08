@@ -5838,7 +5838,7 @@
       }
     },
     {
-      "name": "EUEEG00000BS - Variable Opex (VOM)",
+      "name": "Backstop - Variable Opex (VOM)",
       "type": "column",
       "data": [
         0,
@@ -5899,18 +5899,18 @@
         "pattern": {
           "path": {
             "d": "M 6 0 L 0 6",
-            "stroke": "#888",
+            "stroke": "#e3e3e3",
             "strokeWidth": 2
           },
           "width": 6,
           "height": 6,
-          "backgroundColor": "#888",
+          "backgroundColor": "#e3e3e3",
           "opacity": 0.4
         }
       }
     },
     {
-      "name": "EUEEG00000BS - Fuel Cost",
+      "name": "Backstop - Fuel Cost",
       "type": "column",
       "data": [
         0,
@@ -5971,18 +5971,18 @@
         "pattern": {
           "path": {
             "d": "M 0 6 L 6 0",
-            "stroke": "#888",
+            "stroke": "#e3e3e3",
             "strokeWidth": 2
           },
           "width": 6,
           "height": 6,
-          "backgroundColor": "#888",
+          "backgroundColor": "#e3e3e3",
           "opacity": 0.4
         }
       }
     },
     {
-      "name": "EUEEG00000BS - Fixed Opex (FOM)",
+      "name": "Backstop - Fixed Opex (FOM)",
       "type": "column",
       "data": [
         0,
@@ -6043,18 +6043,18 @@
         "pattern": {
           "path": {
             "d": "M 0 0 L 6 6",
-            "stroke": "#888",
+            "stroke": "#e3e3e3",
             "strokeWidth": 2
           },
           "width": 6,
           "height": 6,
-          "backgroundColor": "#888",
+          "backgroundColor": "#e3e3e3",
           "opacity": 0.4
         }
       }
     },
     {
-      "name": "EUEEG00000BS - Salvage Value",
+      "name": "Backstop - Salvage Value",
       "type": "column",
       "data": [
         0,
@@ -6115,18 +6115,18 @@
         "pattern": {
           "path": {
             "d": "M 3 0 L 3 6",
-            "stroke": "#888",
+            "stroke": "#e3e3e3",
             "strokeWidth": 2
           },
           "width": 6,
           "height": 6,
-          "backgroundColor": "#888",
+          "backgroundColor": "#e3e3e3",
           "opacity": 0.4
         }
       }
     },
     {
-      "name": "EUEEG00000BS - Capital Investment",
+      "name": "Backstop - Capital Investment",
       "type": "column",
       "data": [
         0,
@@ -6187,12 +6187,12 @@
         "pattern": {
           "path": {
             "d": "M 0 3 L 6 3",
-            "stroke": "#888",
+            "stroke": "#e3e3e3",
             "strokeWidth": 2
           },
           "width": 6,
           "height": 6,
-          "backgroundColor": "#888",
+          "backgroundColor": "#e3e3e3",
           "opacity": 0.4
         }
       }

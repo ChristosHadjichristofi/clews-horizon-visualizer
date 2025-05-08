@@ -36,7 +36,7 @@
       "key": "transport-fuel-consumption-passenger",
       "title": "Fuel Consumption by Technology – Passenger Transport",
       "subtitle": "Annual fuel use per passenger technology",
-      "configFile": "transport-fuel-consumption-passenger-tech.config.json",
+      "configFile": "transport-fuel-consumption-passenger.config.json",
       "chartType": "stacked",
       "colSpan": 2
     },
@@ -44,7 +44,15 @@
       "key": "transport-fuel-consumption-freight",
       "title": "Fuel Consumption by Technology – Freight Transport",
       "subtitle": "Annual fuel use per freight technology",
-      "configFile": "transport-fuel-consumption-freight-tech.config.json",
+      "configFile": "transport-fuel-consumption-freight.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "transport-fuel-consumption-transport",
+      "title": "Fuel Consumption – All Transport",
+      "subtitle": "Final-energy demand by mode across the whole transport sector",
+      "configFile": "transport-fuel-consumption-transport.config.json",
       "chartType": "stacked",
       "colSpan": 2
     },
