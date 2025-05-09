@@ -105,6 +105,9 @@ export default function Chart({
   // 6) merge in exporting + scrollablePlotArea
   const mergedOptions: Highcharts.Options = {
     ...cfg,
+    tooltip: {
+      valueDecimals: 2,
+    },
     chart: {
       ...(cfg.chart || {}),
       height: undefined,
