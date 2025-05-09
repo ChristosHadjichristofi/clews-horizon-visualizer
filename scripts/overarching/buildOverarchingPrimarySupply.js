@@ -1,4 +1,9 @@
-import { parseCsv, loadTemplate, splitTechnology } from "../utils/general.js";
+import {
+  parseCsv,
+  loadTemplate,
+  splitTechnology,
+  annotateTechSeries,
+} from "../utils/general.js";
 import path from "path";
 import fs from "fs/promises";
 import merge from "lodash.merge";
@@ -100,13 +105,15 @@ export async function buildPrimarySupplyByFuelChart() {
     data: allYears.map((y) => byYear[y] || 0),
   }));
 
+  const seriesAnnotated = await annotateTechSeries(series);
+
   // 8) merge into template and write config
   const tpl = await loadTemplate("stackedBar");
   const cfg = merge({}, tpl, {
     title: { text: "Primary Energy Supply Projections by Fuel" },
     xAxis: { categories: allYears, title: { text: "Year" } },
     yAxis: { title: { text: "Supply (PJ)" } },
-    series,
+    series: seriesAnnotated,
   });
 
   const outFile = path.join(

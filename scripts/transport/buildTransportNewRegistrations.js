@@ -1,4 +1,8 @@
-import { parseCsv, loadTemplate } from "../utils/general.js";
+import {
+  parseCsv,
+  loadTemplate,
+  annotateTechSeries,
+} from "../utils/general.js";
 import path from "path";
 import fs from "fs/promises";
 import merge from "lodash.merge";
@@ -56,13 +60,15 @@ export async function buildTransportNewRegistrationsChart() {
     data: years.map((y) => agg[code]?.[y] || 0),
   }));
 
+  const annotatedSeries = await annotateTechSeries(series);
+
   // 5) merge into your stacked‐bar template
   const tpl = await loadTemplate("stackedBar");
   const config = merge({}, tpl, {
     title: { text: "New Vehicle Registrations by Technology – Road Transport" },
     xAxis: { categories: years, title: { text: "Year" } },
     yAxis: { title: { text: "Registrations (units)" } },
-    series,
+    series: annotatedSeries,
   });
 
   // 6) write out

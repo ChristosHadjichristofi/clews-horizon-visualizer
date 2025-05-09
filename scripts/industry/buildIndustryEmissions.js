@@ -170,7 +170,7 @@ export async function buildIndustryEmissionsCharts() {
     },
   ];
   const cfgTotal = merge({}, tpl, {
-    title: { text: "Annual GHG Emissions – All Industry" },
+    title: { text: "Annual GHG Emissions" },
     subtitle: {
       text: "Emissions from electricity consumption not included in this figure",
     },

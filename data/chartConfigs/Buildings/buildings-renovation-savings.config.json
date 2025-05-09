@@ -9,7 +9,7 @@
     }
   },
   "title": {
-    "text": "Useful Energy Savings by Renovation Activity – Buildings"
+    "text": "Useful Energy Savings by Renovation Activity"
   },
   "xAxis": {
     "categories": [
@@ -78,7 +78,7 @@
   },
   "series": [
     {
-      "name": "EUEBD000EELO",
+      "name": "Insulation and renovation (low)",
       "type": "column",
       "data": [
         0,
@@ -134,10 +134,11 @@
         428.450085597514,
         470.82681240045497,
         378.1467517273924
-      ]
+      ],
+      "color": "#2ecc71"
     },
     {
-      "name": "EUEBD000EEME",
+      "name": "Insulation and renovation (medium)",
       "type": "column",
       "data": [
         0,
@@ -193,10 +194,11 @@
         807.3499925777905,
         1061.1238670181222,
         857.7126432500764
-      ]
+      ],
+      "color": "#f39c12"
     },
     {
-      "name": "EUEBD000EEHI",
+      "name": "Insulation and renovation (high)",
       "type": "column",
       "data": [
         0,
@@ -252,7 +254,8 @@
         674.6535112591407,
         819.058699391125,
         738.1056439323413
-      ]
+      ],
+      "color": "#e74c3c"
     }
   ]
 }

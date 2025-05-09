@@ -1,4 +1,9 @@
-import { parseCsv, loadTemplate, splitTechnology } from "../utils/general.js";
+import {
+  parseCsv,
+  loadTemplate,
+  splitTechnology,
+  annotateTechSeries,
+} from "../utils/general.js";
 import path from "path";
 import fs from "fs/promises";
 import merge from "lodash.merge";
@@ -70,13 +75,15 @@ export async function buildBuildingsFinalEnergyDemandByFuelChart() {
     }))
     .filter((s) => s.data.some((v) => v !== 0));
 
+  const annotatedSeries = await annotateTechSeries(series);
+
   // 8) Merge into stackedBar template & write config
   const tpl = await loadTemplate("stackedBar");
   const cfg = merge({}, tpl, {
-    title: { text: "Final‐Energy Demand by Fuel – Buildings" },
+    title: { text: "Final‐Energy Demand by Fuel" },
     xAxis: { categories: years, title: { text: "Year" } },
     yAxis: { title: { text: "Demand (PJ)" } },
-    series,
+    series: annotatedSeries,
   });
 
   const fileName = "buildings-final-energy-demand-by-fuel.config.json";

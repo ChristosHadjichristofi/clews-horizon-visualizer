@@ -1,4 +1,8 @@
-import { parseCsv, loadTemplate } from "../utils/general.js";
+import {
+  parseCsv,
+  loadTemplate,
+  annotateTechSeries,
+} from "../utils/general.js";
 import path from "path";
 import fs from "fs/promises";
 import merge from "lodash.merge";
@@ -46,15 +50,17 @@ export async function buildBuildingsRenovationSavingsChart() {
     data: years.map((y) => savings[tech]?.[y] || 0),
   }));
 
+  const annotatedSeries = await annotateTechSeries(series);
+
   // 6) load template, merge & write
   const tpl = await loadTemplate("stackedBar");
   const cfg = merge({}, tpl, {
     title: {
-      text: "Useful Energy Savings by Renovation Activity – Buildings",
+      text: "Useful Energy Savings by Renovation Activity",
     },
     xAxis: { categories: years, title: { text: "Year" } },
     yAxis: { title: { text: "Energy Savings (PJ)" } },
-    series,
+    series: annotatedSeries,
   });
 
   const outFile = path.join(

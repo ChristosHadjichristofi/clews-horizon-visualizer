@@ -9,7 +9,7 @@
     }
   },
   "title": {
-    "text": "Final-Energy Demand by Fuel – Industry"
+    "text": "Final-Energy Demand by Fuel"
   },
   "xAxis": {
     "categories": [
@@ -78,7 +78,7 @@
   },
   "series": [
     {
-      "name": "UEC",
+      "name": "Chemical & Petrochemical",
       "type": "column",
       "data": [
         2192.6794058920377,
@@ -134,10 +134,11 @@
         1776.5696801117797,
         1778.48574987203,
         1780.5219767312146
-      ]
+      ],
+      "color": "#FF8C00"
     },
     {
-      "name": "UEF",
+      "name": "Food, Beverages & Tobacco",
       "type": "column",
       "data": [
         1322.0729868056528,
@@ -193,10 +194,11 @@
         1379.9969801881696,
         1382.9774618930126,
         1386.1171923598374
-      ]
+      ],
+      "color": "#FF6347"
     },
     {
-      "name": "UEI",
+      "name": "Iron & Steel",
       "type": "column",
       "data": [
         1328.9387522407235,
@@ -252,10 +254,11 @@
         897.8427597940301,
         897.6620092351986,
         897.5899590155217
-      ]
+      ],
+      "color": "#8B0000"
     },
     {
-      "name": "UEN",
+      "name": "Non-Metallic Minerals",
       "type": "column",
       "data": [
         1810.6833328588043,
@@ -311,10 +314,11 @@
         1489.1723361171216,
         1489.172350434093,
         1489.172358412895
-      ]
+      ],
+      "color": "#B22222"
     },
     {
-      "name": "UEO",
+      "name": "Not Elsewhere Specified",
       "type": "column",
       "data": [
         3271.6004089549933,
@@ -370,10 +374,11 @@
         3489.6010219616733,
         3490.074930272209,
         3490.1862602878327
-      ]
+      ],
+      "color": "#DAA520"
     },
     {
-      "name": "UEP",
+      "name": "Paper, Pulp & Printing",
       "type": "column",
       "data": [
         1624.4937701544604,
@@ -429,7 +434,8 @@
         1332.8397278715438,
         1332.8315720767919,
         1332.829011293519
-      ]
+      ],
+      "color": "#4682B4"
     }
   ]
 }

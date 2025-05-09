@@ -78,7 +78,7 @@
   },
   "series": [
     {
-      "name": "EUEPTGSLVP00",
+      "name": "Gasoline vehicles",
       "type": "column",
       "data": [
         0,
@@ -134,10 +134,11 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": "#888888"
     },
     {
-      "name": "EUEPTDSLVP00",
+      "name": "Diesel vehicles",
       "type": "column",
       "data": [
         0,
@@ -193,10 +194,11 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": "#000000"
     },
     {
-      "name": "EUEPTNGSVP00",
+      "name": "CNG/LNG vehicles",
       "type": "column",
       "data": [
         0,
@@ -252,10 +254,11 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": "#FFFF00"
     },
     {
-      "name": "EUEPTLPGVP00",
+      "name": "LPG vehicles",
       "type": "column",
       "data": [
         0,
@@ -311,10 +314,23 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#888888",
+          "path": {
+            "d": "M 0 0 L 6 6",
+            "stroke": "#888888",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEPTGSLVPHB",
+      "name": "Hybrid electric vehicles",
       "type": "column",
       "data": [
         0,
@@ -370,10 +386,23 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#888888",
+          "path": {
+            "d": "M 6 0 L 0 6",
+            "stroke": "#888888",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEPTGSLVPPH",
+      "name": "Plug-in electric vehicles",
       "type": "column",
       "data": [
         0,
@@ -429,10 +458,23 @@
         0,
         0,
         3.817802935350856
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#888888",
+          "path": {
+            "d": "M 3 0 L 3 6",
+            "stroke": "#888888",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEPTELCVPBT",
+      "name": "Battery electric vehicles",
       "type": "column",
       "data": [
         0,
@@ -488,10 +530,11 @@
         277.18246692682806,
         277.36345692682966,
         278.72216777196627
-      ]
+      ],
+      "color": "#FF6699"
     },
     {
-      "name": "EUEPTHY2VPFC",
+      "name": "Hydrogen fuel cell vehicles",
       "type": "column",
       "data": [
         0,
@@ -547,10 +590,23 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#888888",
+          "path": {
+            "d": "M 0 3 L 6 3",
+            "stroke": "#888888",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEPTDSLBU00",
+      "name": "Diesel bus",
       "type": "column",
       "data": [
         0,
@@ -606,10 +662,23 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#000000",
+          "path": {
+            "d": "M 0 0 L 6 6",
+            "stroke": "#000000",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEPTNGSBU00",
+      "name": "CNG bus",
       "type": "column",
       "data": [
         0,
@@ -665,10 +734,23 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#00ff80",
+          "path": {
+            "d": "M 0 0 L 6 6",
+            "stroke": "#FFFF00",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEPTELCBUBT",
+      "name": "Electric bus",
       "type": "column",
       "data": [
         0,
@@ -724,10 +806,23 @@
         4.333269999999999,
         4.358010000000004,
         4.382750000000005
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#e5ff66",
+          "path": {
+            "d": "M 0 0 L 6 6",
+            "stroke": "#FF6699",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEPTHY2BUFC",
+      "name": "Hydrogen fuel cell bus",
       "type": "column",
       "data": [
         0,
@@ -783,10 +878,23 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#888888",
+          "path": {
+            "d": "M1 3 A1 1 0 1 0 1.1 3",
+            "stroke": "#888888",
+            "strokeWidth": 0
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEFTGSLLC00",
+      "name": "Gasoline light trucks",
       "type": "column",
       "data": [
         0,
@@ -842,10 +950,23 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#888888",
+          "path": {
+            "d": "M 0 3 L 6 3 M 3 0 L 3 6",
+            "stroke": "#888888",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEFTDSLLC00",
+      "name": "Diesel light trucks",
       "type": "column",
       "data": [
         0,
@@ -901,10 +1022,23 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#000000",
+          "path": {
+            "d": "M 6 0 L 0 6",
+            "stroke": "#000000",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEFTNGSLC00",
+      "name": "CNG/LNG light trucks",
       "type": "column",
       "data": [
         0,
@@ -960,10 +1094,23 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#0000ff",
+          "path": {
+            "d": "M 6 0 L 0 6",
+            "stroke": "#FFFF00",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEFTDSLLCHB",
+      "name": "Hybrid electric light trucks",
       "type": "column",
       "data": [
         0,
@@ -1019,10 +1166,23 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#000000",
+          "path": {
+            "d": "M 3 0 L 3 6",
+            "stroke": "#000000",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEFTDSLLCPH",
+      "name": "Plug-in electric light trucks",
       "type": "column",
       "data": [
         0,
@@ -1078,10 +1238,23 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#000000",
+          "path": {
+            "d": "M 0 3 L 6 3",
+            "stroke": "#000000",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEFTELCLCBT",
+      "name": "Battery electric light trucks",
       "type": "column",
       "data": [
         0,
@@ -1137,10 +1310,23 @@
         59.55067450243905,
         59.54867684146348,
         59.50657626341456
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#66ffcc",
+          "path": {
+            "d": "M 6 0 L 0 6",
+            "stroke": "#FF6699",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEFTHY2LCFC",
+      "name": "Hydrogen fuel cell light trucks",
       "type": "column",
       "data": [
         0,
@@ -1196,10 +1382,23 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#888888",
+          "path": {
+            "d": "M 0 0 L 6 6",
+            "stroke": "#888888",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEFTDSLHD00",
+      "name": "Diesel heavy trucks",
       "type": "column",
       "data": [
         0.005,
@@ -1255,10 +1454,23 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#000000",
+          "path": {
+            "d": "M1 3 A1 1 0 1 0 1.1 3",
+            "stroke": "#000000",
+            "strokeWidth": 0
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEFTNGSHD00",
+      "name": "CNG/LNG heavy trucks",
       "type": "column",
       "data": [
         0,
@@ -1314,10 +1526,23 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#ff0080",
+          "path": {
+            "d": "M 3 0 L 3 6",
+            "stroke": "#FFFF00",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEFTDSLHDHB",
+      "name": "Hybrid electric heavy trucks",
       "type": "column",
       "data": [
         0,
@@ -1373,10 +1598,23 @@
         0.0016551598475302,
         0.211393533192222,
         0
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#000000",
+          "path": {
+            "d": "M 0 3 L 6 3 M 3 0 L 3 6",
+            "stroke": "#000000",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEFTELCHDBT",
+      "name": "Battery electric heavy trucks",
       "type": "column",
       "data": [
         0,
@@ -1432,10 +1670,23 @@
         16.74335365966465,
         16.544612947295462,
         16.82200881951217
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#7f66ff",
+          "path": {
+            "d": "M 3 0 L 3 6",
+            "stroke": "#FF6699",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEFTHY2HDFC",
+      "name": "Hydrogen fuel cell heavy trucks",
       "type": "column",
       "data": [
         0,
@@ -1491,10 +1742,23 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#888888",
+          "path": {
+            "d": "M 6 0 L 0 6",
+            "stroke": "#888888",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEPT000VPBS",
+      "name": "Backstop",
       "type": "column",
       "data": [
         6.68317743902416,
@@ -1550,10 +1814,11 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": "#e3e3e3"
     },
     {
-      "name": "EUEPT000BUBS",
+      "name": "Backstop",
       "type": "column",
       "data": [
         0.0709827173170746,
@@ -1609,10 +1874,23 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#e3e3e3",
+          "path": {
+            "d": "M 0 0 L 6 6",
+            "stroke": "#e3e3e3",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEFT000LCBS",
+      "name": "Backstop",
       "type": "column",
       "data": [
         1.255473546341448,
@@ -1668,10 +1946,23 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#e3e3e3",
+          "path": {
+            "d": "M 6 0 L 0 6",
+            "stroke": "#e3e3e3",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     },
     {
-      "name": "EUEFT000HDBS",
+      "name": "Backstop",
       "type": "column",
       "data": [
         0.2891151097561055,
@@ -1727,7 +2018,20 @@
         0,
         0,
         0
-      ]
+      ],
+      "color": {
+        "pattern": {
+          "backgroundColor": "#e3e3e3",
+          "path": {
+            "d": "M 3 0 L 3 6",
+            "stroke": "#e3e3e3",
+            "strokeWidth": 2
+          },
+          "width": 6,
+          "height": 6,
+          "opacity": 0.5
+        }
+      }
     }
   ]
 }

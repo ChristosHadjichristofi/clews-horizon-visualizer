@@ -1,7 +1,12 @@
 import fs from "fs/promises";
 import path from "path";
 import merge from "lodash.merge";
-import { splitTechnology, parseCsv, loadTemplate } from "../utils/general.js";
+import {
+  splitTechnology,
+  parseCsv,
+  loadTemplate,
+  annotateTechSeries,
+} from "../utils/general.js";
 
 const CSV_DIR = path.resolve(process.cwd(), "data/csv");
 const OUT_DIR = path.resolve(process.cwd(), "data/chartConfigs", "Overarching");
@@ -91,11 +96,13 @@ export async function buildFinalEnergyDemandByFuelChart() {
     })),
     // electricity demand as a *column* too
     {
-      name: "Electricity Demand",
+      name: "ELC",
       type: "column",
       data: years.map((y) => electricityDemand[y] || 0),
     },
   ];
+
+  const seriesAnnotated = await annotateTechSeries(series);
 
   // — RENDER & WRITE USING a stacked‐bar template —
   const tpl = await loadTemplate("stackedBar");
@@ -106,7 +113,7 @@ export async function buildFinalEnergyDemandByFuelChart() {
     plotOptions: {
       column: { stacking: "normal" },
     },
-    series,
+    series: seriesAnnotated,
   });
 
   const outFile = path.join(OUT_DIR, "final-energy-demand-by-fuel.config.json");

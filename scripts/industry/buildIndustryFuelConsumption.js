@@ -5,6 +5,7 @@ import {
   loadTemplate,
   splitTechnology,
   splitFuel,
+  annotateTechSeries,
 } from "../utils/general.js";
 import path from "path";
 import fs from "fs/promises";
@@ -74,15 +75,15 @@ export async function buildIndustryFuelConsumptionCharts() {
       const year = r.YEAR;
       const pj = Number(r.VALUE) * (inputMap[techCode]?.[year] || 0);
 
-      // ▶ by-fuel
+      // by-fuel
       byFuelYear[fuel] ??= {};
       byFuelYear[fuel][year] = (byFuelYear[fuel][year] || 0) + pj;
 
-      // ▶ by-techSuffix
+      // by-techSuffix
       demandByTech[suffix] ??= {};
       demandByTech[suffix][year] = (demandByTech[suffix][year] || 0) + pj;
 
-      // ▶ by-full Technology code
+      // by-full Technology code
       demandByCode[techCode] ??= {};
       demandByCode[techCode][year] = (demandByCode[techCode][year] || 0) + pj;
     });
@@ -101,15 +102,19 @@ export async function buildIndustryFuelConsumptionCharts() {
   const tpl = await loadTemplate("stackedBar");
 
   // — Chart A: by-Fuel —
+  const seriesChartA = Object.entries(byFuelYear).map(([fuel, byY]) => ({
+    name: fuel,
+    type: "column",
+    data: allYears.map((y) => byY[y] || 0),
+  }));
+
+  const annotatedSeriesA = await annotateTechSeries(seriesChartA);
+
   const cfgFuel = merge({}, tpl, {
-    title: { text: "Final-Energy Demand by Fuel – Industry" },
+    title: { text: "Final-Energy Demand by Fuel" },
     xAxis: { categories: allYears, title: { text: "Year" } },
     yAxis: { title: { text: "Demand (PJ)" } },
-    series: Object.entries(byFuelYear).map(([fuel, byY]) => ({
-      name: fuel,
-      type: "column",
-      data: allYears.map((y) => byY[y] || 0),
-    })),
+    series: annotatedSeriesA,
   });
   await fs.writeFile(
     path.join(OUT_DIR, "industry-fuel-by-fuel.config.json"),
@@ -118,15 +123,19 @@ export async function buildIndustryFuelConsumptionCharts() {
   console.log("Wrote industry-fuel-by-fuel.config.json");
 
   // — Chart B: by-TechSuffix —
+  const seriesChartB = Object.entries(demandByTech).map(([tech, byY]) => ({
+    name: tech,
+    type: "column",
+    data: allYears.map((y) => byY[y] || 0),
+  }));
+
+  const annotatedSeriesB = await annotateTechSeries(seriesChartB);
+
   const cfgTech = merge({}, tpl, {
-    title: { text: "Final-Energy Demand by Technology – Industry" },
+    title: { text: "Final-Energy Demand by Technology" },
     xAxis: { categories: allYears, title: { text: "Year" } },
     yAxis: { title: { text: "Demand (PJ)" } },
-    series: Object.entries(demandByTech).map(([tech, byY]) => ({
-      name: tech,
-      type: "column",
-      data: allYears.map((y) => byY[y] || 0),
-    })),
+    series: annotatedSeriesB,
   });
   await fs.writeFile(
     path.join(OUT_DIR, "industry-fuel-by-tech.config.json"),
@@ -135,15 +144,19 @@ export async function buildIndustryFuelConsumptionCharts() {
   console.log("Wrote industry-fuel-by-tech.config.json");
 
   // — Chart C: by-Full Technology Code (not aggregated) —
+  const seriesChartC = Object.entries(demandByCode).map(([code, byY]) => ({
+    name: code,
+    type: "column",
+    data: allYears.map((y) => byY[y] || 0),
+  }));
+
+  const annotatedSeriesC = await annotateTechSeries(seriesChartC);
+
   const cfgCode = merge({}, tpl, {
-    title: { text: "Final-Energy Demand by Technology Code – Industry" },
+    title: { text: "Final-Energy Demand by Technology Code" },
     xAxis: { categories: allYears, title: { text: "Year" } },
     yAxis: { title: { text: "Demand (PJ)" } },
-    series: Object.entries(demandByCode).map(([code, byY]) => ({
-      name: code,
-      type: "column",
-      data: allYears.map((y) => byY[y] || 0),
-    })),
+    series: annotatedSeriesC,
   });
   await fs.writeFile(
     path.join(OUT_DIR, "industry-fuel-by-code.config.json"),

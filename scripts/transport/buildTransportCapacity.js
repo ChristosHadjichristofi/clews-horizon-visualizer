@@ -1,4 +1,8 @@
-import { parseCsv, loadTemplate } from "../utils/general.js";
+import {
+  parseCsv,
+  loadTemplate,
+  annotateTechSeries,
+} from "../utils/general.js";
 import path from "path";
 import fs from "fs/promises";
 import merge from "lodash.merge";
@@ -11,9 +15,7 @@ async function loadCsvs() {
     parseCsv(path.join(CSV_DIR, "TotalCapacityAnnual.csv")),
     parseCsv(path.join(CSV_DIR, "exported/EnergyModule_Tech_List.csv")),
   ]);
-  //   console.log(
-  //     `Loaded ${capacityRows.length} capacity rows and ${techListRows.length} tech list rows`
-  //   );
+
   return { capacityRows, techListRows };
 }
 
@@ -34,10 +36,6 @@ export async function buildTransportCapacityChart() {
   const transportTechs = techListRows
     .filter((r) => TYPES.includes(r.Type))
     .map((r) => r["Technology code"]);
-  //   console.log(
-  //     `Found ${transportTechs.length} transport technologies:`,
-  //     transportTechs
-  //   );
 
   // 2) Aggregate capacity by tech and year
   const agg = {};
@@ -64,13 +62,15 @@ export async function buildTransportCapacityChart() {
     data: years.map((y) => agg[code]?.[y] || 0),
   }));
 
+  const seriesAnnotated = await annotateTechSeries(series);
+
   // 5) Write chart config
   const tpl = await loadTemplate("stackedBar");
   const config = merge({}, tpl, {
     title: { text: "Vehicle Fleet Stock by Technology – Road Transport" },
     xAxis: { categories: years, title: { text: "Year" } },
     yAxis: { title: { text: "Capacity (units)" } },
-    series,
+    series: seriesAnnotated,
   });
 
   const outFile = path.join(OUT_DIR, "transport-capacity-annual.config.json");

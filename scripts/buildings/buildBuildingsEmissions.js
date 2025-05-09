@@ -103,7 +103,7 @@ export async function buildBuildingsEmissionsChart() {
   // 6) merge into a line‐chart template & write
   const tpl = await loadTemplate("line");
   const cfg = merge({}, tpl, {
-    title: { text: "Annual GHG Emissions – Buildings" },
+    title: { text: "Annual GHG Emissions" },
     subtitle: {
       text: "Emissions from electricity consumption not included in this figure",
     },

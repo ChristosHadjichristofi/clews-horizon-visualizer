@@ -1,4 +1,9 @@
-import { parseCsv, loadTemplate, splitTechnology } from "../utils/general.js";
+import {
+  parseCsv,
+  loadTemplate,
+  splitTechnology,
+  annotateTechSeries,
+} from "../utils/general.js";
 import path from "path";
 import fs from "fs/promises";
 import merge from "lodash.merge";
@@ -93,6 +98,8 @@ export async function buildBuildingsDemandAndRenovationChart() {
 
   const series = [...demandSeries, ...savingsSeries];
 
+  const seriesAnnotated = await annotateTechSeries(series);
+
   // 9) merge into stackedBar template & write config
   const tpl = await loadTemplate("stackedBar");
   const cfg = merge({}, tpl, {
@@ -101,7 +108,7 @@ export async function buildBuildingsDemandAndRenovationChart() {
     },
     xAxis: { categories: years, title: { text: "Year" } },
     yAxis: { title: { text: "PJ" } },
-    series,
+    series: seriesAnnotated,
   });
 
   const fileName = "buildings-demand-and-renovation.config.json";
