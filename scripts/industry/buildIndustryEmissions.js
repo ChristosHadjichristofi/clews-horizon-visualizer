@@ -12,9 +12,9 @@ const OUT_DIR = path.resolve(process.cwd(), "data/chartConfigs", "Industry");
 const GWP = {
   EUCO2: 1,
   EUCH4: 28,
-  EUCH4_ETS: 28,
+  // EUCH4_ETS: 28,
   EUN2O: 265,
-  EUN2O_ETS: 265,
+  // EUN2O_ETS: 265,
 };
 
 async function loadCsvs() {
@@ -39,13 +39,17 @@ function pivotInput(rows) {
   return m;
 }
 
-/** { techSuffix → { year → MtCO2eq_per_PJ } } */
-function pivotEmissions(rows) {
+/** Collects generic suffix entries: EUEPS{suffix}… */
+function pivotSuffixEmissions(rows) {
   const m = {};
   rows.forEach((r) => {
+    const code = r.TECHNOLOGY;
+    const suffix = splitTechnology(code).tech;
+    if (!code.startsWith(`EUEPS${suffix}`)) return;
+
     const factor = GWP[r.EMISSION];
     if (!factor) return;
-    const suffix = splitTechnology(r.TECHNOLOGY).tech;
+
     m[suffix] ??= {};
     Object.entries(r).forEach(([k, v]) => {
       if (/^\d{4}$/.test(k)) {
@@ -56,39 +60,67 @@ function pivotEmissions(rows) {
   return m;
 }
 
+/** Collects any full-code entries that exactly match one of our Industry techs */
+function pivotFullEmissions(rows, techToSector) {
+  const m = {};
+  rows.forEach((r) => {
+    const code = r.TECHNOLOGY;
+    if (!techToSector[code]) return;
+
+    const factor = GWP[r.EMISSION];
+    if (!factor) return;
+
+    m[code] ??= {};
+    Object.entries(r).forEach(([k, v]) => {
+      if (/^\d{4}$/.test(k)) {
+        m[code][k] = (m[code][k] || 0) + Number(v) * factor;
+      }
+    });
+  });
+  return m;
+}
+
 export async function buildIndustryEmissionsCharts() {
   await fs.mkdir(OUT_DIR, { recursive: true });
   const { prodRows, techListRows, inputActRows, emActRows } = await loadCsvs();
 
-  // map each Industry technology → its sector
+  // 1) map non-“000” Industry techs → sector
   const techToSector = {};
   techListRows
     .filter((r) => r["Sub-module"] === "Industry")
     .forEach((r) => {
-      const tech = r["Technology code"];
-      // drop tech suffix "000"
-      if (splitTechnology(tech).tech !== "000") {
-        techToSector[tech] = r.Type;
+      if (splitTechnology(r["Technology code"]).tech !== "000") {
+        techToSector[r["Technology code"]] = r.Type;
       }
     });
 
+  // 2) pivot inputs & both kinds of emissions
   const inputMap = pivotInput(inputActRows);
-  const emisMap = pivotEmissions(emActRows);
+  const suffixMap = pivotSuffixEmissions(emActRows);
+  const fullCodeMap = pivotFullEmissions(emActRows, techToSector);
 
-  // accumulate emissions by sector & total
+  // 3) accumulate emissions by sector & overall total
   const bySector = {};
   const total = {};
 
   prodRows
     .filter((r) => techToSector[r.TECHNOLOGY])
     .forEach((r) => {
-      const tech = r.TECHNOLOGY;
-      const suffix = splitTechnology(tech).tech;
-      const sector = techToSector[tech];
-      const year = r.YEAR;
-      const output = Number(r.VALUE);
-      const pj = output * (inputMap[tech]?.[year] || 0);
-      const mt = pj * (emisMap[suffix]?.[year] || 0);
+      const code = r.TECHNOLOGY;
+      const suffix = splitTechnology(code).tech;
+      const sector = techToSector[code];
+      const year = String(r.YEAR);
+      const raw = Number(r.VALUE);
+
+      // convert to PJ via input ratio
+      const p = raw * (inputMap[code]?.[year] || 0);
+
+      // always apply suffix factor…
+      const eS = suffixMap[suffix]?.[year] || 0;
+      // …and if there’s an exact, full-code factor, apply that too
+      const eF = fullCodeMap[code]?.[year] || 0;
+
+      const mt = p * eS + p * eF;
 
       bySector[sector] ??= {};
       bySector[sector][year] = (bySector[sector][year] || 0) + mt;
@@ -96,29 +128,25 @@ export async function buildIndustryEmissionsCharts() {
       total[year] = (total[year] || 0) + mt;
     });
 
-  // shared years axis
+  // 4) shared years axis
   const years = Array.from(
-    new Set(
-      [
-        ...Object.values(bySector).flatMap((m) => Object.keys(m)),
-        ...Object.keys(total),
-      ].map(Number)
-    )
-  ).sort((a, b) => a - b);
+    new Set([
+      ...Object.values(bySector).flatMap((m) => Object.keys(m)),
+      ...Object.keys(total),
+    ])
+  )
+    .map(Number)
+    .sort((a, b) => a - b);
 
-  // load a line-chart template (falls back if not exists)
-  let tpl;
-  try {
-    tpl = await loadTemplate("line");
-  } catch {
-    tpl = await loadTemplate("stackedBar");
-  }
+  // 5) render two line charts
+  const tpl = await loadTemplate("line");
 
-  // — Chart 1: by‐Sector (one line per industrial sector) —
+  // — by‐Sector —
   const seriesSector = Object.entries(bySector).map(([sector, m]) => ({
     name: sector,
     type: "line",
     data: years.map((y) => m[y] || 0),
+    marker: { enabled: true },
   }));
   const cfgSector = merge({}, tpl, {
     title: { text: "Annual GHG Emissions by Sector – Industry" },
@@ -132,12 +160,13 @@ export async function buildIndustryEmissionsCharts() {
   );
   console.log("Wrote industry-emissions-by-sector.config.json");
 
-  // — Chart 2: total industry (single line) —
+  // — total Industry —
   const seriesTotal = [
     {
       name: "All Industry",
       type: "line",
       data: years.map((y) => total[y] || 0),
+      marker: { enabled: true },
     },
   ];
   const cfgTotal = merge({}, tpl, {

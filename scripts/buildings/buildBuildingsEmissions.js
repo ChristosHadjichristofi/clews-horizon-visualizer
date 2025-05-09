@@ -35,15 +35,20 @@ function pivotInput(rows) {
 function pivotEmissions(rows) {
   const m = {};
   rows.forEach((r) => {
+    const code = r.TECHNOLOGY;
+    const suffix = splitTechnology(code).tech;
+    // only rows whose code really is EUEPS{suffix}…
+    if (!code.startsWith(`EUEPS${suffix}`)) return;
+
     const factor = GWP[r.EMISSION];
     if (!factor) return;
-    const suffix = splitTechnology(r.TECHNOLOGY).tech;
+
     m[suffix] ??= {};
-    Object.entries(r).forEach(([k, v]) => {
+    for (const [k, v] of Object.entries(r)) {
       if (/^\d{4}$/.test(k)) {
         m[suffix][k] = (m[suffix][k] || 0) + Number(v) * factor;
       }
-    });
+    }
   });
   return m;
 }
