@@ -138,6 +138,9 @@ export async function buildTransportEmissionsByModeChart() {
   const tpl = await loadTemplate("stackedBar");
   const cfg = merge({}, tpl, {
     title: { text: "Annual GHG Emissions by Mode – Transport" },
+    subtitle: {
+      text: "Emissions from electricity consumption not included in this figure",
+    },
     xAxis: { categories: years, title: { text: "Year" } },
     yAxis: { title: { text: "Emissions (MtCO₂-eq)" } },
     series,

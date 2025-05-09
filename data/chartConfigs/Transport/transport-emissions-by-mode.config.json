@@ -490,5 +490,8 @@
         1560.4755245402278
       ]
     }
-  ]
+  ],
+  "subtitle": {
+    "text": "Emissions from electricity consumption not included in this figure"
+  }
 }

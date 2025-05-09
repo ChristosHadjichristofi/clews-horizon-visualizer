@@ -171,6 +171,9 @@ export async function buildIndustryEmissionsCharts() {
   ];
   const cfgTotal = merge({}, tpl, {
     title: { text: "Annual GHG Emissions – All Industry" },
+    subtitle: {
+      text: "Emissions from electricity consumption not included in this figure",
+    },
     xAxis: { categories: years, title: { text: "Year" } },
     yAxis: { title: { text: "Emissions (MtCO₂-eq)" } },
     series: seriesTotal,

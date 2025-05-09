@@ -1,0 +1,22 @@
+{
+  "cards": [
+    {
+      "key": "overarching-primary-supply-by-fuel",
+      "configFile": "overarching-primary-supply-by-fuel.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "final-energy-demand-by-fuel",
+      "configFile": "final-energy-demand-by-fuel.config.json",
+      "chartType": "column",
+      "colSpan": 2
+    },
+    {
+      "key": "overarching-emissions",
+      "configFile": "overarching-emissions.config.json",
+      "chartType": "line",
+      "colSpan": 2
+    }
+  ]
+}

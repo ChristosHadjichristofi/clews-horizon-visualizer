@@ -133,5 +133,8 @@
         "enabled": true
       }
     }
-  ]
+  ],
+  "subtitle": {
+    "text": "Emissions from electricity consumption not included in this figure"
+  }
 }

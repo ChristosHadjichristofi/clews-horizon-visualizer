@@ -119,7 +119,6 @@ export async function buildTransportFuelConsumptionByModeChart() {
 
     const cfg = merge({}, tpl, {
       title: { text: `Annual Fuel Consumption – ${friendly}` },
-      subtitle: { text: "Final-energy demand by mode" },
       xAxis: { categories: allYears, title: { text: "Year" } },
       yAxis: { title: { text: "Fuel Consumption (PJ)" } },
       series,

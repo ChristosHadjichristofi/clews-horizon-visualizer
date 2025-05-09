@@ -130,8 +130,11 @@
         0.05886059922393976
       ],
       "marker": {
-        "enabled": false
+        "enabled": true
       }
     }
-  ]
+  ],
+  "subtitle": {
+    "text": "Emissions from electricity consumption not included in this figure"
+  }
 }

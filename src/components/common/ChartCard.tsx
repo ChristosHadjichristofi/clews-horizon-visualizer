@@ -17,7 +17,7 @@ const ChartCard: React.FC<ChartCardProps> = ({
 }) => (
   <Card className={cn("chart-card", className)}>
     <CardHeader className="pb-2">
-      <h3 className="chart-card-title">{title}</h3>
+      {title && <h3 className="chart-card-title">{title}</h3>}
       {subtitle && <p className="text-sm text-muted-foreground">{subtitle}</p>}
     </CardHeader>
     <CardContent className="chart-container">{children}</CardContent>

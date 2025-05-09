@@ -5,6 +5,7 @@ import { buildEnergyModules } from "./energy/index.js";
 import { buildTransportModules } from "./transport/index.js";
 import { buildBuildingsModules } from "./buildings/index.js";
 import { buildIndustryModules } from "./industry/index.js";
+import { buildOverArchingModules } from "./overarching/index.js";
 
 async function copyDirectory(srcDir, destDir) {
   await fs.rm(destDir, { recursive: true, force: true });
@@ -66,11 +67,11 @@ async function main() {
   console.log("Excel sheets exported to CSV");
 
   // Build the modules
-  // await buildEnergyModules();
-  // await buildTransportModules();
+  await buildEnergyModules();
+  await buildTransportModules();
   await buildBuildingsModules();
   await buildIndustryModules();
-
+  await buildOverArchingModules();
   console.log("All modules built");
   // End of modules building
 

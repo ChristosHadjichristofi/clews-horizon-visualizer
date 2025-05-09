@@ -96,7 +96,7 @@ export async function buildBuildingsEmissionsChart() {
       name: "Buildings GHG Emissions",
       type: "line",
       data: years.map((y) => emissionsByYear[y] || 0),
-      marker: { enabled: false },
+      marker: { enabled: true },
     },
   ];
 
@@ -104,6 +104,9 @@ export async function buildBuildingsEmissionsChart() {
   const tpl = await loadTemplate("line");
   const cfg = merge({}, tpl, {
     title: { text: "Annual GHG Emissions – Buildings" },
+    subtitle: {
+      text: "Emissions from electricity consumption not included in this figure",
+    },
     xAxis: { categories: years, title: { text: "Year" } },
     yAxis: { title: { text: "Emissions (Mt CO₂-eq)" } },
     series,
