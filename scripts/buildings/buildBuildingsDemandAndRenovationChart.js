@@ -104,7 +104,7 @@ export async function buildBuildingsDemandAndRenovationChart() {
   const tpl = await loadTemplate("stackedBar");
   const cfg = merge({}, tpl, {
     title: {
-      text: "Final‐Energy Demand & Renovation Savings – Buildings",
+      text: "Final‐Energy Demand & Renovation Savings",
     },
     xAxis: { categories: years, title: { text: "Year" } },
     yAxis: { title: { text: "PJ" } },

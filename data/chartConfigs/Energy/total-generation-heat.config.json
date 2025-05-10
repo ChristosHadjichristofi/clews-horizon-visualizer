@@ -80,7 +80,8 @@
   ],
   "series": [
     {
-      "name": "Final-energy Demand",
+      "name": "Demand",
+      "color": "#1f77b4",
       "type": "line",
       "data": [
         286.0122874851248,

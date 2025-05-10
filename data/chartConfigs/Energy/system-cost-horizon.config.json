@@ -30,42 +30,48 @@
       "type": "column",
       "data": [
         486495.67669519485
-      ]
+      ],
+      "color": "#d62728"
     },
     {
       "name": "Variable Opex (VOM)",
       "type": "column",
       "data": [
         226310.7574760211
-      ]
+      ],
+      "color": "#ff7f0e"
     },
     {
       "name": "Fuel Cost",
       "type": "column",
       "data": [
         556402.804796051
-      ]
+      ],
+      "color": "#bcbd22"
     },
     {
       "name": "Fixed Opex (FOM)",
       "type": "column",
       "data": [
         1188226.632538035
-      ]
+      ],
+      "color": "#9467bd"
     },
     {
       "name": "Salvage Value",
       "type": "column",
       "data": [
         -528183.0465989481
-      ]
+      ],
+      "color": "#2ca02c"
     },
     {
       "name": "Capital Investment",
       "type": "column",
       "data": [
         1168345.6689643434
-      ]
+      ],
+      "color": "#8c564b"
     }
   ]
 }

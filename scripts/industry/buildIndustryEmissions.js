@@ -1,6 +1,11 @@
 // scripts/buildIndustryEmissions.js
 
-import { parseCsv, loadTemplate, splitTechnology } from "../utils/general.js";
+import {
+  parseCsv,
+  loadTemplate,
+  splitTechnology,
+  annotateTechSeries,
+} from "../utils/general.js";
 import path from "path";
 import fs from "fs/promises";
 import merge from "lodash.merge";
@@ -149,10 +154,10 @@ export async function buildIndustryEmissionsCharts() {
     marker: { enabled: true },
   }));
   const cfgSector = merge({}, tpl, {
-    title: { text: "Annual GHG Emissions by Sector – Industry" },
+    title: { text: "Annual GHG Emissions by Sector" },
     xAxis: { categories: years, title: { text: "Year" } },
     yAxis: { title: { text: "Emissions (MtCO₂-eq)" } },
-    series: seriesSector,
+    series: await annotateTechSeries(seriesSector),
   });
   await fs.writeFile(
     path.join(OUT_DIR, "industry-emissions-by-sector.config.json"),
@@ -166,6 +171,7 @@ export async function buildIndustryEmissionsCharts() {
       name: "All Industry",
       type: "line",
       data: years.map((y) => total[y] || 0),
+      color: "#d62728",
       marker: { enabled: true },
     },
   ];

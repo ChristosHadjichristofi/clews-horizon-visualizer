@@ -81,6 +81,7 @@
   "series": [
     {
       "name": "CO₂ Emissions",
+      "color": "#d62728",
       "type": "line",
       "yAxis": 1,
       "data": [
@@ -144,6 +145,7 @@
     },
     {
       "name": "Demand",
+      "color": "#1f77b4",
       "type": "line",
       "data": [
         2409.239480132114,

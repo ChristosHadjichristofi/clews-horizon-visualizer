@@ -230,6 +230,16 @@ async function loadTechFriendlyMap() {
   }, {});
 }
 
+async function loadTechTypeMap() {
+  const rows = await parseCsv(
+    path.join(CSV_DIR, "exported/EnergyModule_Tech_List.csv")
+  );
+  return rows.reduce((m, r) => {
+    m[r["Technology code"]] = r["Type"];
+    return m;
+  }, {});
+}
+
 // 2) Primary HEX colors for each suffix from OrderAndColor.csv
 async function loadSuffixColorMap() {
   const rows = await parseCsv(path.join(CSV_DIR, "OrderAndColor.csv"));
@@ -259,14 +269,22 @@ const SUFFIX_OVERRIDES = {
   URA: { name: "Uranium", color: "#B22222" },
 
   // Only for Industries
-  UEC: { name: "Chemical & Petrochemical", color: "#FF8C00" },
-  UEF: { name: "Food, Beverages & Tobacco", color: "#FF6347" },
-  UEI: { name: "Iron & Steel", color: "#8B0000" },
-  UEN: { name: "Non-Metallic Minerals", color: "#B22222" },
-  UEO: { name: "Not Elsewhere Specified", color: "#DAA520" },
-  UEP: { name: "Paper, Pulp & Printing", color: "#4682B4" },
+  UEC: { name: "Chemical & petrochemical", color: "#FF8C00" },
+  UEF: { name: "Food, beverages & tobacco", color: "#FF6347" },
+  UEI: { name: "Iron & steel", color: "#8B0000" },
+  UEN: { name: "Non-metallic minerals", color: "#B22222" },
+  UEO: { name: "Other industries", color: "#DAA520" },
+  UEP: { name: "Paper, pulp & printing", color: "#4682B4" },
 };
 
+const COST_MAPPING_COLORS = {
+  "Emission Penalty": "#d62728",
+  "Variable Opex (VOM)": "#ff7f0e",
+  "Fuel Cost": "#bcbd22",
+  "Fixed Opex (FOM)": "#9467bd",
+  "Salvage Value": "#2ca02c",
+  "Capital Investment": "#8c564b",
+};
 // 4) Semantic colors for “000”‐suffix LO/ME/HI
 const LEVEL_COLORS = {
   LO: { label: "Low", color: "#2ecc71" }, // green
@@ -346,14 +364,42 @@ function shiftHue(hex, degrees) {
  *  - the first time a baseColor appears → solid fill
  *    repeats → shift its hue + overlay a pattern
  */
-export async function annotateTechSeries(rawSeries) {
+export async function annotateTechSeries(rawSeries, typeColIncluded = false) {
   const techFriendly = await loadTechFriendlyMap();
+  const techToType = await loadTechTypeMap();
   const suffixColors = await loadSuffixColorMap();
   const usageCount = {};
 
+  // invert SUFFIX_OVERRIDES to map friendlyName → color
+  const friendlyColor = Object.values(SUFFIX_OVERRIDES).reduce((m, o) => {
+    m[o.name] = o.color;
+    return m;
+  }, {});
+
   return rawSeries.map((s) => {
     const code = s.name;
+
+    // For any series that has already the name annotated, but not the color
+    if (friendlyColor[code]) {
+      return { ...s, color: friendlyColor[code] };
+    }
+
+    // For any series that uses name inside COST_MAPPING_COLORS, add the color
+    if (COST_MAPPING_COLORS[code]) {
+      return { ...s, color: COST_MAPPING_COLORS[code] };
+    }
+
     const suffix = splitTechnology(code).tech;
+
+    let friendlyName = null;
+
+    if (typeColIncluded) {
+      friendlyName = `${techFriendly[code]} : ${techToType[code]}`;
+    } else {
+      friendlyName = techFriendly[code];
+    }
+
+    friendlyName = friendlyName || code;
 
     // — semantic LO/ME/HI for tech="000" —
     if (suffix === "000") {
@@ -370,7 +416,7 @@ export async function annotateTechSeries(rawSeries) {
 
     // — friendly name and baseColor —
     const overrideFull = SUFFIX_OVERRIDES[code];
-    const friendly = overrideFull?.name || techFriendly[code] || code;
+    const friendly = overrideFull?.name || friendlyName || code;
     const baseColor = overrideFull?.color || suffixColors[suffix] || "#888888";
 
     // — count usages & decide fill vs. pattern —

@@ -74,6 +74,7 @@
     {
       "name": "Buildings GHG Emissions",
       "type": "line",
+      "color": "#d62728",
       "data": [
         1288.677664950386,
         1246.2368245980322,

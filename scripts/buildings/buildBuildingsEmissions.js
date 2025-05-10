@@ -95,6 +95,7 @@ export async function buildBuildingsEmissionsChart() {
     {
       name: "Buildings GHG Emissions",
       type: "line",
+      color: "#d62728",
       data: years.map((y) => emissionsByYear[y] || 0),
       marker: { enabled: true },
     },

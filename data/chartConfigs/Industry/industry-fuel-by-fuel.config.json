@@ -78,7 +78,7 @@
   },
   "series": [
     {
-      "name": "Chemical & Petrochemical",
+      "name": "Chemical & petrochemical",
       "type": "column",
       "data": [
         2192.6794058920377,
@@ -138,7 +138,7 @@
       "color": "#FF8C00"
     },
     {
-      "name": "Food, Beverages & Tobacco",
+      "name": "Food, beverages & tobacco",
       "type": "column",
       "data": [
         1322.0729868056528,
@@ -198,7 +198,7 @@
       "color": "#FF6347"
     },
     {
-      "name": "Iron & Steel",
+      "name": "Iron & steel",
       "type": "column",
       "data": [
         1328.9387522407235,
@@ -258,7 +258,7 @@
       "color": "#8B0000"
     },
     {
-      "name": "Non-Metallic Minerals",
+      "name": "Non-metallic minerals",
       "type": "column",
       "data": [
         1810.6833328588043,
@@ -318,7 +318,7 @@
       "color": "#B22222"
     },
     {
-      "name": "Not Elsewhere Specified",
+      "name": "Other industries",
       "type": "column",
       "data": [
         3271.6004089549933,
@@ -378,7 +378,7 @@
       "color": "#DAA520"
     },
     {
-      "name": "Paper, Pulp & Printing",
+      "name": "Paper, pulp & printing",
       "type": "column",
       "data": [
         1624.4937701544604,

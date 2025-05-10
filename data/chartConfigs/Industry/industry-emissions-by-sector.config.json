@@ -3,7 +3,7 @@
     "type": "line"
   },
   "title": {
-    "text": "Annual GHG Emissions by Sector – Industry"
+    "text": "Annual GHG Emissions by Sector"
   },
   "xAxis": {
     "categories": [
@@ -131,7 +131,8 @@
       ],
       "marker": {
         "enabled": true
-      }
+      },
+      "color": "#FF8C00"
     },
     {
       "name": "Food, beverages & tobacco",
@@ -193,7 +194,8 @@
       ],
       "marker": {
         "enabled": true
-      }
+      },
+      "color": "#FF6347"
     },
     {
       "name": "Iron & steel",
@@ -255,7 +257,8 @@
       ],
       "marker": {
         "enabled": true
-      }
+      },
+      "color": "#8B0000"
     },
     {
       "name": "Non-metallic minerals",
@@ -317,7 +320,8 @@
       ],
       "marker": {
         "enabled": true
-      }
+      },
+      "color": "#B22222"
     },
     {
       "name": "Other industries",
@@ -379,7 +383,8 @@
       ],
       "marker": {
         "enabled": true
-      }
+      },
+      "color": "#DAA520"
     },
     {
       "name": "Paper, pulp & printing",
@@ -441,7 +446,8 @@
       ],
       "marker": {
         "enabled": true
-      }
+      },
+      "color": "#4682B4"
     }
   ]
 }

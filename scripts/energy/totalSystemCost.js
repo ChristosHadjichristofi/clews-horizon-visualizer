@@ -6,6 +6,7 @@ import {
   parseCsv,
   loadTemplate,
   annotateSeriesFromCsv,
+  annotateTechSeries,
 } from "../utils/general.js";
 
 const CSV_DIR = path.resolve(process.cwd(), "data/csv");
@@ -237,13 +238,14 @@ export async function buildSystemCostChart() {
   ];
 
   const seriesAnnotated = await annotateSeriesFromCsv(series);
+  const seriesAnnotatedWithColor = await annotateTechSeries(seriesAnnotated);
 
   const tpl = await loadTemplate("stackedBar");
   const config = merge({}, tpl, {
     title: { text: "Total System Cost Breakdown by Year" },
     xAxis: { categories: years, title: { text: "Year" } },
     yAxis: { title: { text: "Cost (million USD)" } },
-    series: seriesAnnotated,
+    series: seriesAnnotatedWithColor,
   });
 
   const outFile = path.join(OUT_DIR, "system-cost-annual.config.json");
@@ -416,13 +418,14 @@ export async function buildSystemCostHorizonChart() {
   }));
 
   const seriesAnnotated = await annotateSeriesFromCsv(series);
+  const seriesAnnotatedWithColor = await annotateTechSeries(seriesAnnotated);
 
   const tpl = await loadTemplate("stackedBar");
   const config = merge({}, tpl, {
     title: { text: "Total System Cost Over Horizon" },
     xAxis: { categories: [category], title: { text: "" } },
     yAxis: { title: { text: "Cost (million USD)" } },
-    series: seriesAnnotated,
+    series: seriesAnnotatedWithColor,
   });
 
   const outFile = path.join(OUT_DIR, "system-cost-horizon.config.json");

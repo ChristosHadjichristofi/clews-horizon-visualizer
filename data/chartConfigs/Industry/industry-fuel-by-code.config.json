@@ -78,7 +78,7 @@
   },
   "series": [
     {
-      "name": "Biomass/biofuels/biogas boiler/combustion",
+      "name": "Biomass/biofuels/biogas boiler/combustion : Chemical & petrochemical",
       "type": "column",
       "data": [
         47.178924962704,
@@ -138,7 +138,7 @@
       "color": "#92D050"
     },
     {
-      "name": "Biomass/biofuels/biogas boiler/combustion",
+      "name": "Biomass/biofuels/biogas boiler/combustion : Food, beverages & tobacco",
       "type": "column",
       "data": [
         85.34481866812641,
@@ -210,7 +210,7 @@
       }
     },
     {
-      "name": "Biomass/biofuels/biogas boiler/combustion",
+      "name": "Biomass/biofuels/biogas boiler/combustion : Iron & steel",
       "type": "column",
       "data": [
         0.94447862670314,
@@ -282,7 +282,7 @@
       }
     },
     {
-      "name": "Biomass/biofuels/biogas boiler/combustion",
+      "name": "Biomass/biofuels/biogas boiler/combustion : Non-metallic minerals",
       "type": "column",
       "data": [
         332.00619243560004,
@@ -354,7 +354,7 @@
       }
     },
     {
-      "name": "Biomass/biofuels/biogas boiler/combustion",
+      "name": "Biomass/biofuels/biogas boiler/combustion : Other industries",
       "type": "column",
       "data": [
         406.79514915212417,
@@ -426,7 +426,7 @@
       }
     },
     {
-      "name": "Biomass/biofuels/biogas boiler/combustion",
+      "name": "Biomass/biofuels/biogas boiler/combustion : Paper, pulp & printing",
       "type": "column",
       "data": [
         824.5400119396842,
@@ -498,7 +498,7 @@
       }
     },
     {
-      "name": "Coal boiler/combustion",
+      "name": "Coal boiler/combustion : Chemical & petrochemical",
       "type": "column",
       "data": [
         166.91487444445198,
@@ -558,7 +558,7 @@
       "color": "#7F7F7F"
     },
     {
-      "name": "Coal boiler/combustion",
+      "name": "Coal boiler/combustion : Food, beverages & tobacco",
       "type": "column",
       "data": [
         85.16584949814491,
@@ -630,7 +630,7 @@
       }
     },
     {
-      "name": "Coal boiler/combustion",
+      "name": "Coal boiler/combustion : Iron & steel",
       "type": "column",
       "data": [
         470.814365538973,
@@ -702,7 +702,7 @@
       }
     },
     {
-      "name": "Coal boiler/combustion",
+      "name": "Coal boiler/combustion : Non-metallic minerals",
       "type": "column",
       "data": [
         245.301277428696,
@@ -774,7 +774,7 @@
       }
     },
     {
-      "name": "Coal boiler/combustion",
+      "name": "Coal boiler/combustion : Other industries",
       "type": "column",
       "data": [
         62.26980251546291,
@@ -846,7 +846,7 @@
       }
     },
     {
-      "name": "Coal boiler/combustion",
+      "name": "Coal boiler/combustion : Paper, pulp & printing",
       "type": "column",
       "data": [
         55.9830296531383,
@@ -918,7 +918,7 @@
       }
     },
     {
-      "name": "Coal boiler/combustion with CCS",
+      "name": "Coal boiler/combustion with CCS : Chemical & petrochemical",
       "type": "column",
       "data": [
         0,
@@ -990,7 +990,7 @@
       }
     },
     {
-      "name": "Coal boiler/combustion with CCS",
+      "name": "Coal boiler/combustion with CCS : Food, beverages & tobacco",
       "type": "column",
       "data": [
         0,
@@ -1062,7 +1062,7 @@
       }
     },
     {
-      "name": "Coal boiler/combustion with CCS",
+      "name": "Coal boiler/combustion with CCS : Iron & steel",
       "type": "column",
       "data": [
         0,
@@ -1134,7 +1134,7 @@
       }
     },
     {
-      "name": "Coal boiler/combustion with CCS",
+      "name": "Coal boiler/combustion with CCS : Non-metallic minerals",
       "type": "column",
       "data": [
         0,
@@ -1206,7 +1206,7 @@
       }
     },
     {
-      "name": "Coal boiler/combustion with CCS",
+      "name": "Coal boiler/combustion with CCS : Other industries",
       "type": "column",
       "data": [
         0,
@@ -1278,7 +1278,7 @@
       }
     },
     {
-      "name": "Coal boiler/combustion with CCS",
+      "name": "Coal boiler/combustion with CCS : Paper, pulp & printing",
       "type": "column",
       "data": [
         0,
@@ -1350,7 +1350,7 @@
       }
     },
     {
-      "name": "Electric boiler/combustion",
+      "name": "Electric boiler/combustion : Chemical & petrochemical",
       "type": "column",
       "data": [
         602.7819999999999,
@@ -1410,7 +1410,7 @@
       "color": "#FF6699"
     },
     {
-      "name": "Electric boiler/combustion",
+      "name": "Electric boiler/combustion : Food, beverages & tobacco",
       "type": "column",
       "data": [
         393.19300000000004,
@@ -1482,7 +1482,7 @@
       }
     },
     {
-      "name": "Electric boiler/combustion",
+      "name": "Electric boiler/combustion : Iron & steel",
       "type": "column",
       "data": [
         413.382,
@@ -1554,7 +1554,7 @@
       }
     },
     {
-      "name": "Electric boiler/combustion",
+      "name": "Electric boiler/combustion : Non-metallic minerals",
       "type": "column",
       "data": [
         232.15200000000007,
@@ -1626,7 +1626,7 @@
       }
     },
     {
-      "name": "Electric boiler/combustion",
+      "name": "Electric boiler/combustion : Other industries",
       "type": "column",
       "data": [
         1383.08,
@@ -1698,7 +1698,7 @@
       }
     },
     {
-      "name": "Electric boiler/combustion",
+      "name": "Electric boiler/combustion : Paper, pulp & printing",
       "type": "column",
       "data": [
         378.98100000000005,
@@ -1770,7 +1770,7 @@
       }
     },
     {
-      "name": "Hydrogen boiler/combustion",
+      "name": "Hydrogen boiler/combustion : Chemical & petrochemical",
       "type": "column",
       "data": [
         0,
@@ -1830,7 +1830,7 @@
       "color": "#888888"
     },
     {
-      "name": "Hydrogen boiler/combustion",
+      "name": "Hydrogen boiler/combustion : Food, beverages & tobacco",
       "type": "column",
       "data": [
         0,
@@ -1902,7 +1902,7 @@
       }
     },
     {
-      "name": "Hydrogen boiler/combustion",
+      "name": "Hydrogen boiler/combustion : Iron & steel",
       "type": "column",
       "data": [
         0,
@@ -1974,7 +1974,7 @@
       }
     },
     {
-      "name": "Hydrogen boiler/combustion",
+      "name": "Hydrogen boiler/combustion : Non-metallic minerals",
       "type": "column",
       "data": [
         0,
@@ -2046,7 +2046,7 @@
       }
     },
     {
-      "name": "Hydrogen boiler/combustion",
+      "name": "Hydrogen boiler/combustion : Other industries",
       "type": "column",
       "data": [
         0,
@@ -2118,7 +2118,7 @@
       }
     },
     {
-      "name": "Hydrogen boiler/combustion",
+      "name": "Hydrogen boiler/combustion : Paper, pulp & printing",
       "type": "column",
       "data": [
         0,
@@ -2190,7 +2190,7 @@
       }
     },
     {
-      "name": "Gas boiler/combustion",
+      "name": "Gas boiler/combustion : Chemical & petrochemical",
       "type": "column",
       "data": [
         950.788367129095,
@@ -2250,7 +2250,7 @@
       "color": "#FFFF00"
     },
     {
-      "name": "Gas boiler/combustion",
+      "name": "Gas boiler/combustion : Food, beverages & tobacco",
       "type": "column",
       "data": [
         671.923523397475,
@@ -2322,7 +2322,7 @@
       }
     },
     {
-      "name": "Gas boiler/combustion",
+      "name": "Gas boiler/combustion : Iron & steel",
       "type": "column",
       "data": [
         411.4174720204249,
@@ -2394,7 +2394,7 @@
       }
     },
     {
-      "name": "Gas boiler/combustion",
+      "name": "Gas boiler/combustion : Non-metallic minerals",
       "type": "column",
       "data": [
         680.7886256396051,
@@ -2466,7 +2466,7 @@
       }
     },
     {
-      "name": "Gas boiler/combustion",
+      "name": "Gas boiler/combustion : Other industries",
       "type": "column",
       "data": [
         939.3507522504652,
@@ -2538,7 +2538,7 @@
       }
     },
     {
-      "name": "Gas boiler/combustion",
+      "name": "Gas boiler/combustion : Paper, pulp & printing",
       "type": "column",
       "data": [
         326.42500996173,
@@ -2610,7 +2610,7 @@
       }
     },
     {
-      "name": "Gas boiler/combustion with CCS",
+      "name": "Gas boiler/combustion with CCS : Chemical & petrochemical",
       "type": "column",
       "data": [
         0,
@@ -2682,7 +2682,7 @@
       }
     },
     {
-      "name": "Gas boiler/combustion with CCS",
+      "name": "Gas boiler/combustion with CCS : Food, beverages & tobacco",
       "type": "column",
       "data": [
         0,
@@ -2754,7 +2754,7 @@
       }
     },
     {
-      "name": "Gas boiler/combustion with CCS",
+      "name": "Gas boiler/combustion with CCS : Iron & steel",
       "type": "column",
       "data": [
         0,
@@ -2826,7 +2826,7 @@
       }
     },
     {
-      "name": "Gas boiler/combustion with CCS",
+      "name": "Gas boiler/combustion with CCS : Non-metallic minerals",
       "type": "column",
       "data": [
         0,
@@ -2898,7 +2898,7 @@
       }
     },
     {
-      "name": "Gas boiler/combustion with CCS",
+      "name": "Gas boiler/combustion with CCS : Other industries",
       "type": "column",
       "data": [
         0,
@@ -2970,7 +2970,7 @@
       }
     },
     {
-      "name": "Gas boiler/combustion with CCS",
+      "name": "Gas boiler/combustion with CCS : Paper, pulp & printing",
       "type": "column",
       "data": [
         0,
@@ -3042,7 +3042,7 @@
       }
     },
     {
-      "name": "Oil boiler/combustion",
+      "name": "Oil boiler/combustion : Chemical & petrochemical",
       "type": "column",
       "data": [
         425.015239355787,
@@ -3102,7 +3102,7 @@
       "color": "#000000"
     },
     {
-      "name": "Oil boiler/combustion",
+      "name": "Oil boiler/combustion : Food, beverages & tobacco",
       "type": "column",
       "data": [
         86.44579524190642,
@@ -3174,7 +3174,7 @@
       }
     },
     {
-      "name": "Oil boiler/combustion",
+      "name": "Oil boiler/combustion : Iron & steel",
       "type": "column",
       "data": [
         32.3804360546225,
@@ -3246,7 +3246,7 @@
       }
     },
     {
-      "name": "Oil boiler/combustion",
+      "name": "Oil boiler/combustion : Non-metallic minerals",
       "type": "column",
       "data": [
         320.435237354903,
@@ -3318,7 +3318,7 @@
       }
     },
     {
-      "name": "Oil boiler/combustion",
+      "name": "Oil boiler/combustion : Other industries",
       "type": "column",
       "data": [
         480.1047050369411,
@@ -3390,7 +3390,7 @@
       }
     },
     {
-      "name": "Oil boiler/combustion",
+      "name": "Oil boiler/combustion : Paper, pulp & printing",
       "type": "column",
       "data": [
         38.564718599908005,
@@ -3462,7 +3462,7 @@
       }
     },
     {
-      "name": "Solar thermal",
+      "name": "Solar thermal : Chemical & petrochemical",
       "type": "column",
       "data": [
         0,
@@ -3522,7 +3522,7 @@
       "color": "#E46C0A"
     },
     {
-      "name": "Solar thermal",
+      "name": "Solar thermal : Food, beverages & tobacco",
       "type": "column",
       "data": [
         0,
@@ -3594,7 +3594,7 @@
       }
     },
     {
-      "name": "Solar thermal",
+      "name": "Solar thermal : Iron & steel",
       "type": "column",
       "data": [
         0,
@@ -3666,7 +3666,7 @@
       }
     },
     {
-      "name": "Solar thermal",
+      "name": "Solar thermal : Non-metallic minerals",
       "type": "column",
       "data": [
         0,
@@ -3738,7 +3738,7 @@
       }
     },
     {
-      "name": "Solar thermal",
+      "name": "Solar thermal : Other industries",
       "type": "column",
       "data": [
         0,
@@ -3810,7 +3810,7 @@
       }
     },
     {
-      "name": "Solar thermal",
+      "name": "Solar thermal : Paper, pulp & printing",
       "type": "column",
       "data": [
         0,

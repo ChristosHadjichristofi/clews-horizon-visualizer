@@ -150,7 +150,7 @@ export async function buildIndustryFuelConsumptionCharts() {
     data: allYears.map((y) => byY[y] || 0),
   }));
 
-  const annotatedSeriesC = await annotateTechSeries(seriesChartC);
+  const annotatedSeriesC = await annotateTechSeries(seriesChartC, true);
 
   const cfgCode = merge({}, tpl, {
     title: { text: "Final-Energy Demand by Technology Code" },

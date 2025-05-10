@@ -138,12 +138,14 @@ export async function buildElectricityGenerationChart() {
     })),
     {
       name: "Demand",
+      color: "#1f77b4",
       type: "line",
       data: years.map((y) => demAgg[y] || 0),
       marker: { enabled: true },
     },
     {
       name: "CO₂ Emissions",
+      color: "#d62728",
       type: "line",
       yAxis: 1,
       data: years.map((y) => emisAgg[y] || 0),
@@ -237,7 +239,8 @@ export async function buildHeatGenerationChart() {
     })),
     // plus the demand line
     {
-      name: "Final-energy Demand",
+      name: "Demand",
+      color: "#1f77b4",
       type: "line",
       data: years.map((y) => demAgg[y] || 0),
       marker: { enabled: true },
