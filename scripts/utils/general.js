@@ -103,7 +103,12 @@ export async function annotateSeriesFromCsv(rawSeries) {
       )
       .forEach((s) => {
         const isNew = /\s\(New\)$/.test(s.name);
-        const suffix = isNew ? " (New)" : " (Existing)";
+
+        // Existing/New must only be added if it's already there
+        let suffix = "";
+        if (s.name.includes(" (")) {
+          suffix = isNew ? " (New)" : " (Existing)";
+        }
 
         // solid or gradient fill for Existing
         const baseColor = secondary

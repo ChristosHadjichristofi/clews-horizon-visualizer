@@ -207,7 +207,7 @@
       }
     },
     {
-      "name": "Interconnector (Existing)",
+      "name": "Interconnector",
       "type": "column",
       "data": [
         8.850507080400002,
@@ -267,7 +267,7 @@
       "color": "#FF6699"
     },
     {
-      "name": "Solar PV rooftop (Existing)",
+      "name": "Solar PV rooftop",
       "type": "column",
       "data": [
         23.61998812310225,
@@ -344,7 +344,7 @@
       }
     },
     {
-      "name": "Solar PV (Existing)",
+      "name": "Solar PV",
       "type": "column",
       "data": [
         84.92016684641513,
@@ -404,7 +404,7 @@
       "color": "#FAC090"
     },
     {
-      "name": "Solar CSP (Existing)",
+      "name": "Solar CSP",
       "type": "column",
       "data": [
         4.86390582812927,
@@ -464,7 +464,7 @@
       "color": "#E46C0A"
     },
     {
-      "name": "Wind offshore (Existing)",
+      "name": "Wind offshore",
       "type": "column",
       "data": [
         31.89283485646068,
@@ -524,7 +524,7 @@
       "color": "#00B0F0"
     },
     {
-      "name": "Wind onshore (Existing)",
+      "name": "Wind onshore",
       "type": "column",
       "data": [
         287.92744821804337,
@@ -584,7 +584,7 @@
       "color": "#B9CDE5"
     },
     {
-      "name": "Hydro PP (Existing)",
+      "name": "Hydro PP",
       "type": "column",
       "data": [
         344.1808237047968,
@@ -644,7 +644,7 @@
       "color": "#002060"
     },
     {
-      "name": "HFO PP (Existing)",
+      "name": "HFO PP",
       "type": "column",
       "data": [
         0,
@@ -721,7 +721,7 @@
       }
     },
     {
-      "name": "Diesel PP (Existing)",
+      "name": "Diesel PP",
       "type": "column",
       "data": [
         0,
@@ -781,7 +781,7 @@
       "color": "#000000"
     },
     {
-      "name": "Oil CHP (Existing)",
+      "name": "Oil CHP",
       "type": "column",
       "data": [
         0,
@@ -858,7 +858,7 @@
       }
     },
     {
-      "name": "Geothermal (Existing)",
+      "name": "Geothermal",
       "type": "column",
       "data": [
         6.641886531954795,
@@ -918,7 +918,7 @@
       "color": "#984807"
     },
     {
-      "name": "Biomass PP with CCS (Existing)",
+      "name": "Biomass PP with CCS",
       "type": "column",
       "data": [
         0,
@@ -995,7 +995,7 @@
       }
     },
     {
-      "name": "Biomass PP (Existing)",
+      "name": "Biomass PP",
       "type": "column",
       "data": [
         43.15677412617465,
@@ -1055,7 +1055,7 @@
       "color": "#92D050"
     },
     {
-      "name": "Biomass CHP (Existing)",
+      "name": "Biomass CHP",
       "type": "column",
       "data": [
         212.9913153501778,
@@ -1132,7 +1132,7 @@
       }
     },
     {
-      "name": "Gas PP with CCS (Existing)",
+      "name": "Gas PP with CCS",
       "type": "column",
       "data": [
         0,
@@ -1209,7 +1209,7 @@
       }
     },
     {
-      "name": "Gas PP (Existing)",
+      "name": "Gas PP",
       "type": "column",
       "data": [
         268.75588164348585,
@@ -1269,7 +1269,7 @@
       "color": "#FFFF00"
     },
     {
-      "name": "Gas CHP (Existing)",
+      "name": "Gas CHP",
       "type": "column",
       "data": [
         124.1511513592316,
@@ -1346,7 +1346,7 @@
       }
     },
     {
-      "name": "Coal PP with CCS (Existing)",
+      "name": "Coal PP with CCS",
       "type": "column",
       "data": [
         0,
@@ -1423,7 +1423,7 @@
       }
     },
     {
-      "name": "Coal PP (Existing)",
+      "name": "Coal PP",
       "type": "column",
       "data": [
         408.3128773949074,
@@ -1483,7 +1483,7 @@
       "color": "#7F7F7F"
     },
     {
-      "name": "Coal CHP (Existing)",
+      "name": "Coal CHP",
       "type": "column",
       "data": [
         187.00617394348447,
@@ -1560,7 +1560,7 @@
       }
     },
     {
-      "name": "Nuclear PP (Existing)",
+      "name": "Nuclear PP",
       "type": "column",
       "data": [
         761.5651750204637,
