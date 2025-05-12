@@ -124,6 +124,7 @@ export async function buildLandCropUseCharts() {
     name: key === "H" ? "High Input" : "Low Input",
     type: "column",
     data: allYears.map((y) => m[y] || 0),
+    color: key === "H" ? "#00AA00" : "#DD0000",
   }));
   const cfgInput = merge({}, tpl, {
     title: { text: "Crop Land Use by Input Level" },

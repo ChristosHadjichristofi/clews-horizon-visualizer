@@ -128,10 +128,6 @@ export async function buildCropTradeCharts() {
         color: cropColor[crop] || "#888888",
       })),
     }));
-    console.log("Drilldown series");
-    console.dir(drilldownSeries, { depth: null });
-    console.log("Main series");
-    console.dir(mainSeries, { depth: null });
 
     const config = merge({}, tpl, {
       chart: { type: "column" },
