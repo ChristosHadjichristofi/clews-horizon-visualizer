@@ -1,0 +1,93 @@
+Module,classifier,Type,Technology/Commodity Description,Old Naming,Input commodity,Input Name,Output commodity,Output Name,,Country identifier (2C),Module (1C),Identifier 1 (3c),Identifier 2 (3C),Input Level identifier (1C),Water supply identifier (1C),filler  (1C),Name
+Land,Technology,Resource,Main Land resource ,,,,Land inside the EU,EU0LND,,EU,L,000,MIN,0,0,0,EUL000MIN000
+Land,Technology,Crop Imports,MAI,,,-,,IMCMAI,,EU,L,IMP,MAI,0,0,0,EULIMPMAI000
+Land,Technology,Crop Imports,WHE,,,-,,IMCWHE,,EU,L,IMP,WHE,0,0,0,EULIMPWHE000
+Land,Technology,Crop Imports,BRL,,,-,,IMCBAR,,EU,L,IMP,BRL,0,0,0,EULIMPBRL000
+Land,Technology,Crop Imports,SUN,,,-,,IMCSUN,,EU,L,IMP,SUN,0,0,0,EULIMPSUN000
+Land,Technology,Crop Imports,RAP,,,-,,IMCRAP,,EU,L,IMP,RAP,0,0,0,EULIMPRAP000
+Land,Technology,Crop Imports,GRA,,,-,,IMCGRA,,EU,L,IMP,GRA,0,0,0,EULIMPGRA000
+Land,Technology,Crop Imports,OAT,,,-,,IMCOAT,,EU,L,IMP,OAT,0,0,0,EULIMPOAT000
+Land,Technology,Crop Imports,OLI,,,-,,IMCOLI,,EU,L,IMP,OLI,0,0,0,EULIMPOLI000
+Land,Technology,Crop Imports,RYE,,,-,,IMCRYE,,EU,L,IMP,RYE,0,0,0,EULIMPRYE000
+Land,Technology,Crop Imports,POT,,,-,,IMCOTP,,EU,L,IMP,POT,0,0,0,EULIMPPOT000
+Land,Technology,Crop Imports,OTH,,,-,,IMCOTH,,EU,L,IMP,OTH,0,0,0,EULIMPOTH000
+Land,Technology,Crop Exports,MAI,,,EULMAI,,EXCMAI,,EU,L,EXP,MAI,0,0,0,EULEXPMAI000
+Land,Technology,Crop Exports,WHE,,,EULWHE,,EXCWHE,,EU,L,EXP,WHE,0,0,0,EULEXPWHE000
+Land,Technology,Crop Exports,BRL,,,EULBAR,,EXCBAR,,EU,L,EXP,BRL,0,0,0,EULEXPBRL000
+Land,Technology,Crop Exports,SUN,,,EULSUN,,EXCSUN,,EU,L,EXP,SUN,0,0,0,EULEXPSUN000
+Land,Technology,Crop Exports,RAP,,,EULRAP,,EXCRAP,,EU,L,EXP,RAP,0,0,0,EULEXPRAP000
+Land,Technology,Crop Exports,GRA,,,EULGRA,,EXCGRA,,EU,L,EXP,GRA,0,0,0,EULEXPGRA000
+Land,Technology,Crop Exports,OAT,,,EULOAT,,EXCOAT,,EU,L,EXP,OAT,0,0,0,EULEXPOAT000
+Land,Technology,Crop Exports,OLI,,,EULOLI,,EXCOLI,,EU,L,EXP,OLI,0,0,0,EULEXPOLI000
+Land,Technology,Crop Exports,RYE,,,EULRYE,,EXCRYE,,EU,L,EXP,RYE,0,0,0,EULEXPRYE000
+Land,Technology,Crop Exports,POT,,,EULPOT,,EXCOTP,,EU,L,EXP,POT,0,0,0,EULEXPPOT000
+Land,Technology,Crop Exports,OTH,,,EULOTH,,EXCOTH,,EU,L,EXP,OTH,0,0,0,EULEXPOTH000
+Land,Technology,Land potential for crops,Potential for rainfed maize cultivation  high input,,,EULCRP,,EULMAI,,EU,L,000,MAI,H,R,0,EUL000MAIHR0
+Land,Technology,Land potential for crops,Potential for rainfed wheat cultivation  high input,,,EULCRP,,EULWHE,,EU,L,000,WHE,H,R,0,EUL000WHEHR0
+Land,Technology,Land potential for crops,Potential for rainfed barley cultivation  high input,,,EULCRP,,EULBRL,,EU,L,000,BRL,H,R,0,EUL000BRLHR0
+Land,Technology,Land potential for crops,Potential for rainfed sunflower seed cultivation  high input,,,EULCRP,,EULSUN,,EU,L,000,SUN,H,R,0,EUL000SUNHR0
+Land,Technology,Land potential for crops,Potential for rainfed rape/cazola cultivation  high input,,,EULCRP,,EULRAP,,EU,L,000,RAP,H,R,0,EUL000RAPHR0
+Land,Technology,Land potential for crops,Potential for rainfed Grapes cultivation  high input,,,EULCRP,,EULGRA,,EU,L,000,GRA,H,R,0,EUL000GRAHR0
+Land,Technology,Land potential for crops,Potential for rainfed Oats cultivation  high input,,,EULCRP,,EULOAT,,EU,L,000,OAT,H,R,0,EUL000OATHR0
+Land,Technology,Land potential for crops,Potential for rainfed Olives cultivation  high input,,,EULCRP,,EULOLI,,EU,L,000,OLI,H,R,0,EUL000OLIHR0
+Land,Technology,Land potential for crops,Potential for rainfed RYE cultivation  high input,,,EULCRP,,EULRYE,,EU,L,000,RYE,H,R,0,EUL000RYEHR0
+Land,Technology,Land potential for crops,Potential for rainfed Potatoe cultivation  high input,,,EULCRP,,EULPOT,,EU,L,000,POT,H,R,0,EUL000POTHR0
+Land,Technology,Land potential for crops,Potential for rainfed other crop cultivation  high input,,,EULCRP,,EULOTH,,EU,L,000,OTH,H,R,0,EUL000OTHHR0
+Land,Technology,Land potential for crops,Potential for irrigated maize cultivation  high input,,,EULCRP,,EULMAI,,EU,L,000,MAI,H,I,0,EUL000MAIHI0
+Land,Technology,Land potential for crops,Potential for irrigated wheat cultivation  high input,,,EULCRP,,EULWHE,,EU,L,000,WHE,H,I,0,EUL000WHEHI0
+Land,Technology,Land potential for crops,Potential for irrigated barley cultivation  high input,,,EULCRP,,EULBAR,,EU,L,000,BRL,H,I,0,EUL000BRLHI0
+Land,Technology,Land potential for crops,Potential for irrigated sunflower seed cultivation  high input,,,EULCRP,,EULSUN,,EU,L,000,SUN,H,I,0,EUL000SUNHI0
+Land,Technology,Land potential for crops,Potential for irrigated rape/cazola cultivation  high input,,,EULCRP,,EULRAP,,EU,L,000,RAP,H,I,0,EUL000RAPHI0
+Land,Technology,Land potential for crops,Potential for irrigated Grapes cultivation  high input,,,EULCRP,,EULGRA,,EU,L,000,GRA,H,I,0,EUL000GRAHI0
+Land,Technology,Land potential for crops,Potential for irrigated Oats cultivation  high input,,,EULCRP,,EULOAT,,EU,L,000,OAT,H,I,0,EUL000OATHI0
+Land,Technology,Land potential for crops,Potential for Irrigated Olives cultivation  high input,,,EULCRP,,EULOLI,,EU,L,000,OLI,H,I,0,EUL000OLIHI0
+Land,Technology,Land potential for crops,Potential for irrigated RYE cultivation  high input,,,EULCRP,,EULRYE,,EU,L,000,RYE,H,I,0,EUL000RYEHI0
+Land,Technology,Land potential for crops,Potential for irrigated Potatoe cultivation  high input,,,EULCRP,,EULPOT,,EU,L,000,POT,H,I,0,EUL000POTHI0
+Land,Technology,Land potential for crops,Potential for irrigated other cultivations  high input,,,EULCRP,,EULOTH,,EU,L,000,OTH,H,I,0,EUL000OTHHI0
+Land,Technology,Land potential for crops,Potential for rainfed maize cultivation  high input,,,EULCRP,,EULMAI,,EU,L,000,MAI,L,R,0,EUL000MAILR0
+Land,Technology,Land potential for crops,Potential for rainfed wheat cultivation  high input,,,EULCRP,,EULWHE,,EU,L,000,WHE,L,R,0,EUL000WHELR0
+Land,Technology,Land potential for crops,Potential for rainfed barley cultivation  high input,,,EULCRP,,EULBRL,,EU,L,000,BRL,L,R,0,EUL000BRLLR0
+Land,Technology,Land potential for crops,Potential for rainfed sunflower seed cultivation  high input,,,EULCRP,,EULSUN,,EU,L,000,SUN,L,R,0,EUL000SUNLR0
+Land,Technology,Land potential for crops,Potential for rainfed rape/cazola cultivation  high input,,,EULCRP,,EULRAP,,EU,L,000,RAP,L,R,0,EUL000RAPLR0
+Land,Technology,Land potential for crops,Potential for rainfed Grapes cultivation  high input,,,EULCRP,,EULGRA,,EU,L,000,GRA,L,R,0,EUL000GRALR0
+Land,Technology,Land potential for crops,Potential for rainfed Oats cultivation  high input,,,EULCRP,,EULOAT,,EU,L,000,OAT,L,R,0,EUL000OATLR0
+Land,Technology,Land potential for crops,Potential for rainfed Olives cultivation  high input,,,EULCRP,,EULOLI,,EU,L,000,OLI,L,R,0,EUL000OLILR0
+Land,Technology,Land potential for crops,Potential for rainfed RYE cultivation  high input,,,EULCRP,,EULRYE,,EU,L,000,RYE,L,R,0,EUL000RYELR0
+Land,Technology,Land potential for crops,Potential for rainfed Potatoe cultivation  high input,,,EULCRP,,EULPOT,,EU,L,000,POT,L,R,0,EUL000POTLR0
+Land,Technology,Land potential for crops,Potential for rainfed other crop cultivation  high input,,,EULCRP,,EULOTH,,EU,L,000,OTH,L,R,0,EUL000OTHLR0
+Land,Technology,Land potential for crops,Potential for irrigated maize cultivation  high input,,,EULCRP,,EULMAI,,EU,L,000,MAI,L,I,0,EUL000MAILI0
+Land,Technology,Land potential for crops,Potential for irrigated wheat cultivation  high input,,,EULCRP,,EULWHE,,EU,L,000,WHE,L,I,0,EUL000WHELI0
+Land,Technology,Land potential for crops,Potential for irrigated barley cultivation  high input,,,EULCRP,,EULBAR,,EU,L,000,BRL,L,I,0,EUL000BRLLI0
+Land,Technology,Land potential for crops,Potential for irrigated sunflower seed cultivation  high input,,,EULCRP,,EULSUN,,EU,L,000,SUN,L,I,0,EUL000SUNLI0
+Land,Technology,Land potential for crops,Potential for irrigated rape/cazola cultivation  high input,,,EULCRP,,EULRAP,,EU,L,000,RAP,L,I,0,EUL000RAPLI0
+Land,Technology,Land potential for crops,Potential for irrigated Grapes cultivation  high input,,,EULCRP,,EULGRA,,EU,L,000,GRA,L,I,0,EUL000GRALI0
+Land,Technology,Land potential for crops,Potential for irrigated Oats cultivation  high input,,,EULCRP,,EULOAT,,EU,L,000,OAT,L,I,0,EUL000OATLI0
+Land,Technology,Land potential for crops,Potential for Irrigated Olives cultivation  high input,,,EULCRP,,EULOLI,,EU,L,000,OLI,L,I,0,EUL000OLILI0
+Land,Technology,Land potential for crops,Potential for irrigated RYE cultivation  high input,,,EULCRP,,EULRYE,,EU,L,000,RYE,L,I,0,EUL000RYELI0
+Land,Technology,Land potential for crops,Potential for irrigated Potatoe cultivation  high input,,,EULCRP,,EULPOT,,EU,L,000,POT,L,I,0,EUL000POTLI0
+Land,Technology,Land potential for crops,Potential for irrigated other cultivations  high input,,,EULCRP,,EULOTH,,EU,L,000,OTH,L,I,0,EUL000OTHLI0
+Land,Technology,Land Cover,Potential for Tree Cover,,,EU0LND,,EULFOR,,EU,L,000,FOR,0,0,0,EUL000FOR000
+Land,Technology,Land Cover,Potential for built-up land,,,EU0LND,,EULBLT,,EU,L,000,BLT,0,0,0,EUL000BLT000
+Land,Technology,Land Cover,Potential for water bodies,,,EU0LND,,EULWAT,,EU,L,000,WAT,0,0,0,EUL000WAT000
+Land,Technology,Land Cover,Potential for Barren Land ,,,EU0LND,,EULBAR,,EU,L,000,BAR,0,0,0,EUL000BAR000
+Land,Technology,Land Cover,Potential for Snow and Ice cover,,,EU0LND,,EULSNO,,EU,L,000,SNO,0,0,0,EUL000SNO000
+Land,Technology,Land Cover,"Potential for Mangroves, Moss lichen and Wetland ",,,EU0LND,,EULMMW,,EU,L,000,WET,0,0,0,EUL000WET000
+,,,Potential for Shrubland and Sparse Vegetation,,,,,EULSHR,,EU,L,000,SHR,0,0,0,EUL000SHR000
+Land,Technology,Land Cover,Potential for Grass land,,,EU0LND,,EULGRS,,EU,L,000,GRS,0,0,0,EUL000GRS000
+Land,Technology,Land Cover,Potential for Cropland,,,EU0LND,,EULCRP,,EU,L,000,CRP,0,0,0,EUL000CRP000
+Land,Technology,Land Cover,Potential for pasturee and Meadows,,,EU0LND,,EULPAS,,EU,L,000,PAS,0,0,0,EUL000PAS000
+Land,Technology,Land Use ,Livestock,,,EULPAS,,EULLIV,,EU,L,000,LIV,0,0,0,EUL000LIV000
+Land,Technology,?,Meat processing plant,,,EULLIV,,EULMEA,,EU,L,000,MEA,0,0,0,EUL000MEA000
+Land,Technology,Interlinkage,Diesel used in the agriculture sector,DEMADSL,,,,,,EU,L,000,DSL,0,0,0,EULADSL000
+Land,Technology,Interlinkage,Convert Biodiesel for transport   ,,,,,,,EU,L,000,DSL,0,0,0,EULTDSL000
+Land,Technology,Interlinkage,Convert ethonal for transport   ,,,,,,,EU,L,000,ETH,0,0,0,EULTETH000
+Land,Technology,Backstop,Backstop for Maize production,,,,,EULMAI,,EU,L,BKS,MAI,0,0,0,EULBKSMAI000
+Land,Technology,Backstop,Backstop for Wheat production,,,,,EULWHE,,EU,L,BKS,WHE,0,0,0,EULBKSWHE000
+Land,Technology,Backstop,Backstop for Barley  production,,,,,EULBRL,,EU,L,BKS,BRL,0,0,0,EULBKSBRL000
+Land,Technology,Backstop,Backstop for Sunflower production,,,,,EULSUN,,EU,L,BKS,SUN,0,0,0,EULBKSSUN000
+Land,Technology,Backstop,Backstop for Rapeseed production,,,,,EULRAP,,EU,L,BKS,RAP,0,0,0,EULBKSRAP000
+Land,Technology,Backstop,Backstop for Grapes production,,,,,EULGRA,,EU,L,BKS,GRA,0,0,0,EULBKSGRA000
+Land,Technology,Backstop,Backstop for Oats production,,,,,EULOAT,,EU,L,BKS,OAT,0,0,0,EULBKSOAT000
+Land,Technology,Backstop,Backstop for Olives production,,,,,EULOLI,,EU,L,BKS,OLI,0,0,0,EULBKSOLI000
+Land,Technology,Backstop,Backstop for Rye production,,,,,EULRYE,,EU,L,BKS,RYE,0,0,0,EULBKSRYE000
+Land,Technology,Backstop,Backstop for Other crops production,,,,,EULOTH,,EU,L,BKS,OTH,0,0,0,EULBKSOTH000

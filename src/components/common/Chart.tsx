@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useRef } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-// Highcharts modules
+// modules
 import * as ExportingNS from "highcharts/modules/exporting";
 import * as ExportDataNS from "highcharts/modules/export-data";
 import * as OfflineExportingNS from "highcharts/modules/offline-exporting";
-// ➤ pattern-fill module for diagonal stripes
 import * as PatternFillNS from "highcharts/modules/pattern-fill";
+import * as DrilldownNS from "highcharts/modules/drilldown";
 
-// init Highcharts modules
 function initHCModule(mod: any) {
   const fn =
     typeof mod === "function"
@@ -20,11 +19,13 @@ function initHCModule(mod: any) {
   if (fn) fn(Highcharts);
 }
 
-initHCModule(ExportingNS);
-initHCModule(ExportDataNS);
-initHCModule(OfflineExportingNS);
-// ➤ register pattern-fill **after** other modules
-initHCModule(PatternFillNS);
+[
+  ExportingNS,
+  ExportDataNS,
+  OfflineExportingNS,
+  PatternFillNS,
+  DrilldownNS,
+].forEach(initHCModule);
 
 export interface ChartProps {
   options: Highcharts.Options;
@@ -37,32 +38,24 @@ export default function Chart({
   yearRange,
   containerStyle,
 }: ChartProps) {
-  // 1) deep‐clone so we don’t mutate props
+  const chartRef = useRef<Highcharts.Chart>();
+
+  // 1) deep‐clone options
   const cfg = JSON.parse(JSON.stringify(options)) as Highcharts.Options;
 
   // 2) normalize xAxis[0]
   let axis0: any = {};
-  if (Array.isArray(cfg.xAxis)) {
-    axis0 = cfg.xAxis[0] || {};
-  } else if (cfg.xAxis && typeof cfg.xAxis === "object") {
-    axis0 = cfg.xAxis;
-  }
+  if (Array.isArray(cfg.xAxis)) axis0 = cfg.xAxis[0] || {};
+  else if (cfg.xAxis && typeof cfg.xAxis === "object") axis0 = cfg.xAxis;
 
-  // 3) extract categories
-  const rawCats: Array<string | number> = Array.isArray(axis0.categories)
-    ? axis0.categories
+  // 3) pull out the top‐level categories (years) and force to strings
+  const topCatsRaw: Array<string | number> = Array.isArray(axis0.categories)
+    ? [...axis0.categories]
     : [];
+  const topCats: string[] = topCatsRaw.map((c) => String(c));
 
-  // 4) convert to numbers
-  const numericCats = rawCats.map((c) =>
-    typeof c === "string" && /^\d+$/.test(c)
-      ? parseInt(c, 10)
-      : typeof c === "number"
-      ? c
-      : NaN
-  );
-
-  // 5) apply yearRange slicing if requested
+  // 4) apply yearRange slicing if provided
+  const numericCats = topCats.map((c) => (/\d+/.test(c) ? +c : NaN));
   if (
     yearRange &&
     numericCats.length > 0 &&
@@ -71,15 +64,12 @@ export default function Chart({
     let [minY, maxY] = yearRange;
     let startIdx = numericCats.findIndex((y) => y >= minY);
     let endIdx = numericCats.findIndex((y) => y > maxY);
-
     if (startIdx < 0) startIdx = 0;
     if (endIdx < 0) endIdx = numericCats.length;
     const sliceEnd = Math.min(endIdx, numericCats.length);
 
     if (sliceEnd > startIdx) {
-      const newCats = rawCats.slice(startIdx, sliceEnd);
-
-      // write back
+      const newCats = topCats.slice(startIdx, sliceEnd);
       if (Array.isArray(cfg.xAxis)) {
         (cfg.xAxis[0] as any).categories = newCats;
         (cfg.xAxis[0] as any).tickInterval = 1;
@@ -90,24 +80,39 @@ export default function Chart({
           tickInterval: 1,
         };
       }
-
-      // slice series data
       if (Array.isArray(cfg.series)) {
         cfg.series = (cfg.series as any[]).map((s) => {
           const dataArr = Array.isArray(s.data) ? s.data : [];
-          const sliced = dataArr.slice(startIdx, sliceEnd);
-          return { ...s, data: sliced };
+          return { ...s, data: dataArr.slice(startIdx, sliceEnd) };
         });
       }
     }
   }
 
-  // 6) merge in exporting + scrollablePlotArea
+  // 5) attach drilldown & drillup so xAxis swaps between years ↔ crop codes
+  cfg.chart = {
+    ...(cfg.chart || {}),
+    events: {
+      ...(cfg.chart as any).events,
+      drilldown(e: any) {
+        // e.seriesOptions.data = [ [cropCode, value], … ]
+        const codes: string[] = (e.seriesOptions.data as any[]).map((pt) =>
+          String(pt.name)
+        );
+        this.xAxis[0].setCategories(codes, false);
+        this.redraw();
+      },
+      drillup() {
+        this.xAxis[0].setCategories(topCats, false);
+        this.redraw();
+      },
+    },
+  };
+
+  // 6) merge exporting & scrollablePlotArea
   const mergedOptions: Highcharts.Options = {
     ...cfg,
-    tooltip: {
-      valueDecimals: 2,
-    },
+    tooltip: { valueDecimals: 2 },
     chart: {
       ...(cfg.chart || {}),
       height: undefined,
@@ -116,7 +121,6 @@ export default function Chart({
         minWidth: 1200,
         scrollPositionX: 0,
       },
-      events: { ...(cfg.chart?.events || {}) },
     },
     exporting: {
       ...(cfg.exporting || {}),
@@ -144,6 +148,9 @@ export default function Chart({
     <HighchartsReact
       highcharts={Highcharts}
       options={mergedOptions}
+      callback={(chart) => {
+        chartRef.current = chart;
+      }}
       containerProps={{
         style: {
           width: "100%",

@@ -452,3 +452,75 @@ export async function annotateTechSeries(rawSeries, typeColIncluded = false) {
     };
   });
 }
+
+export function annotateLandCropSeries(rawSeries) {
+  const techFriendly = {
+    EUL000BAR000: "Potential for Barren Land",
+    EUL000BLT000: "Potential for built-up land",
+    EUL000FOR000: "Potential for Tree Cover",
+    EUL000GRS000: "Potential for Grass land",
+    EUL000WAT000: "Potential for water bodies",
+  };
+
+  const techColor = {
+    EUL000BAR000: "#8B4513", // saddle brown
+    EUL000BLT000: "#808080", // gray
+    EUL000FOR000: "#228B22", // forest green
+    EUL000GRS000: "#7CFC00", // lawn green
+    EUL000WAT000: "#1E90FF", // dodger blue
+  };
+
+  const cropFriendly = {
+    BRL: "Barley",
+    GRA: "Grapes",
+    MAI: "Maize",
+    OAT: "Oats",
+    OLI: "Olives",
+    OTH: "Other crops",
+    RAP: "Rapeseed",
+    RYE: "Rye",
+    SUN: "Sunflower",
+    WHE: "Wheat",
+  };
+
+  const cropColor = {
+    BRL: "#DAA520", // goldenrod
+    GRA: "#800080", // purple
+    MAI: "#FFA500", // orange
+    OAT: "#DEB887", // burlywood
+    OLI: "#808000", // olive
+    OTH: "#A9A9A9", // darkgray
+    RAP: "#FFFF00", // yellow
+    RYE: "#D2B48C", // tan
+    SUN: "#FFD700", // gold
+    WHE: "#F5DEB3", // wheat
+  };
+
+  return rawSeries.map((s) => {
+    // pull off any " (Existing)" / " (New)" suffix
+    const m = s.name.match(/^(.+?)(\s\((Existing|New)\))?$/);
+    const code = m?.[1] || s.name;
+    const suffix = m?.[2] || "";
+
+    let friendly, color;
+
+    if (techFriendly[code]) {
+      // it’s one of the land-potential techs
+      friendly = techFriendly[code];
+      color = techColor[code];
+    } else if (cropFriendly[code]) {
+      // it’s one of the crop codes
+      friendly = cropFriendly[code];
+      color = cropColor[code];
+    } else {
+      // leave anything else untouched
+      return s;
+    }
+
+    return {
+      ...s,
+      name: friendly + suffix,
+      color,
+    };
+  });
+}

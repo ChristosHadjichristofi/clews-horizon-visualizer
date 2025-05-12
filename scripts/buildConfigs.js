@@ -6,6 +6,7 @@ import { buildTransportModules } from "./transport/index.js";
 import { buildBuildingsModules } from "./buildings/index.js";
 import { buildIndustryModules } from "./industry/index.js";
 import { buildOverArchingModules } from "./overarching/index.js";
+import { buildLandModules } from "./land/index.js";
 
 async function copyDirectory(srcDir, destDir) {
   await fs.rm(destDir, { recursive: true, force: true });
@@ -34,6 +35,12 @@ async function exportExcelSheets(dataSrc) {
 
   exportSheetToCsv(
     path.join(dataSrc, "xlsx", "euclews_elw_20240628.xlsx"),
+    "OutputActivityRatio",
+    path.join(dataSrc, "csv", "exported", "OutputActivityRatio.csv")
+  );
+
+  exportSheetToCsv(
+    path.join(dataSrc, "xlsx", "euclews_elw_20240628.xlsx"),
     "VariableCost",
     path.join(dataSrc, "csv", "exported", "VariableCost.csv")
   );
@@ -55,6 +62,12 @@ async function exportExcelSheets(dataSrc) {
     "Energy Module",
     path.join(dataSrc, "csv", "exported", "EnergyModule_Tech_List.csv")
   );
+
+  exportSheetToCsv(
+    path.join(dataSrc, "xlsx", "Technology_List_Land.xlsx"),
+    "Sheet1",
+    path.join(dataSrc, "csv", "exported", "LandModule_Tech_List.csv")
+  );
 }
 
 async function main() {
@@ -67,11 +80,12 @@ async function main() {
   console.log("Excel sheets exported to CSV");
 
   // Build the modules
-  await buildEnergyModules();
-  await buildTransportModules();
-  await buildBuildingsModules();
-  await buildIndustryModules();
-  await buildOverArchingModules();
+  // await buildEnergyModules();
+  // await buildTransportModules();
+  // await buildBuildingsModules();
+  // await buildIndustryModules();
+  // await buildOverArchingModules();
+  await buildLandModules();
   console.log("All modules built");
   // End of modules building
 

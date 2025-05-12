@@ -1,47 +1,46 @@
 import React from "react";
+import { useGlobalControls } from "@/contexts/GlobalControlsContext";
 import ChartCard from "@/components/common/ChartCard";
 import ChartPlaceholder from "@/components/common/ChartPlaceholder";
+import Chart from "@/components/common/Chart";
+import chartInfo from "@/data/chartConfigs/Land/chartInfo.json";
+import { configs } from "@/data/chartConfigs/Land";
+import type { Options } from "highcharts";
 
-const landCoverTypes = [
-  { id: "cropland", label: "Cropland" },
-  { id: "grassland", label: "Grassland" },
-  { id: "forest", label: "Forest" },
-  { id: "wetlands", label: "Wetlands" },
-  { id: "settlements", label: "Settlements" },
-  { id: "other-land", label: "Other Land" },
-];
+const Land: React.FC = () => {
+  const { yearRange } = useGlobalControls();
 
-const cropTypes = [
-  { id: "cereals", label: "Cereals" },
-  { id: "oilseeds", label: "Oilseeds" },
-  { id: "pulses", label: "Pulses" },
-  { id: "roots-tubers", label: "Roots & Tubers" },
-  { id: "fruits-vegetables", label: "Fruits & Vegetables" },
-  { id: "forage", label: "Forage" },
-  { id: "bioenergy", label: "Bioenergy Crops" },
-];
-
-const Land = () => {
   return (
     <div className="container mx-auto py-6">
       <h1 className="text-2xl font-bold mb-6">Land Module</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-        <ChartCard title="Land Cover Distribution">
-          <ChartPlaceholder title="Stacked Area: Land Cover" />
-        </ChartCard>
+        {chartInfo.cards.map((card: any) => {
+          const cfgKey = card.key as keyof typeof configs;
+          const cfg = configs[cfgKey];
+          const spanClass = card.colSpan === 2 ? "md:col-span-2" : "";
 
-        <ChartCard title="Agricultural Land by Crop Type">
-          <ChartPlaceholder title="Stacked Area: Crop Distribution" />
-        </ChartCard>
-
-        <ChartCard title="Agricultural Inputs">
-          <ChartPlaceholder title="Multi-series Line: Agricultural Inputs" />
-        </ChartCard>
-
-        <ChartCard title="Land-use GHG Emissions">
-          <ChartPlaceholder title="Stacked Area: Land Emissions" />
-        </ChartCard>
+          return (
+            <ChartCard
+              key={cfgKey}
+              title={card.title}
+              subtitle={card.subtitle}
+              className={spanClass}
+            >
+              {cfg ? (
+                <Chart
+                  options={cfg as unknown as Options}
+                  yearRange={yearRange}
+                />
+              ) : (
+                <ChartPlaceholder
+                  title={card.title}
+                  chartType={card.chartType}
+                />
+              )}
+            </ChartCard>
+          );
+        })}
       </div>
     </div>
   );

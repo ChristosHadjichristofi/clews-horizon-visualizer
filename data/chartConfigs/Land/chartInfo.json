@@ -1,0 +1,70 @@
+{
+  "cards": [
+    {
+      "key": "land-use-area-by-category",
+      "configFile": "land-use-area-by-category.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "land-crop-area-by-type",
+      "configFile": "land-crop-area-by-type.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "land-crop-area-by-water",
+      "configFile": "land-crop-area-by-water.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "land-crop-area-by-input",
+      "configFile": "land-crop-area-by-input.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "land-crop-combined-yield",
+      "configFile": "land-crop-combined-yield.config.json",
+      "chartType": "line",
+      "colSpan": 2
+    },
+    {
+      "key": "land-use-emissions",
+      "configFile": "land-use-emissions.config.json",
+      "chartType": "line",
+      "colSpan": 2
+    },
+    {
+      "key": "land-energy-use-by-cover",
+      "configFile": "land-energy-use-by-cover.config.json",
+      "chartType": "line",
+      "colSpan": 2
+    },
+    {
+      "key": "forest-biomass-production",
+      "configFile": "forest-biomass-production.config.json",
+      "chartType": "line",
+      "colSpan": 2
+    },
+    {
+      "key": "land-crop-production-by-code",
+      "configFile": "land-crop-production-by-code.config.json",
+      "chartType": "line",
+      "colSpan": 2
+    },
+    {
+      "key": "crop-imports-by-code",
+      "configFile": "crop-imports-by-code.config.json",
+      "chartType": "line",
+      "colSpan": 2
+    },
+    {
+      "key": "crop-exports-by-code",
+      "configFile": "crop-exports-by-code.config.json",
+      "chartType": "line",
+      "colSpan": 2
+    }
+  ]
+}

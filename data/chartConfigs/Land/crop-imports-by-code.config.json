@@ -1,0 +1,3376 @@
+{
+  "chart": {
+    "type": "column"
+  },
+  "title": {
+    "text": "Crop Imports by Crop Type"
+  },
+  "xAxis": {
+    "categories": [
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025",
+      "2026",
+      "2027",
+      "2028",
+      "2029",
+      "2030",
+      "2031",
+      "2032",
+      "2033",
+      "2034",
+      "2035",
+      "2036",
+      "2037",
+      "2038",
+      "2039",
+      "2040",
+      "2041",
+      "2042",
+      "2043",
+      "2044",
+      "2045",
+      "2046",
+      "2047",
+      "2048",
+      "2049",
+      "2050",
+      "2051",
+      "2052",
+      "2053",
+      "2054",
+      "2055",
+      "2056",
+      "2057",
+      "2058",
+      "2059",
+      "2060",
+      "2061",
+      "2062",
+      "2063",
+      "2064",
+      "2065",
+      "2066",
+      "2067",
+      "2068",
+      "2069",
+      "2070"
+    ],
+    "title": {
+      "text": "Year"
+    },
+    "type": "category",
+    "tickInterval": 1
+  },
+  "yAxis": {
+    "title": {
+      "text": "Value (imports) (kt)"
+    }
+  },
+  "series": [
+    {
+      "name": "Imports",
+      "color": "#7cb5ec",
+      "data": [
+        {
+          "name": "2018",
+          "y": 11.053,
+          "drilldown": "imports-2018"
+        },
+        {
+          "name": "2019",
+          "y": 11.053,
+          "drilldown": "imports-2019"
+        },
+        {
+          "name": "2020",
+          "y": 11.053,
+          "drilldown": "imports-2020"
+        },
+        {
+          "name": "2021",
+          "y": 11.053,
+          "drilldown": "imports-2021"
+        },
+        {
+          "name": "2022",
+          "y": 11.053,
+          "drilldown": "imports-2022"
+        },
+        {
+          "name": "2023",
+          "y": 11.053,
+          "drilldown": "imports-2023"
+        },
+        {
+          "name": "2024",
+          "y": 11.053,
+          "drilldown": "imports-2024"
+        },
+        {
+          "name": "2025",
+          "y": 11.053,
+          "drilldown": "imports-2025"
+        },
+        {
+          "name": "2026",
+          "y": 11.053,
+          "drilldown": "imports-2026"
+        },
+        {
+          "name": "2027",
+          "y": 11.053,
+          "drilldown": "imports-2027"
+        },
+        {
+          "name": "2028",
+          "y": 11.053,
+          "drilldown": "imports-2028"
+        },
+        {
+          "name": "2029",
+          "y": 11.053,
+          "drilldown": "imports-2029"
+        },
+        {
+          "name": "2030",
+          "y": 11.053,
+          "drilldown": "imports-2030"
+        },
+        {
+          "name": "2031",
+          "y": 11.053,
+          "drilldown": "imports-2031"
+        },
+        {
+          "name": "2032",
+          "y": 11.053,
+          "drilldown": "imports-2032"
+        },
+        {
+          "name": "2033",
+          "y": 11.053,
+          "drilldown": "imports-2033"
+        },
+        {
+          "name": "2034",
+          "y": 11.053,
+          "drilldown": "imports-2034"
+        },
+        {
+          "name": "2035",
+          "y": 11.053,
+          "drilldown": "imports-2035"
+        },
+        {
+          "name": "2036",
+          "y": 11.053,
+          "drilldown": "imports-2036"
+        },
+        {
+          "name": "2037",
+          "y": 11.053,
+          "drilldown": "imports-2037"
+        },
+        {
+          "name": "2038",
+          "y": 11.053,
+          "drilldown": "imports-2038"
+        },
+        {
+          "name": "2039",
+          "y": 11.053,
+          "drilldown": "imports-2039"
+        },
+        {
+          "name": "2040",
+          "y": 11.053,
+          "drilldown": "imports-2040"
+        },
+        {
+          "name": "2041",
+          "y": 11.053,
+          "drilldown": "imports-2041"
+        },
+        {
+          "name": "2042",
+          "y": 11.053,
+          "drilldown": "imports-2042"
+        },
+        {
+          "name": "2043",
+          "y": 11.053,
+          "drilldown": "imports-2043"
+        },
+        {
+          "name": "2044",
+          "y": 11.053,
+          "drilldown": "imports-2044"
+        },
+        {
+          "name": "2045",
+          "y": 11.053,
+          "drilldown": "imports-2045"
+        },
+        {
+          "name": "2046",
+          "y": 11.053,
+          "drilldown": "imports-2046"
+        },
+        {
+          "name": "2047",
+          "y": 11.053,
+          "drilldown": "imports-2047"
+        },
+        {
+          "name": "2048",
+          "y": 11.053,
+          "drilldown": "imports-2048"
+        },
+        {
+          "name": "2049",
+          "y": 11.053,
+          "drilldown": "imports-2049"
+        },
+        {
+          "name": "2050",
+          "y": 11.053,
+          "drilldown": "imports-2050"
+        },
+        {
+          "name": "2051",
+          "y": 11.053,
+          "drilldown": "imports-2051"
+        },
+        {
+          "name": "2052",
+          "y": 11.053,
+          "drilldown": "imports-2052"
+        },
+        {
+          "name": "2053",
+          "y": 11.053,
+          "drilldown": "imports-2053"
+        },
+        {
+          "name": "2054",
+          "y": 11.053,
+          "drilldown": "imports-2054"
+        },
+        {
+          "name": "2055",
+          "y": 11.053,
+          "drilldown": "imports-2055"
+        },
+        {
+          "name": "2056",
+          "y": 11.053,
+          "drilldown": "imports-2056"
+        },
+        {
+          "name": "2057",
+          "y": 11.053,
+          "drilldown": "imports-2057"
+        },
+        {
+          "name": "2058",
+          "y": 11.052999999999999,
+          "drilldown": "imports-2058"
+        },
+        {
+          "name": "2059",
+          "y": 11.053,
+          "drilldown": "imports-2059"
+        },
+        {
+          "name": "2060",
+          "y": 11.053,
+          "drilldown": "imports-2060"
+        },
+        {
+          "name": "2061",
+          "y": 11.053,
+          "drilldown": "imports-2061"
+        },
+        {
+          "name": "2062",
+          "y": 11.053,
+          "drilldown": "imports-2062"
+        },
+        {
+          "name": "2063",
+          "y": 11.053,
+          "drilldown": "imports-2063"
+        },
+        {
+          "name": "2064",
+          "y": 11.053,
+          "drilldown": "imports-2064"
+        },
+        {
+          "name": "2065",
+          "y": 11.053,
+          "drilldown": "imports-2065"
+        },
+        {
+          "name": "2066",
+          "y": 11.053,
+          "drilldown": "imports-2066"
+        },
+        {
+          "name": "2067",
+          "y": 11.053,
+          "drilldown": "imports-2067"
+        },
+        {
+          "name": "2068",
+          "y": 11.053,
+          "drilldown": "imports-2068"
+        },
+        {
+          "name": "2069",
+          "y": 11.053,
+          "drilldown": "imports-2069"
+        },
+        {
+          "name": "2070",
+          "y": 11.053,
+          "drilldown": "imports-2070"
+        }
+      ]
+    }
+  ],
+  "subtitle": {
+    "text": "Imports aggregated by year; click for breakdown"
+  },
+  "drilldown": {
+    "series": [
+      {
+        "id": "imports-2018",
+        "name": "Imports 2018",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999918,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2019",
+        "name": "Imports 2019",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2020",
+        "name": "Imports 2020",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.2540000000000004,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2021",
+        "name": "Imports 2021",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2700000000000001,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.2540000000000004,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.417999999999999,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2022",
+        "name": "Imports 2022",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.10999999999999997,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999997,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2023",
+        "name": "Imports 2023",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2700000000000001,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.2540000000000004,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.417999999999999,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2024",
+        "name": "Imports 2024",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2700000000000001,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.2540000000000004,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.417999999999999,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2025",
+        "name": "Imports 2025",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2026",
+        "name": "Imports 2026",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2700000000000001,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.2540000000000004,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.417999999999999,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2027",
+        "name": "Imports 2027",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11000000000000001,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.253999999999999,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999992,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418000000000001,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2028",
+        "name": "Imports 2028",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2700000000000001,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.2540000000000004,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.417999999999999,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2029",
+        "name": "Imports 2029",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2030",
+        "name": "Imports 2030",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2031",
+        "name": "Imports 2031",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11000000000000001,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.253999999999999,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999992,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418000000000001,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2032",
+        "name": "Imports 2032",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2033",
+        "name": "Imports 2033",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.10999999999999997,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2034",
+        "name": "Imports 2034",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2700000000000001,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999987,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2035",
+        "name": "Imports 2035",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2036",
+        "name": "Imports 2036",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.10999999999999997,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2037",
+        "name": "Imports 2037",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2700000000000001,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999987,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2038",
+        "name": "Imports 2038",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2700000000000001,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.2540000000000004,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.417999999999999,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2039",
+        "name": "Imports 2039",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2700000000000001,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999987,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2040",
+        "name": "Imports 2040",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2700000000000001,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999963,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2041",
+        "name": "Imports 2041",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2699999999999999,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.10999999999999999,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999985,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2042",
+        "name": "Imports 2042",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.10999999999999997,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2043",
+        "name": "Imports 2043",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2700000000000001,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999963,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2044",
+        "name": "Imports 2044",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.10999999999999997,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2045",
+        "name": "Imports 2045",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.10999999999999997,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999997,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2046",
+        "name": "Imports 2046",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.10999999999999997,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2047",
+        "name": "Imports 2047",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2700000000000001,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999963,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2048",
+        "name": "Imports 2048",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999985,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2049",
+        "name": "Imports 2049",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2699999999999999,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.10999999999999999,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999985,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2050",
+        "name": "Imports 2050",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2699999999999999,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.10999999999999999,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999985,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2051",
+        "name": "Imports 2051",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999985,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2052",
+        "name": "Imports 2052",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999918,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2053",
+        "name": "Imports 2053",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999985,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2054",
+        "name": "Imports 2054",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2700000000000001,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999963,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2055",
+        "name": "Imports 2055",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2056",
+        "name": "Imports 2056",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2700000000000001,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999963,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2057",
+        "name": "Imports 2057",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2700000000000001,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.2540000000000004,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.417999999999999,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2058",
+        "name": "Imports 2058",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2700000000000001,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.253999999999999,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999974,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2059",
+        "name": "Imports 2059",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999918,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2060",
+        "name": "Imports 2060",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999918,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2061",
+        "name": "Imports 2061",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999918,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2062",
+        "name": "Imports 2062",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2699999999999999,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.10999999999999999,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999985,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2063",
+        "name": "Imports 2063",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2699999999999999,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.10999999999999999,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999985,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2064",
+        "name": "Imports 2064",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999918,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2065",
+        "name": "Imports 2065",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2699999999999999,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.10999999999999999,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999985,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2066",
+        "name": "Imports 2066",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2700000000000001,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.0009999999999999987,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2067",
+        "name": "Imports 2067",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2700000000000001,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.2540000000000004,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.417999999999999,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2068",
+        "name": "Imports 2068",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2069",
+        "name": "Imports 2069",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.27,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.254,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.418,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      },
+      {
+        "id": "imports-2070",
+        "name": "Imports 2070",
+        "type": "column",
+        "data": [
+          {
+            "name": "Barley",
+            "y": 0,
+            "color": "#DAA520"
+          },
+          {
+            "name": "Grapes",
+            "y": 0.2700000000000001,
+            "color": "#800080"
+          },
+          {
+            "name": "Maize",
+            "y": 0,
+            "color": "#FFA500"
+          },
+          {
+            "name": "Oats",
+            "y": 0.11,
+            "color": "#DEB887"
+          },
+          {
+            "name": "Olives",
+            "y": 0,
+            "color": "#808000"
+          },
+          {
+            "name": "Other crops",
+            "y": 0,
+            "color": "#A9A9A9"
+          },
+          {
+            "name": "Rapeseed",
+            "y": 5.2540000000000004,
+            "color": "#FFFF00"
+          },
+          {
+            "name": "Rye",
+            "y": 0.000999999999999998,
+            "color": "#D2B48C"
+          },
+          {
+            "name": "Sunflower",
+            "y": 5.417999999999999,
+            "color": "#FFD700"
+          },
+          {
+            "name": "Wheat",
+            "y": 0,
+            "color": "#F5DEB3"
+          }
+        ]
+      }
+    ]
+  }
+}
