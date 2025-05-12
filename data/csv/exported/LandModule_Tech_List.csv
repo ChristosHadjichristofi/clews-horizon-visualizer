@@ -2,7 +2,7 @@ Module,classifier,Type,Technology/Commodity Description,Old Naming,Input commodi
 Land,Technology,Resource,Main Land resource ,,,,Land inside the EU,EU0LND,,EU,L,000,MIN,0,0,0,EUL000MIN000
 Land,Technology,Crop Imports,MAI,,,-,,IMCMAI,,EU,L,IMP,MAI,0,0,0,EULIMPMAI000
 Land,Technology,Crop Imports,WHE,,,-,,IMCWHE,,EU,L,IMP,WHE,0,0,0,EULIMPWHE000
-Land,Technology,Crop Imports,BRL,,,-,,IMCBAR,,EU,L,IMP,BRL,0,0,0,EULIMPBRL000
+Land,Technology,Crop Imports,BRL,,,-,,IMCBRL,,EU,L,IMP,BRL,0,0,0,EULIMPBRL000
 Land,Technology,Crop Imports,SUN,,,-,,IMCSUN,,EU,L,IMP,SUN,0,0,0,EULIMPSUN000
 Land,Technology,Crop Imports,RAP,,,-,,IMCRAP,,EU,L,IMP,RAP,0,0,0,EULIMPRAP000
 Land,Technology,Crop Imports,GRA,,,-,,IMCGRA,,EU,L,IMP,GRA,0,0,0,EULIMPGRA000
@@ -13,7 +13,7 @@ Land,Technology,Crop Imports,POT,,,-,,IMCOTP,,EU,L,IMP,POT,0,0,0,EULIMPPOT000
 Land,Technology,Crop Imports,OTH,,,-,,IMCOTH,,EU,L,IMP,OTH,0,0,0,EULIMPOTH000
 Land,Technology,Crop Exports,MAI,,,EULMAI,,EXCMAI,,EU,L,EXP,MAI,0,0,0,EULEXPMAI000
 Land,Technology,Crop Exports,WHE,,,EULWHE,,EXCWHE,,EU,L,EXP,WHE,0,0,0,EULEXPWHE000
-Land,Technology,Crop Exports,BRL,,,EULBAR,,EXCBAR,,EU,L,EXP,BRL,0,0,0,EULEXPBRL000
+Land,Technology,Crop Exports,BRL,,,EULBAR,,EXCBRL,,EU,L,EXP,BRL,0,0,0,EULEXPBRL000
 Land,Technology,Crop Exports,SUN,,,EULSUN,,EXCSUN,,EU,L,EXP,SUN,0,0,0,EULEXPSUN000
 Land,Technology,Crop Exports,RAP,,,EULRAP,,EXCRAP,,EU,L,EXP,RAP,0,0,0,EULEXPRAP000
 Land,Technology,Crop Exports,GRA,,,EULGRA,,EXCGRA,,EU,L,EXP,GRA,0,0,0,EULEXPGRA000
@@ -35,7 +35,7 @@ Land,Technology,Land potential for crops,Potential for rainfed Potatoe cultivati
 Land,Technology,Land potential for crops,Potential for rainfed other crop cultivation  high input,,,EULCRP,,EULOTH,,EU,L,000,OTH,H,R,0,EUL000OTHHR0
 Land,Technology,Land potential for crops,Potential for irrigated maize cultivation  high input,,,EULCRP,,EULMAI,,EU,L,000,MAI,H,I,0,EUL000MAIHI0
 Land,Technology,Land potential for crops,Potential for irrigated wheat cultivation  high input,,,EULCRP,,EULWHE,,EU,L,000,WHE,H,I,0,EUL000WHEHI0
-Land,Technology,Land potential for crops,Potential for irrigated barley cultivation  high input,,,EULCRP,,EULBAR,,EU,L,000,BRL,H,I,0,EUL000BRLHI0
+Land,Technology,Land potential for crops,Potential for irrigated barley cultivation  high input,,,EULCRP,,EULBRL,,EU,L,000,BRL,H,I,0,EUL000BRLHI0
 Land,Technology,Land potential for crops,Potential for irrigated sunflower seed cultivation  high input,,,EULCRP,,EULSUN,,EU,L,000,SUN,H,I,0,EUL000SUNHI0
 Land,Technology,Land potential for crops,Potential for irrigated rape/cazola cultivation  high input,,,EULCRP,,EULRAP,,EU,L,000,RAP,H,I,0,EUL000RAPHI0
 Land,Technology,Land potential for crops,Potential for irrigated Grapes cultivation  high input,,,EULCRP,,EULGRA,,EU,L,000,GRA,H,I,0,EUL000GRAHI0
@@ -57,7 +57,7 @@ Land,Technology,Land potential for crops,Potential for rainfed Potatoe cultivati
 Land,Technology,Land potential for crops,Potential for rainfed other crop cultivation  high input,,,EULCRP,,EULOTH,,EU,L,000,OTH,L,R,0,EUL000OTHLR0
 Land,Technology,Land potential for crops,Potential for irrigated maize cultivation  high input,,,EULCRP,,EULMAI,,EU,L,000,MAI,L,I,0,EUL000MAILI0
 Land,Technology,Land potential for crops,Potential for irrigated wheat cultivation  high input,,,EULCRP,,EULWHE,,EU,L,000,WHE,L,I,0,EUL000WHELI0
-Land,Technology,Land potential for crops,Potential for irrigated barley cultivation  high input,,,EULCRP,,EULBAR,,EU,L,000,BRL,L,I,0,EUL000BRLLI0
+Land,Technology,Land potential for crops,Potential for irrigated barley cultivation  high input,,,EULCRP,,EULBRL,,EU,L,000,BRL,L,I,0,EUL000BRLLI0
 Land,Technology,Land potential for crops,Potential for irrigated sunflower seed cultivation  high input,,,EULCRP,,EULSUN,,EU,L,000,SUN,L,I,0,EUL000SUNLI0
 Land,Technology,Land potential for crops,Potential for irrigated rape/cazola cultivation  high input,,,EULCRP,,EULRAP,,EU,L,000,RAP,L,I,0,EUL000RAPLI0
 Land,Technology,Land potential for crops,Potential for irrigated Grapes cultivation  high input,,,EULCRP,,EULGRA,,EU,L,000,GRA,L,I,0,EUL000GRALI0

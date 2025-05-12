@@ -82,7 +82,7 @@ export async function buildEnergyUseByLandCoverCharts() {
   // 6) build series & write config
   const series = [
     {
-      name: "Energy use",
+      name: "Diesel",
       type: "column",
       data: allYears.map((y) => energyByYear[y] || 0),
     },

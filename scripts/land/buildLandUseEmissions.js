@@ -1,12 +1,23 @@
 // scripts/buildLandUseEmissionsCharts.js
 
-import { parseCsv, loadTemplate } from "../utils/general.js";
+import {
+  parseCsv,
+  loadTemplate,
+  annotateLandCropSeries,
+} from "../utils/general.js";
 import path from "path";
 import fs from "fs/promises";
 import merge from "lodash.merge";
 
 const CSV_DIR = path.resolve(process.cwd(), "data/csv");
 const OUT_DIR = path.resolve(process.cwd(), "data/chartConfigs", "Land");
+
+// 1) GWP factors for each gas
+const GWP = {
+  EUCO2: 1,
+  EUCH4: 28,
+  EUN2O: 265,
+};
 
 async function loadCsvs() {
   const [landListRows, prodRows, inputActRows, outputActRows, emActRows] =
@@ -25,19 +36,82 @@ export async function buildLandUseEmissionsCharts() {
   const { landListRows, prodRows, inputActRows, outputActRows, emActRows } =
     await loadCsvs();
 
-  // 1) pick out the "Land potential for crops" techs
-  const pairs = landListRows
-    .filter(
-      (r) =>
-        r.classifier === "Technology" && r.Type === "Land potential for crops"
-    )
+  //
+  // 2) BUILD AREA BY CATEGORY
+  //
+  const valid = new Set(["Land Cover", "Land Use"]);
+  const categoryPairs = landListRows
+    .filter((r) => valid.has(r.Type))
     .map((r) => ({
+      fuel: r["Output Name"],
       tech: r.Name,
-      code: r.Name.slice(6, 9),
     }));
 
-  // 2) pivot InputActivityRatio for FUEL="EULADSL"
-  const inputMap = {};
+  const areaByCategory = {};
+  for (const { FUEL, TECHNOLOGY, YEAR, VALUE } of prodRows) {
+    if (!categoryPairs.find((p) => p.fuel === FUEL && p.tech === TECHNOLOGY))
+      continue;
+    areaByCategory[TECHNOLOGY] ??= {};
+    areaByCategory[TECHNOLOGY][YEAR] =
+      (areaByCategory[TECHNOLOGY][YEAR] || 0) + Number(VALUE);
+  }
+
+  //
+  // 3) PIVOT EMISSION FACTORS PER CATEGORY
+  //
+  const emissionsFactor = {};
+  for (const tech of Object.keys(areaByCategory)) {
+    const rows = emActRows.filter(
+      (r) =>
+        r.TECHNOLOGY === tech &&
+        (r.EMISSION === "EUCO2" ||
+          r.EMISSION === "EUCH4" ||
+          r.EMISSION === "EUN2O")
+    );
+    const byYear = {};
+    for (const row of rows) {
+      const factor = GWP[row.EMISSION];
+      for (const [k, v] of Object.entries(row)) {
+        if (/^\d{4}$/.test(k)) {
+          const y = Number(k);
+          byYear[y] = (byYear[y] || 0) + Number(v) * factor;
+        }
+      }
+    }
+    emissionsFactor[tech] = byYear;
+  }
+
+  //
+  // 4) COMPUTE FULL YEAR AXIS
+  //
+  const allYears = Array.from(
+    new Set([
+      ...Object.values(areaByCategory).flatMap((m) =>
+        Object.keys(m).map(Number)
+      ),
+      ...Object.values(emissionsFactor).flatMap((m) =>
+        Object.keys(m).map(Number)
+      ),
+    ])
+  ).sort((a, b) => a - b);
+
+  //
+  // 5a) BUILD EMISSIONS SERIES ONLY
+  //
+  const series = Object.entries(areaByCategory).map(([tech, byArea]) => ({
+    name: tech,
+    type: "column",
+    data: allYears.map(
+      (y) => (byArea[y] || 0) * (emissionsFactor[tech][y] || 0)
+    ),
+  }));
+
+  //
+  // 5b) APPEND “Agriculture Emissions” BAR FROM EUEPSDSL0000
+  //
+  // 5b-i) pivot input/output for these same techs
+  const inputMap = {},
+    outputMap = {};
   inputActRows
     .filter((r) => r.FUEL === "EULADSL")
     .forEach((r) => {
@@ -46,9 +120,6 @@ export async function buildLandUseEmissionsCharts() {
         if (/^\d{4}$/.test(k)) inputMap[r.TECHNOLOGY][k] = Number(v);
       });
     });
-
-  // 3) pivot OutputActivityRatio
-  const outputMap = {};
   outputActRows.forEach((r) => {
     outputMap[r.TECHNOLOGY] ??= {};
     Object.entries(r).forEach(([k, v]) => {
@@ -56,74 +127,65 @@ export async function buildLandUseEmissionsCharts() {
     });
   });
 
-  // 4) pivot EmissionActivityRatio
-  const emMap = {};
-  emActRows.forEach((r) => {
-    emMap[r.TECHNOLOGY] ??= {};
-    Object.entries(r).forEach(([k, v]) => {
-      if (/^\d{4}$/.test(k)) emMap[r.TECHNOLOGY][k] = Number(v);
-    });
+  // 5b-ii) get EUEPSDSL0000 CO2/CH4/N2O rows and build one total‐factor by year
+  const factorRows = emActRows.filter(
+    (r) =>
+      r.TECHNOLOGY === "EUEPSDSL0000" &&
+      (r.EMISSION === "EUCO2" ||
+        r.EMISSION === "EUCH4" ||
+        r.EMISSION === "EUN2O")
+  );
+  const totalFactor = {};
+  for (const row of factorRows) {
+    const f = GWP[row.EMISSION];
+    for (const [k, v] of Object.entries(row)) {
+      if (/^\d{4}$/.test(k)) {
+        const y = Number(k);
+        totalFactor[y] = (totalFactor[y] || 0) + Number(v) * f;
+      }
+    }
+  }
+
+  // 5b-iii) compute “Agriculture Emissions” = area × that totalFactor
+  const agEmissions = {};
+  for (const { TECHNOLOGY, YEAR, VALUE } of prodRows) {
+    // same cropTechs as before (Land potential for crops)
+    if (
+      landListRows.some(
+        (r) =>
+          r.classifier === "Technology" &&
+          r.Type === "Land potential for crops" &&
+          r.Name === TECHNOLOGY
+      )
+    ) {
+      agEmissions[YEAR] =
+        (agEmissions[YEAR] || 0) + Number(VALUE) * (totalFactor[YEAR] || 0);
+    }
+  }
+
+  series.push({
+    name: "Agriculture Emissions",
+    type: "column",
+    data: allYears.map((y) => agEmissions[y] || 0),
   });
 
-  // 5) compute
-  const emissionsByTechYear = {};
-  let matchCount = 0;
-  prodRows
-    .filter((r) =>
-      pairs.some((p) => r.TECHNOLOGY === p.tech && r.FUEL.slice(-3) === p.code)
-    )
-    .forEach((r) => {
-      const tech = r.TECHNOLOGY;
-      const year = String(r.YEAR);
-      const prod = Number(r.VALUE);
-      const inp = inputMap[tech]?.[year] ?? 0;
-      const outp = outputMap[tech]?.[year] ?? 1;
-      const efact = emMap[tech]?.[year] ?? 0;
+  // friendly labels & colors
+  const annotated = annotateLandCropSeries(series);
 
-      const energy = (prod * inp) / outp;
-      const emissions = energy * efact;
-
-      matchCount++;
-      emissionsByTechYear[tech] ??= {};
-      emissionsByTechYear[tech][year] =
-        (emissionsByTechYear[tech][year] || 0) + emissions;
-    });
-
-  // 6) aggregate total emissions per year
-  const totalEmissionsByYear = {};
-  Object.values(emissionsByTechYear).forEach((yearMap) =>
-    Object.entries(yearMap).forEach(([year, val]) => {
-      totalEmissionsByYear[year] = (totalEmissionsByYear[year] || 0) + val;
-    })
-  );
-
-  // 7) sort years
-  const allYears = Object.keys(totalEmissionsByYear)
-    .map(Number)
-    .sort((a, b) => a - b);
-
-  // 8) build config
-  const tpl = await loadTemplate("line");
-  const series = [
-    {
-      name: "Land Use Emissions",
-      type: "line",
-      data: allYears.map((y) => totalEmissionsByYear[y] || 0),
-      marker: { enabled: true },
-    },
-  ];
-  const config = merge({}, tpl, {
-    title: { text: "Annual Land Use GHG Emissions" },
+  //
+  // 6) WRITE OUT STACKED‐BAR
+  //
+  const tpl = await loadTemplate("stackedBar");
+  const cfg = merge({}, tpl, {
+    chart: { type: "column" },
+    plotOptions: { column: { stacking: "normal" } },
+    title: { text: "Annual Land Use GHG Emissions by Category" },
     xAxis: { categories: allYears, title: { text: "Year" } },
-    yAxis: { title: { text: "Emissions (MtCO₂-eq)" } },
-    series,
+    yAxis: { title: { text: "Emissions (Mt CO₂-eq)" } },
+    series: annotated,
   });
 
-  // 9) write out
-  const fileName = "land-use-emissions.config.json";
-  await fs.writeFile(
-    path.join(OUT_DIR, fileName),
-    JSON.stringify(config, null, 2)
-  );
-  console.log("Wrote", fileName);
+  const outFile = path.join(OUT_DIR, "land-use-emissions.config.json");
+  await fs.writeFile(outFile, JSON.stringify(cfg, null, 2));
+  console.log("Wrote", outFile);
 }

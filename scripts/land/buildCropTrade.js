@@ -20,6 +20,7 @@ async function loadCsvs() {
 
 const friendlyName = {
   BRL: "Barley",
+  POT: "Potatoes",
   GRA: "Grapes",
   MAI: "Maize",
   OAT: "Oats",
@@ -33,6 +34,7 @@ const friendlyName = {
 
 const cropColor = {
   BRL: "#DAA520",
+  POT: "#FF6347",
   GRA: "#800080",
   MAI: "#FFA500",
   OAT: "#DEB887",

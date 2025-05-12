@@ -72,7 +72,7 @@
   },
   "series": [
     {
-      "name": "Energy use",
+      "name": "Diesel",
       "type": "column",
       "data": [
         2365.677276410518,
