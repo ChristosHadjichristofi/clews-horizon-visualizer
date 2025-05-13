@@ -1,5 +1,3 @@
-// scripts/buildLandUseEmissionsCharts.js
-
 import {
   parseCsv,
   loadTemplate,

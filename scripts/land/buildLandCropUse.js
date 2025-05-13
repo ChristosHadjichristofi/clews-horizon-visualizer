@@ -1,5 +1,3 @@
-// scripts/buildLandCropUseCharts.js
-
 import {
   parseCsv,
   loadTemplate,

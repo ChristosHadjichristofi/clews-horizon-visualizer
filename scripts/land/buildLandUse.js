@@ -47,6 +47,29 @@ export async function buildLandUseCharts() {
       (areaByCategory[category][year] || 0) + value;
   });
 
+  // ——— NEW: compute total “Land crop use” per year ———
+  // 5a) find all “Land potential for crops” tech names
+  const cropTechs = landListRows
+    .filter(
+      (r) =>
+        r.classifier === "Technology" && r.Type === "Land potential for crops"
+    )
+    .map((r) => r.Name);
+
+  // 5b) filter for FUEL='EULDUM' and those techs
+  const cropFiltered = prodRows.filter(
+    (r) => r.FUEL === "EULDUM" && cropTechs.includes(r.TECHNOLOGY)
+  );
+
+  // 5c) accumulate total crop use per year
+  const cropUseByYear = {};
+  cropFiltered.forEach((r) => {
+    const year = r.YEAR;
+    const value = Number(r.VALUE);
+    cropUseByYear[year] = (cropUseByYear[year] || 0) + value;
+  });
+  // ————————————————————————————————————————————
+
   // 6) derive sorted list of years
   const allYears = Array.from(
     new Set(
@@ -58,11 +81,21 @@ export async function buildLandUseCharts() {
 
   // 7) build chart config
   const tpl = await loadTemplate("stackedBar");
+
+  // 7a) existing category series
   const series = Object.entries(areaByCategory).map(([category, byYear]) => ({
     name: category,
     type: "column",
     data: allYears.map((y) => byYear[y] || 0),
   }));
+
+  // 7b) append the new “Land crop use” series
+  series.push({
+    name: "Land crop use",
+    type: "column",
+    data: allYears.map((y) => cropUseByYear[y] || 0),
+    color: "#4CAF50",
+  });
 
   const annotatedSeries = annotateLandCropSeries(series);
 

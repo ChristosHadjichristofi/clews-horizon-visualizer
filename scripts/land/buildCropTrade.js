@@ -1,8 +1,4 @@
-import {
-  parseCsv,
-  loadTemplate,
-  annotateLandCropSeries,
-} from "../utils/general.js";
+import { parseCsv, loadTemplate } from "../utils/general.js";
 import path from "path";
 import fs from "fs/promises";
 import merge from "lodash.merge";

@@ -1,5 +1,3 @@
-// scripts/buildEmissionsByYearByTechChart.js
-
 import {
   splitTechnology,
   parseCsv,

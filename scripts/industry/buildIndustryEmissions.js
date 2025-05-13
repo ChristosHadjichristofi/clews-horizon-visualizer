@@ -1,5 +1,3 @@
-// scripts/buildIndustryEmissions.js
-
 import {
   parseCsv,
   loadTemplate,

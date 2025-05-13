@@ -1,0 +1,34 @@
+{
+  "cards": [
+    {
+      "key": "water-use-by-sector",
+      "configFile": "water-use-by-sector.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "water-abstraction-by-source",
+      "configFile": "water-abstraction-by-source.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "water-energy-use-by-end-use",
+      "configFile": "water-energy-use-by-end-use.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "water-irrigation-by-crop",
+      "configFile": "water-irrigation-by-crop.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "water-balance",
+      "configFile": "water-balance.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    }
+  ]
+}

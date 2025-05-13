@@ -1,5 +1,3 @@
-// scripts/buildIndustryFuelConsumption.js
-
 import {
   parseCsv,
   loadTemplate,
