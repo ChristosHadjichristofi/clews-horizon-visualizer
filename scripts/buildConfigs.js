@@ -81,12 +81,12 @@ async function main() {
   console.log("Excel sheets exported to CSV");
 
   // Build the modules
-  await buildEnergyModules();
-  await buildTransportModules();
-  await buildBuildingsModules();
-  await buildIndustryModules();
-  await buildOverArchingModules();
-  await buildLandModules();
+  // await buildEnergyModules();
+  // await buildTransportModules();
+  // await buildBuildingsModules();
+  // await buildIndustryModules();
+  // await buildOverArchingModules();
+  // await buildLandModules();
   await buildWaterModules();
   console.log("All modules built");
   // End of modules building

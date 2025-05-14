@@ -18,10 +18,8 @@ export async function buildWaterUseBySectorCharts() {
   await fs.mkdir(OUT_DIR, { recursive: true });
   const { prodRows, inputActRows } = await loadCsvs();
 
-  // pivot input‐ratio by TECHNOLOGY & (when needed) FUEL
   const inputMap = {};
   for (const r of inputActRows) {
-    // we only care about our four codes below
     if (
       r.TECHNOLOGY === "EUWDEMAGRSUR" ||
       r.TECHNOLOGY === "EUWDEMAGRGWT" ||
@@ -56,12 +54,12 @@ export async function buildWaterUseBySectorCharts() {
     let sector = null;
     let ratio = 0;
 
-    if (TECHNOLOGY === "EUWDEMAGRSUR" && FUEL === "EUWSUR") {
+    if (TECHNOLOGY === "EUWDEMAGRSUR" && FUEL === "EUWAGR") {
       sector = "Agriculture";
-      ratio = inputMap[`${TECHNOLOGY}|${FUEL}`]?.[year] ?? 0;
-    } else if (TECHNOLOGY === "EUWDEMAGRGWT") {
+      ratio = inputMap[`${TECHNOLOGY}|EUWSUR`]?.[year] ?? 0;
+    } else if (TECHNOLOGY === "EUWDEMAGRGWT" && FUEL === "EUWAGR") {
       sector = "Agriculture";
-      ratio = inputMap[TECHNOLOGY]?.[year] ?? 0;
+      ratio = 1;
     } else if (TECHNOLOGY === "EUWTRNPWR000") {
       sector = "Power";
       ratio = inputMap[TECHNOLOGY]?.[year] ?? 0;

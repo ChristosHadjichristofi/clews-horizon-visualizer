@@ -58,7 +58,7 @@ export async function buildIrrigationWaterUseCharts() {
   const outputMap = {};
   outputActRows.forEach((r) => {
     if (!irrigationTechs.has(r.TECHNOLOGY)) return;
-    if (r.FUEL.slice(-3) !== r.TECHNOLOGY.slice(-3)) return;
+    if (r.FUEL.slice(-3) !== r.TECHNOLOGY.slice(6, 9)) return;
     outputMap[r.TECHNOLOGY] ??= {};
     for (const [k, v] of Object.entries(r)) {
       if (/^\d{4}$/.test(k)) outputMap[r.TECHNOLOGY][Number(k)] = Number(v);
@@ -69,14 +69,15 @@ export async function buildIrrigationWaterUseCharts() {
   // 3) accumulate only valid irrigation crops
   //
   const useByCrop = {};
-  for (const { TECHNOLOGY, YEAR, VALUE } of prodRows) {
+  for (const { TECHNOLOGY, FUEL, YEAR, VALUE } of prodRows) {
+    if (FUEL !== `EULDUM`) continue;
     if (!irrigationTechs.has(TECHNOLOGY)) continue;
     const year = Number(YEAR);
     const prod = Number(VALUE);
     const inR = inputMap[TECHNOLOGY]?.[year];
-    if (inR == null) continue; // skip any tech/year with no input ratio
-    const outR = outputMap[TECHNOLOGY]?.[year] ?? 1;
-    const irrigation = outR ? (prod * inR) / outR : 0;
+    // const outR = outputMap[TECHNOLOGY]?.[year];
+
+    const irrigation = prod * inR;
 
     const crop = TECHNOLOGY.slice(6, 9);
     useByCrop[crop] ??= {};
