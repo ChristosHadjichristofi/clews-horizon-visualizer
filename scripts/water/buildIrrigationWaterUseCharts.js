@@ -109,7 +109,7 @@ export async function buildIrrigationWaterUseCharts() {
     plotOptions: { column: { stacking: "normal" } },
     title: { text: "Irrigation Water Use by Crop Type" },
     xAxis: { categories: allYears, title: { text: "Year" } },
-    yAxis: { title: { text: "Irrigation Water (PJ)" } },
+    yAxis: { title: { text: "Irrigation Water (kt)" } },
     series: annotated,
   });
 

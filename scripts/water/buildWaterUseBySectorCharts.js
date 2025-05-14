@@ -119,7 +119,7 @@ export async function buildWaterUseBySectorCharts() {
     plotOptions: { column: { stacking: "normal" } },
     title: { text: "Annual Water Use by Sector" },
     xAxis: { categories: allYears, title: { text: "Year" } },
-    yAxis: { title: { text: "Water use (PJ)" } },
+    yAxis: { title: { text: "Water use (kt)" } },
     series,
   });
 
