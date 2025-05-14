@@ -23,9 +23,9 @@ const GlobalControlsBar = () => {
           <span className="text-xs text-muted-foreground">Year Range</span>
           <div className="px-2">
             <Slider
-              defaultValue={[2018, 2050]}
+              defaultValue={[2018, 2070]}
               min={2018}
-              max={2050}
+              max={2070}
               step={1}
               value={yearRange}
               onValueChange={handleYearRangeChange}
