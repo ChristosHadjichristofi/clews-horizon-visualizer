@@ -179,7 +179,10 @@ export async function buildIndustryEmissionsCharts() {
       text: "Emissions from electricity consumption not included in this figure",
     },
     xAxis: { categories: years, title: { text: "Year" } },
-    yAxis: { title: { text: "Emissions (MtCO₂-eq)" } },
+    yAxis: {
+      title: { text: "Emissions (MtCO₂-eq)" },
+      min: 0,
+    },
     series: seriesTotal,
   });
   await fs.writeFile(

@@ -68,7 +68,8 @@
   "yAxis": {
     "title": {
       "text": "Emissions (MtCO₂-eq)"
-    }
+    },
+    "min": 0
   },
   "series": [
     {

@@ -109,7 +109,7 @@ export async function buildIndustryFuelConsumptionCharts() {
   const annotatedSeriesA = await annotateTechSeries(seriesChartA);
 
   const cfgFuel = merge({}, tpl, {
-    title: { text: "Final-Energy Demand by Fuel" },
+    title: { text: "Final-Energy Demand by Sector" },
     xAxis: { categories: allYears, title: { text: "Year" } },
     yAxis: { title: { text: "Demand (PJ)" } },
     series: annotatedSeriesA,
@@ -130,7 +130,7 @@ export async function buildIndustryFuelConsumptionCharts() {
   const annotatedSeriesB = await annotateTechSeries(seriesChartB);
 
   const cfgTech = merge({}, tpl, {
-    title: { text: "Final-Energy Demand by Technology" },
+    title: { text: "Final-Energy Demand by Fuel" },
     xAxis: { categories: allYears, title: { text: "Year" } },
     yAxis: { title: { text: "Demand (PJ)" } },
     series: annotatedSeriesB,
