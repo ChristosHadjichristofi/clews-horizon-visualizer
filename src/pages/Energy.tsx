@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import ChartPlaceholder from "@/components/common/ChartPlaceholder";
 import ChartCard from "@/components/common/ChartCard";
-import Chart from "@/components/common/Chart";
 import chartInfo from "@/data/chartConfigs/Energy/chartInfo.json";
 import { configs } from "@/data/chartConfigs/Energy";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useGlobalControls } from "@/contexts/GlobalControlsContext";
+import ChartWithControls from "@/components/common/ChartWithControls";
 
 const Energy: React.FC = () => {
   const [activeTab, setActiveTab] = useState("overview");
@@ -87,7 +87,7 @@ const Energy: React.FC = () => {
                     className={spanClass}
                   >
                     {/* pass yearRange into Chart */}
-                    <Chart options={cfg} yearRange={yearRange} />
+                    <ChartWithControls options={cfg} yearRange={yearRange} />
                   </ChartCard>
                 );
               })}

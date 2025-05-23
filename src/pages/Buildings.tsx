@@ -2,10 +2,10 @@ import React from "react";
 import { useGlobalControls } from "@/contexts/GlobalControlsContext";
 import ChartCard from "@/components/common/ChartCard";
 import ChartPlaceholder from "@/components/common/ChartPlaceholder";
-import Chart from "@/components/common/Chart";
 import chartInfo from "@/data/chartConfigs/Buildings/chartInfo.json";
 import { configs } from "@/data/chartConfigs/Buildings";
 import type { Options } from "highcharts";
+import ChartWithControls from "@/components/common/ChartWithControls";
 
 const Buildings: React.FC = () => {
   const { yearRange } = useGlobalControls();
@@ -28,7 +28,7 @@ const Buildings: React.FC = () => {
               className={spanClass}
             >
               {cfg ? (
-                <Chart
+                <ChartWithControls
                   options={cfg as unknown as Options}
                   yearRange={yearRange}
                 />
