@@ -12,7 +12,6 @@ import merge from "lodash.merge";
 const CSV_DIR = path.resolve(process.cwd(), "data/csv");
 const OUT_DIR = path.resolve(process.cwd(), "data/chartConfigs", "Industry");
 
-/** Pivot InputActivityRatio into { [TECH]: { [year]: PJ_per_unit } } */
 function pivotByTechnology(rows) {
   const map = {};
   rows.forEach((r) => {
@@ -34,13 +33,10 @@ async function loadCsvs() {
 }
 
 export async function buildIndustryFuelConsumptionCharts() {
-  // ensure output dir
   await fs.mkdir(OUT_DIR, { recursive: true });
 
-  // load
   const { prodRows, techListRows, inputActRows } = await loadCsvs();
 
-  // identify industry tech codes (drop tech="000")
   const industryTechs = new Set();
   techListRows
     .filter((r) => r["Sub-module"] === "Industry")
@@ -51,10 +47,8 @@ export async function buildIndustryFuelConsumptionCharts() {
       }
     });
 
-  // pivot input ratios
   const inputMap = pivotByTechnology(inputActRows);
 
-  // build shared year axis candidates
   const byFuelYear = {};
   const demandByTech = {};
   const demandByCode = {};
@@ -73,20 +67,16 @@ export async function buildIndustryFuelConsumptionCharts() {
       const year = r.YEAR;
       const pj = Number(r.VALUE) * (inputMap[techCode]?.[year] || 0);
 
-      // by-fuel
       byFuelYear[fuel] ??= {};
       byFuelYear[fuel][year] = (byFuelYear[fuel][year] || 0) + pj;
 
-      // by-techSuffix
       demandByTech[suffix] ??= {};
       demandByTech[suffix][year] = (demandByTech[suffix][year] || 0) + pj;
 
-      // by-full Technology code
       demandByCode[techCode] ??= {};
       demandByCode[techCode][year] = (demandByCode[techCode][year] || 0) + pj;
     });
 
-  // shared years axis
   const allYears = Array.from(
     new Set(
       [
@@ -99,66 +89,99 @@ export async function buildIndustryFuelConsumptionCharts() {
 
   const tpl = await loadTemplate("stackedBar");
 
-  // — Chart A: by-Fuel —
-  const seriesChartA = Object.entries(byFuelYear).map(([fuel, byY]) => ({
+  // Chart A: by-Fuel
+  const seriesA = Object.entries(byFuelYear).map(([fuel, byY]) => ({
     name: fuel,
     type: "column",
     data: allYears.map((y) => byY[y] || 0),
   }));
-
-  const annotatedSeriesA = await annotateTechSeries(seriesChartA);
-
-  const cfgFuel = merge({}, tpl, {
+  const cfgA = merge({}, tpl, {
     title: { text: "Final-Energy Demand by Sector" },
     xAxis: { categories: allYears, title: { text: "Year" } },
     yAxis: { title: { text: "Demand (PJ)" } },
-    series: annotatedSeriesA,
+    series: await annotateTechSeries(seriesA),
   });
   await fs.writeFile(
     path.join(OUT_DIR, "industry-fuel-by-fuel.config.json"),
-    JSON.stringify(cfgFuel, null, 2)
+    JSON.stringify(cfgA, null, 2)
   );
-  console.log("Wrote industry-fuel-by-fuel.config.json");
 
-  // — Chart B: by-TechSuffix —
-  const seriesChartB = Object.entries(demandByTech).map(([tech, byY]) => ({
+  // Chart B: by-TechSuffix
+  const seriesB = Object.entries(demandByTech).map(([tech, byY]) => ({
     name: tech,
     type: "column",
     data: allYears.map((y) => byY[y] || 0),
   }));
-
-  const annotatedSeriesB = await annotateTechSeries(seriesChartB);
-
-  const cfgTech = merge({}, tpl, {
+  const cfgB = merge({}, tpl, {
     title: { text: "Final-Energy Demand by Fuel" },
     xAxis: { categories: allYears, title: { text: "Year" } },
     yAxis: { title: { text: "Demand (PJ)" } },
-    series: annotatedSeriesB,
+    series: await annotateTechSeries(seriesB),
   });
   await fs.writeFile(
     path.join(OUT_DIR, "industry-fuel-by-tech.config.json"),
-    JSON.stringify(cfgTech, null, 2)
+    JSON.stringify(cfgB, null, 2)
   );
-  console.log("Wrote industry-fuel-by-tech.config.json");
 
-  // — Chart C: by-Full Technology Code (not aggregated) —
-  const seriesChartC = Object.entries(demandByCode).map(([code, byY]) => ({
+  // Chart C (full): by-TechCode
+  const seriesC = Object.entries(demandByCode).map(([code, byY]) => ({
     name: code,
     type: "column",
     data: allYears.map((y) => byY[y] || 0),
   }));
-
-  const annotatedSeriesC = await annotateTechSeries(seriesChartC, true);
-
-  const cfgCode = merge({}, tpl, {
+  const cfgC = merge({}, tpl, {
     title: { text: "Final-Energy Demand by Technology Code" },
     xAxis: { categories: allYears, title: { text: "Year" } },
     yAxis: { title: { text: "Demand (PJ)" } },
-    series: annotatedSeriesC,
+    series: await annotateTechSeries(seriesC, true),
   });
   await fs.writeFile(
     path.join(OUT_DIR, "industry-fuel-by-code.config.json"),
-    JSON.stringify(cfgCode, null, 2)
+    JSON.stringify(cfgC, null, 2)
   );
-  console.log("Wrote industry-fuel-by-code.config.json");
+
+  // Chart D: by Sector – one chart per sector
+  const techToSector = {};
+  techListRows.forEach((r) => {
+    const code = r["Technology code"];
+
+    // Validate the code
+    if (typeof code !== "string" || code.trim().length < 8) {
+      console.warn("Skipping invalid Technology code:", code);
+      return;
+    }
+
+    const { tech } = splitTechnology(code);
+    if (tech !== "000") {
+      techToSector[code] = r.Type;
+    }
+  });
+
+  const demandBySector = {};
+  for (const [code, data] of Object.entries(demandByCode)) {
+    const sector = techToSector[code];
+    if (!sector) continue;
+    demandBySector[sector] ??= {};
+    demandBySector[sector][code] = data;
+  }
+
+  for (const [sector, codes] of Object.entries(demandBySector)) {
+    const series = Object.entries(codes).map(([code, byY]) => ({
+      name: code,
+      type: "column",
+      data: allYears.map((y) => byY[y] || 0),
+    }));
+    const cfg = merge({}, tpl, {
+      title: { text: `Final-Energy Demand by Technology Code – ${sector}` },
+      xAxis: { categories: allYears, title: { text: "Year" } },
+      yAxis: { title: { text: "Demand (PJ)" } },
+      series: await annotateTechSeries(series, true),
+    });
+    const safeName = sector.toLowerCase().replace(/[^a-z0-9]+/gi, "-");
+    await fs.writeFile(
+      path.join(OUT_DIR, `industry-fuel-by-code-${safeName}.config.json`),
+      JSON.stringify(cfg, null, 2)
+    );
+    console.log(`Wrote industry-fuel-by-code-${sector}.config.json`);
+  }
 }

@@ -19,6 +19,42 @@
       "colSpan": 2
     },
     {
+      "key": "industry-fuel-by-code-chemical-petrochemical",
+      "configFile": "industry-fuel-by-code-chemical-petrochemical.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "industry-fuel-by-code-food-beverages-tobacco",
+      "configFile": "industry-fuel-by-code-food-beverages-tobacco.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "industry-fuel-by-code-iron-and-steel",
+      "configFile": "industry-fuel-by-code-iron-and-steel.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "industry-fuel-by-code-non-ferrous-metals",
+      "configFile": "industry-fuel-by-code-non-ferrous-metals.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "industry-fuel-by-code-non-metallic-minerals",
+      "configFile": "industry-fuel-by-code-non-metallic-minerals.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
+      "key": "industry-fuel-by-code-paper-pulp-and-print",
+      "configFile": "industry-fuel-by-code-paper-pulp-and-print.config.json",
+      "chartType": "stacked",
+      "colSpan": 2
+    },
+    {
       "key": "industry-emissions-by-sector",
       "configFile": "industry-emissions-by-sector.config.json",
       "chartType": "line",
