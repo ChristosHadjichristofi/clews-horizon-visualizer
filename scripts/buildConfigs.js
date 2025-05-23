@@ -36,6 +36,12 @@ async function exportExcelSheets(dataSrc) {
 
   exportSheetToCsv(
     path.join(dataSrc, "xlsx", "euclews_elw_20240628.xlsx"),
+    "SpecifiedAnnualDemand",
+    path.join(dataSrc, "csv", "exported", "SpecifiedAnnualDemand.csv")
+  );
+
+  exportSheetToCsv(
+    path.join(dataSrc, "xlsx", "euclews_elw_20240628.xlsx"),
     "OutputActivityRatio",
     path.join(dataSrc, "csv", "exported", "OutputActivityRatio.csv")
   );

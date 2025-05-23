@@ -81,57 +81,19 @@ export async function buildLandCropUseCharts() {
   // Chart configs
   const tpl = await loadTemplate("stackedBar");
 
-  // Chart 1: by crop type — with drilldown by year and annotated crops
-  const topSeriesCrop = [
-    {
-      name: "Crop Land Use",
-      color: "#7cb5ec",
-      data: allYears.map((year) => {
-        const total = Object.values(byCropType).reduce(
-          (sum, m) => sum + (m[year] || 0),
-          0
-        );
-        return {
-          name: String(year),
-          y: total,
-          drilldown: `crop-${year}`,
-        };
-      }),
-    },
-  ];
-
-  const drilldownCropSeries = allYears.map((year) => ({
-    id: `crop-${year}`,
-    name: `Crop Type Breakdown ${year}`,
+  // Chart 1: by crop type
+  const seriesCrop = Object.entries(byCropType).map(([key, m]) => ({
+    name: key,
     type: "column",
-    data: Object.entries(byCropType).map(([cropKey, m]) => {
-      const annotated = annotateLandCropSeries([
-        { name: cropKey, data: [] }, // dummy call to get name/color
-      ])[0];
-      return {
-        name: annotated.name,
-        y: m[year] || 0,
-        color: annotated.color,
-      };
-    }),
+    data: allYears.map((y) => m[y] || 0),
   }));
   const cfgCrop = merge({}, tpl, {
-    chart: { type: "column" },
     title: { text: "Crop Land Use by Crop Type" },
-    subtitle: {
-      text: "Total area by year with breakdown by crop type (click year column)",
-    },
-    xAxis: {
-      type: "category",
-      categories: allYears.map((y) => String(y)),
-      title: { text: "Year" },
-      tickInterval: 1,
-    },
+    subtitle: { text: "Area under each crop type (1000 km²)" },
+    xAxis: { categories: allYears, title: { text: "Year" } },
     yAxis: { title: { text: "Area (1000 km²)" } },
-    series: topSeriesCrop,
-    drilldown: { series: drilldownCropSeries },
+    series: annotateLandCropSeries(seriesCrop),
   });
-
   await fs.writeFile(
     path.join(OUT_DIR, "land-crop-area-by-type.config.json"),
     JSON.stringify(cfgCrop, null, 2)

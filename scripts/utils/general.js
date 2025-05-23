@@ -29,6 +29,7 @@ export async function parseCsv(filePath) {
     header: true,
     dynamicTyping: true,
     skipEmptyLines: true,
+    delimiter: ",",
   });
   if (errors.length) throw errors[0];
   return data;

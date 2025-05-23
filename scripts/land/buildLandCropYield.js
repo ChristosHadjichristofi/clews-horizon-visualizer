@@ -132,6 +132,7 @@ export async function buildLandCropProductionCharts() {
       productionByCode[code][year] = (productionByCode[code][year] || 0) + prod;
     });
 
+  // derive all years
   const allYears = Array.from(
     new Set(
       Object.values(productionByCode)
@@ -140,18 +141,58 @@ export async function buildLandCropProductionCharts() {
     )
   ).sort((a, b) => a - b);
 
-  const prodSeries = Object.entries(productionByCode).map(([code, m]) => ({
-    name: code,
-    type: "column",
-    data: allYears.map((y) => m[y] || 0),
-  }));
+  // top-level series: total production per year
+  const topSeries = [
+    {
+      name: "Crop Production",
+      color: "#7cb5ec",
+      data: allYears.map((year) => {
+        const total = Object.values(productionByCode).reduce(
+          (sum, m) => sum + (m[year] || 0),
+          0
+        );
+        return {
+          name: String(year),
+          y: total,
+          drilldown: `production-${year}`,
+        };
+      }),
+    },
+  ];
 
+  // drilldown series: breakdown by crop code for each year
+  const drilldownSeries = await Promise.all(
+    allYears.map(async (year) => {
+      const rawData = Object.entries(productionByCode).map(([code, m]) => ({
+        name: code,
+        y: m[year] || 0,
+      }));
+
+      const annotated = annotateLandCropSeries(rawData);
+
+      return {
+        id: `production-${year}`,
+        name: `Production ${year}`,
+        type: "column",
+        data: annotated,
+      };
+    })
+  );
+
+  // load template & merge config
   const tplProd = await loadTemplate("column");
   const configProd = merge({}, tplProd, {
     title: { text: "Crop Production by Code" },
-    xAxis: { categories: allYears, title: { text: "Year" } },
+    subtitle: { text: "Total per year; click to view crop-level breakdown" },
+    xAxis: {
+      type: "category",
+      categories: allYears.map((y) => String(y)),
+      title: { text: "Year" },
+      tickInterval: 1,
+    },
     yAxis: { title: { text: "Production (kt)" } },
-    series: annotateLandCropSeries(prodSeries),
+    series: topSeries,
+    drilldown: { series: drilldownSeries },
   });
 
   await fs.writeFile(
