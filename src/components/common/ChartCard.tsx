@@ -21,7 +21,6 @@ const ChartCard: React.FC<ChartCardProps> = ({
       {subtitle && <p className="text-sm text-muted-foreground">{subtitle}</p>}
     </CardHeader>
 
-    {/* NEW: Make chart container horizontally scrollable if chart overflows */}
     <CardContent className="overflow-auto">
       <div className="min-w-[1200px]">{children}</div>
     </CardContent>

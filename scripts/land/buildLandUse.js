@@ -47,7 +47,6 @@ export async function buildLandUseCharts() {
       (areaByCategory[category][year] || 0) + value;
   });
 
-  // ——— NEW: compute total “Land crop use” per year ———
   // 5a) find all “Land potential for crops” tech names
   const cropTechs = landListRows
     .filter(
@@ -68,7 +67,6 @@ export async function buildLandUseCharts() {
     const value = Number(r.VALUE);
     cropUseByYear[year] = (cropUseByYear[year] || 0) + value;
   });
-  // ————————————————————————————————————————————
 
   // 6) derive sorted list of years
   const allYears = Array.from(

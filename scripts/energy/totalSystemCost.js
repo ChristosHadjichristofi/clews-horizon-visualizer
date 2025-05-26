@@ -12,7 +12,6 @@ import {
 const CSV_DIR = path.resolve(process.cwd(), "data/csv");
 const EXP_DIR = path.resolve(CSV_DIR, "exported");
 const OUT_DIR = path.resolve(process.cwd(), "data/chartConfigs", "Energy");
-const PJ_TO_TWH = 0.277778;
 
 async function loadCsvs() {
   const [

@@ -15,9 +15,7 @@ const OUT_DIR = path.resolve(process.cwd(), "data/chartConfigs", "Industry");
 const GWP = {
   EUCO2: 1,
   EUCH4: 28,
-  // EUCH4_ETS: 28,
   EUN2O: 265,
-  // EUN2O_ETS: 265,
 };
 
 async function loadCsvs() {

@@ -6,7 +6,6 @@ import merge from "lodash.merge";
 const CSV_DIR = path.resolve(process.cwd(), "data/csv");
 const OUT_DIR = path.resolve(process.cwd(), "data/chartConfigs", "Water");
 
-// ---  add this mapping ---
 const TECH_METADATA = {
   EUWMIN000PRC: { name: "Precipitation water resource", color: "#4FC3F7" },
   EUWDEMAGRSUR: {
@@ -61,7 +60,6 @@ const TECH_METADATA = {
     color: "#FFA726",
   },
 };
-// -----------------------------------
 
 async function loadCsvs() {
   const [prodRows, inputActRows] = await Promise.all([

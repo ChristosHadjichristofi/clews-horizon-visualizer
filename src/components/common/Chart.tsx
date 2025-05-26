@@ -2,7 +2,6 @@ import React, { useRef, useImperativeHandle, forwardRef } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-// modules
 import * as ExportingNS from "highcharts/modules/exporting";
 import * as ExportDataNS from "highcharts/modules/export-data";
 import * as OfflineExportingNS from "highcharts/modules/offline-exporting";
