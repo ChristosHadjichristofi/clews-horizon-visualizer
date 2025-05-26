@@ -6,20 +6,10 @@ import {
 import path from "path";
 import fs from "fs/promises";
 import merge from "lodash.merge";
+import { getFleetStockPerTechCode } from "../utils/transportCapacity.js";
 
-const CSV_DIR = path.resolve(process.cwd(), "data/csv");
 const OUT_DIR = path.resolve(process.cwd(), "data/chartConfigs", "Transport");
 
-async function loadCsvs() {
-  const [capacityRows, techListRows] = await Promise.all([
-    parseCsv(path.join(CSV_DIR, "TotalCapacityAnnual.csv")),
-    parseCsv(path.join(CSV_DIR, "exported/EnergyModule_Tech_List.csv")),
-  ]);
-
-  return { capacityRows, techListRows };
-}
-
-// Types to include
 const TYPES = [
   "Passenger road - vehicles",
   "Passenger road - bus",
@@ -30,32 +20,41 @@ const TYPES = [
 export async function buildTransportCapacityChart() {
   await fs.mkdir(OUT_DIR, { recursive: true });
 
-  const { capacityRows, techListRows } = await loadCsvs();
+  // returns: { stock: { [techCode]: { [year]: value } }, techListRows: [...] }
+  const { stock: fleetData, techListRows } = await getFleetStockPerTechCode({
+    includeRaw: true,
+  });
 
-  // 1) Filter tech list for desired types
   const transportTechs = techListRows
     .filter((r) => TYPES.includes(r.Type))
     .map((r) => r["Technology code"]);
 
-  // 2) Aggregate capacity by tech and year
-  const agg = {};
-  capacityRows
-    .filter((r) => transportTechs.includes(r.TECHNOLOGY))
-    .forEach((r) => {
-      const tech = r.TECHNOLOGY;
-      const year = r.YEAR;
-      const val = +r.VALUE;
-      agg[tech] ??= {};
-      agg[tech][year] = (agg[tech][year] || 0) + val;
-    });
-  //   console.log("Aggregated capacity:", agg);
+  const techToType = {};
+  techListRows.forEach((r) => {
+    if (TYPES.includes(r.Type)) {
+      techToType[r["Technology code"]] = r.Type;
+    }
+  });
 
-  // 3) Build years axis
+  const agg = {};
+  transportTechs.forEach((tech) => {
+    const yearly = fleetData[tech];
+    if (!yearly) return;
+
+    Object.entries(yearly).forEach(([year, value]) => {
+      agg[tech] ??= {};
+      agg[tech][year] = value;
+    });
+  });
+
   const years = Array.from(
-    new Set([...Object.values(agg).flatMap(Object.keys)].map(Number))
+    new Set(
+      Object.values(agg)
+        .flatMap((o) => Object.keys(o))
+        .map(Number)
+    )
   ).sort((a, b) => a - b);
 
-  // 4) Build series per technology
   const series = transportTechs.map((code) => ({
     name: code,
     type: "column",
@@ -64,12 +63,11 @@ export async function buildTransportCapacityChart() {
 
   const seriesAnnotated = await annotateTechSeries(series);
 
-  // 5) Write chart config
   const tpl = await loadTemplate("stackedBar");
   const config = merge({}, tpl, {
     title: { text: "Vehicle Fleet Stock by Technology – Road Transport" },
     xAxis: { categories: years, title: { text: "Year" } },
-    yAxis: { title: { text: "Capacity (units)" } },
+    yAxis: { title: { text: "Vehicle Count" } },
     series: seriesAnnotated,
   });
 

@@ -10,7 +10,6 @@ import merge from "lodash.merge";
 const CSV_DIR = path.resolve(process.cwd(), "data/csv");
 const OUT_DIR = path.resolve(process.cwd(), "data/chartConfigs", "Transport");
 
-// same four road‐transport types as before
 const TYPES = [
   "Passenger road - vehicles",
   "Passenger road - bus",
@@ -18,25 +17,71 @@ const TYPES = [
   "Freight road - heavy trucks",
 ];
 
+function cleanActivityValue(value) {
+  if (typeof value === "number") return value;
+  if (typeof value === "string") return parseFloat(value.replace(/,/g, ""));
+  if (value == null) return null;
+
+  try {
+    const str = String(value);
+    return parseFloat(str.replace(/,/g, ""));
+  } catch (err) {
+    console.warn("Invalid activity value type:", value);
+    return null;
+  }
+}
+
+function getUnitScalingFactor(unit) {
+  switch (unit) {
+    case "Gvehkm":
+    case "Gtkm":
+    case "Gpkm":
+      return 1;
+    case "Mvkm":
+      return 1e-3;
+    default:
+      return null;
+  }
+}
+
 async function loadCsvs() {
-  const [newRows, techListRows] = await Promise.all([
+  const [newRows, techListRows, unitRows] = await Promise.all([
     parseCsv(path.join(CSV_DIR, "NewCapacity.csv")),
     parseCsv(path.join(CSV_DIR, "exported/EnergyModule_Tech_List.csv")),
+    parseCsv(path.join(CSV_DIR, "exported/TransportUnits.csv")),
   ]);
-  return { newRows, techListRows };
+  return { newRows, techListRows, unitRows };
 }
 
 export async function buildTransportNewRegistrationsChart() {
   await fs.mkdir(OUT_DIR, { recursive: true });
 
-  const { newRows, techListRows } = await loadCsvs();
+  const { newRows, techListRows, unitRows } = await loadCsvs();
 
-  // 1) pick only the road‐transport tech codes
   const transportTechs = techListRows
     .filter((r) => TYPES.includes(r.Type))
     .map((r) => r["Technology code"]);
 
-  // 2) aggregate new registrations by tech & year
+  // Build map: techCode → scaled activity per unit
+  const activityMap = {};
+  unitRows.forEach((row, idx) => {
+    const techCode = row["Technology code"];
+    const rawActivity = row["Annual Activity per unit"];
+    const unit = row["Unit"];
+
+    const activity = cleanActivityValue(rawActivity);
+    const scale = getUnitScalingFactor(unit);
+
+    if (techCode && !isNaN(activity) && scale != null) {
+      activityMap[techCode] = activity * scale;
+    } else {
+      console.warn(
+        `Skipping row ${idx} – techCode: ${techCode}, activity: ${rawActivity}, unit: ${unit}`
+      );
+    }
+  });
+
+  // Aggregate new registrations (converted from vkm to unit count)
   const agg = {};
   newRows
     .filter((r) => transportTechs.includes(r.TECHNOLOGY))
@@ -44,16 +89,17 @@ export async function buildTransportNewRegistrationsChart() {
       const tech = r.TECHNOLOGY;
       const year = r.YEAR;
       const val = +r.VALUE;
+
+      const activity = activityMap[tech];
+      const converted = activity ? (val / activity) * 1e9 : val;
       agg[tech] ??= {};
-      agg[tech][year] = (agg[tech][year] || 0) + val;
+      agg[tech][year] = (agg[tech][year] || 0) + converted;
     });
 
-  // 3) build unified year axis
   const years = Array.from(
     new Set(Object.values(agg).flatMap(Object.keys).map(Number))
   ).sort((a, b) => a - b);
 
-  // 4) build one column series per tech
   const series = transportTechs.map((code) => ({
     name: code,
     type: "column",
@@ -62,7 +108,6 @@ export async function buildTransportNewRegistrationsChart() {
 
   const annotatedSeries = await annotateTechSeries(series);
 
-  // 5) merge into your stacked‐bar template
   const tpl = await loadTemplate("stackedBar");
   const config = merge({}, tpl, {
     title: { text: "New Vehicle Registrations by Technology – Road Transport" },
@@ -71,7 +116,6 @@ export async function buildTransportNewRegistrationsChart() {
     series: annotatedSeries,
   });
 
-  // 6) write out
   const outFile = path.join(OUT_DIR, "transport-new-registrations.config.json");
   await fs.writeFile(outFile, JSON.stringify(config, null, 2));
   console.log("Wrote", outFile);

@@ -1,0 +1,44 @@
+Annual Activity per unit,,Sub-module,Type,Technology,Technology code,Unit
+,Energy,Transport,Electric charging,Electric charging,EUEGNELCCH00,GW
+"11,754",Energy,Transport,Passenger road,Gasoline vehicles,EUEPTGSLVP00,Gvehkm
+"11,754",Energy,Transport,Passenger road,Diesel vehicles,EUEPTDSLVP00,Gvehkm
+"11,754",Energy,Transport,Passenger road,CNG/LNG vehicles,EUEPTNGSVP00,Gvehkm
+"11,754",Energy,Transport,Passenger road,LPG vehicles,EUEPTLPGVP00,Gvehkm
+"11,754",Energy,Transport,Passenger road,Hybrid electric vehicles,EUEPTGSLVPHB,Gvehkm
+11753.55,Energy,Transport,Passenger road,Plug-in electric vehicles,EUEPTGSLVPPH,Gvehkm
+11753.55,Energy,Transport,Passenger road,Battery electric vehicles,EUEPTELCVPBT,Gvehkm
+11753.55,Energy,Transport,Passenger road,Hydrogen fuel cell vehicles,EUEPTHY2VPFC,Gvehkm
+42318.35,Energy,Transport,Passenger road,Diesel bus,EUEPTDSLBU00,Gvehkm
+42318.35,Energy,Transport,Passenger road,CNG bus,EUEPTNGSBU00,Gvehkm
+42318.35,Energy,Transport,Passenger road,Electric bus,EUEPTELCBUBT,Gvehkm
+42318.35,Energy,Transport,Passenger road,Hydrogen fuel cell bus,EUEPTHY2BUFC,Gvehkm
+20812.82,Energy,Transport,Freight road,Gasoline light trucks,EUEFTGSLLC00,Gvehkm
+20812.82,Energy,Transport,Freight road,Diesel light trucks,EUEFTDSLLC00,Gvehkm
+20812.82,Energy,Transport,Freight road,CNG/LNG light trucks,EUEFTNGSLC00,Gvehkm
+20812.82,Energy,Transport,Freight road,Hybrid electric light trucks,EUEFTDSLLCHB,Gvehkm
+20812.82,Energy,Transport,Freight road,Plug-in electric light trucks,EUEFTDSLLCPH,Gvehkm
+20812.82,Energy,Transport,Freight road,Battery electric light trucks,EUEFTELCLCBT,Gvehkm
+20812.82,Energy,Transport,Freight road,Hydrogen fuel cell light trucks,EUEFTHY2LCFC,Gvehkm
+19456.42,Energy,Transport,Freight road,Diesel heavy trucks,EUEFTDSLHD00,Gvehkm
+19456.42,Energy,Transport,Freight road,CNG/LNG heavy trucks,EUEFTNGSHD00,Gvehkm
+19456.42,Energy,Transport,Freight road,Hybrid electric heavy trucks,EUEFTDSLHDHB,Gvehkm
+19456.42,Energy,Transport,Freight road,Battery electric heavy trucks,EUEFTELCHDBT,Gvehkm
+19456.42,Energy,Transport,Freight road,Hydrogen fuel cell heavy trucks,EUEFTHY2HDFC,Gvehkm
+0.01,Energy,Transport,Passenger rail,Diesel train,EUEPTDSLRL00,Gpkm
+0.01,Energy,Transport,Passenger rail,Electric train,EUEPTELCRL00,Gpkm
+0.02,Energy,Transport,Freight rail,Diesel train,EUEFTDSLRL00,Gtkm
+0.02,Energy,Transport,Freight rail,Electric train,EUEFTELCRL00,Gtkm
+1.91,Energy,Transport,Aviation,Kerosene planes,EUEAVKRS0000,Mvkm
+1.91,Energy,Transport,Aviation,Electric planes,EUEAVELC0000,Mvkm
+1.91,Energy,Transport,Aviation,Hydrogen planes,EUEAVHY20000,Mvkm
+1.49,Energy,Transport,Shipping/Maritime,Oil vessels,EUEMROIL0000,Gtkm
+1.49,Energy,Transport,Shipping/Maritime,Gas vessels,EUEMRNGS0000,Gtkm
+1.49,Energy,Transport,Shipping/Maritime,Hydrogen/syn fuel vessels,EUEMRHY20000,Gtkm
+11753.55,Energy,Transport,Passenger road,Backstop passenger vehicles,EUEPT000VPBS,Gvehkm
+42318.35,Energy,Transport,Passenger road,Backstop buses,EUEPT000BUBS,Gvehkm
+20812.82,Energy,Transport,Freight road,Backstop light trucks,EUEFT000LCBS,Gvehkm
+19456.42,Energy,Transport,Freight road,Backstop heavy trucks,EUEFT000HDBS,Gvehkm
+0.01,Energy,Transport,Passenger rail,Backstop Passenger Rail,EUEPT00RLBS,Gpkm
+0.02,Energy,Transport,Freight rail,Backstop Freight Rail,EUEFT00RLBS,Gtkm
+1.91,Energy,Transport,Aviation,Backstop Aviation,EUEAV0000BS,Mvkm
+1.49,Energy,Transport,Shipping/Maritime,Backstop Maritime,EUEMR0000BS,Gtkm

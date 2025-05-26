@@ -35,9 +35,9 @@ async function exportExcelSheets(dataSrc) {
   );
 
   exportSheetToCsv(
-    path.join(dataSrc, "xlsx", "euclews_elw_20240628.xlsx"),
-    "SpecifiedAnnualDemand",
-    path.join(dataSrc, "csv", "exported", "SpecifiedAnnualDemand.csv")
+    path.join(dataSrc, "xlsx", "Aggregated CLEWs-EU - transport units.xlsx"),
+    "Sheet1",
+    path.join(dataSrc, "csv", "exported", "TransportUnits.csv")
   );
 
   exportSheetToCsv(
@@ -87,13 +87,13 @@ async function main() {
   console.log("Excel sheets exported to CSV");
 
   // Build the modules
-  await buildEnergyModules();
+  // await buildEnergyModules();
   await buildTransportModules();
-  await buildBuildingsModules();
-  await buildIndustryModules();
-  await buildOverArchingModules();
-  await buildLandModules();
-  await buildWaterModules();
+  // await buildBuildingsModules();
+  // await buildIndustryModules();
+  // await buildOverArchingModules();
+  // await buildLandModules();
+  // await buildWaterModules();
   console.log("All modules built");
   // End of modules building
 
